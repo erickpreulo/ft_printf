@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/03/26 13:44:41 by egomes           ###   ########.fr       */
+/*   Created: 2021/03/26 11:46:19 by egomes            #+#    #+#             */
+/*   Updated: 2021/03/26 13:24:02 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
+void		printc(va_list ap)
+{
+	char c;
 
- int		ft_printf(const char *str, ...);
- void		ft_putchar(char c);
- int		ft_strlen(const char *str);
- void		print(va_list ap, const char *str);
- void		printc(va_list ap);
- void		prints(va_list ap);
- char		bar_rule(const char *str);
- void		ft_putnbr(int n);
- void		printd(va_list ap);
+	c = (char)va_arg(ap, int);
+	ft_putchar(c);
+}
 
-#endif
+void		prints(va_list ap)
+{
+	char	*s;
+	int		i;
+
+	s = va_arg(ap, char *);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
+}
+
+void		printd(va_list ap)
+{
+	int i;
+
+	i = va_arg(ap, int);
+	ft_putnbr(i);
+}
