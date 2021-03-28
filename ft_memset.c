@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/25 20:02:01 by egomes            #+#    #+#             */
-/*   Updated: 2021/03/27 22:54:13 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/11 20:07:18 by egomes            #+#    #+#             */
+/*   Updated: 2021/03/27 20:05:27 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int     main(void)
+void	*ft_memset(char *s, int c, size_t n)
 {
-    ft_printf("meu teste:\nc: %c \ns: %0100s\nd: %d \ni: %i\nu: %u\nx: %x\nX: %X\np: %p\n%%\n", 'e', "aqui", -42, 424242, 424242, 42, 1000, (void *)1000);
-	printf("teste original:\nc: %c \ns: %s\nd: %06d \ni: %i\nu: %u\nx: %x\nX: %X\np: %p\n%%\n", 'e', "aqui", -42, 424242, 424242, 42, 1000, (void *)1000);
+	size_t			i;
+	unsigned char	holder;
+	char			*p;
+
+	holder = c;
+	i = 0;
+	p = s;
+	while (i < n)
+		p[i++] = holder;
+	return (s);
 }

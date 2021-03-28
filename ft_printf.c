@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/03/26 13:44:35 by egomes           ###   ########.fr       */
+/*   Updated: 2021/03/27 19:52:55 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,20 @@ void		print(va_list ap, const char *str)
 	i = 0;
 	if (str[i] == 'c')
 		printc(ap);
-	if (str[i] == 's')
-		prints(ap);
-	if (str[i] == 'd')
-		printd(ap);
+	if (str[i] == '0')
+		prints(ap, ft_atoi(str));
+	if (str[i] == 'd' || str[i] == 'i')
+		printdi(ap);
+	if (str[i] == 'u')
+		printu(ap);
+	if (str[i] == 'x')
+		printx(ap);
+	if (str[i] == 'X')
+		printX(ap);
+	if (str[i] == 'p')
+		printp(ap);
+	if (str[i] == '%')
+		ft_putchar('%');
 }
 
 int			ft_printf(const char *str, ...)
@@ -37,7 +47,7 @@ int			ft_printf(const char *str, ...)
 	while (j <= i)
 	{
 		if (str[j] == '%')
-		{
+		{ 
 			j++;
 			print(ap, &str[j]);
 			j++;
