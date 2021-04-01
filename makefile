@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 18:12:13 by egomes            #+#    #+#              #
-#    Updated: 2021/03/27 22:35:54 by egomes           ###   ########.fr        #
+#    Updated: 2021/04/01 20:56:42 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RANLIB = ranlib
 
 HEADERS = ft_printf.h
 
-SRC = ft_printf.c ft_putchar.c ft_strlen.c ft_print_arg.c ft_putnbr.c ft_atoi.c ft_print0.c ft_bzero.c ft_memset.c ft_newstr.c ft_memcpy.c
+SRC = ft_printf.c ft_putchar.c ft_strlen.c ft_print_arg.c ft_putnbr.c ft_atoi.c ft_memset.c ft_newstr.c ft_memcpy.c ft_itoa.c ft_neg.c ft_print0.c ft_printspace.c ft_printendspace.c ft_printdot.c
 
 .c.o:
 			$(CC)  $(CFLAGS) $(HEADERS) -c $< -o $(<:.c=.o)

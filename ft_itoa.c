@@ -1,18 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/11 20:21:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/03/27 20:16:25 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/13 19:10:18 by egomes            #+#    #+#             */
+/*   Updated: 2021/04/01 12:59:28 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_bzero(char *s, size_t n)
+char	*ft_itoa(int n)
 {
-	ft_memset(s, '0', n);
+	char	*str;
+	long	nbr;
+	size_t	size;
+
+	nbr = n;
+	size = n > 0 ? 0 : 1;
+	nbr = nbr > 0 ? nbr : -nbr;
+	while (n)
+	{
+		n /= 10;
+		size++;
+	}
+	if (!(str = ft_newstr(size)))
+		return (0);
+	str[size--] = '\0';
+	while (nbr > 0)
+	{
+		str[size--] = nbr % 10 + '0';
+		nbr /= 10;
+	}
+	if (size == 0 && str[1] == '\0')
+		str[size] = '0';
+	else if (size == 0 && str[1] != '\0')
+		str[size--] = '-';
+	return (str);
 }

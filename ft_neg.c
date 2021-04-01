@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_neg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/11 20:44:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/01 16:12:34 by egomes           ###   ########.fr       */
+/*   Created: 2021/03/28 22:03:57 by egomes            #+#    #+#             */
+/*   Updated: 2021/04/01 13:01:33 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t start, size_t end)
+void    ft_neg(char *str)
 {
-	size_t i;
+    int j;
+    int buff;
 
-	i = 0;
-	while (i < end)
-	{
-		((unsigned char*)dst)[start] = ((unsigned char*)src)[i];
-		start++;
-		i++;
-	}
-	((unsigned char*)dst)[start] = '\0';
-	return (dst);;
+    j = 0;
+    while (str[j] != '\0')
+    {
+        if(str[j] == '-' || str[j] == '+')
+        {
+            buff = str[j];
+            str[j] = '0';
+            str[0] = buff;
+        }
+        j++;
+    }
+}
+
+int    ft_isneg(char *str)
+{
+    if (str[0] == '-')
+        return (1);
+    return (0);
 }
