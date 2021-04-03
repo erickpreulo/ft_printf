@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 22:03:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/01 13:01:33 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/02 19:44:58 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,34 @@ void    ft_neg(char *str)
         if(str[j] == '-' || str[j] == '+')
         {
             buff = str[j];
-            str[j] = '0';
+            str[j] = str[0];
             str[0] = buff;
+        }
+        j++;
+    }
+}
+
+void    ft_negdi(char *str)
+{
+    int j;
+    int i;
+
+    i = 0;
+    while (str[i] != '\0')
+    {
+        if(str[i] == '-')
+        {
+            str[i] = str[i - 1];
+        }
+        i++;
+    }
+    j = 0;
+    while (str[j] != '\0')
+    {
+        if(str[j] >= '0' && str[j] <= '9')
+        {
+            str[j - 1] = '-';
+            break;
         }
         j++;
     }

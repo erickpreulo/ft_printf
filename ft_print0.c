@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void    ft_print0(char *s, int i, int size)
+void    ft_print0(char *s, int i, int size, t_obj *obj)
 {
     char *buff;
 
@@ -20,11 +20,11 @@ void    ft_print0(char *s, int i, int size)
 	ft_memset(buff, '0', size);
 	ft_memcpy(buff, s, (size - i), i);
     ft_neg(buff);
-	ft_putchars(buff);
+	ft_putchars(buff, obj);
     free(buff);
 }
 
-void    ft_print0hex(int i, int size, char *s, char *str)
+void    ft_print0hex(int i, int size, char *s, char *str, t_obj *obj)
 {
     int j;
     char *buff;
@@ -35,9 +35,9 @@ void    ft_print0hex(int i, int size, char *s, char *str)
     ft_neg(buff);
 	while (j <= (size - i))
 	{
-		ft_putchar(buff[j]);
+		ft_putchar(buff[j], obj);
 		j++;
 	}
-    ft_putnbr_hex(ft_atoi(s), str);
+    ft_putnbr_hex(ft_atoi(s), str, obj);
     free(buff);
 }

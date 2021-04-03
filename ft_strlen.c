@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:18:38 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/01 15:50:31 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/03 14:56:48 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,13 @@ char		*ft_strlen_afdots(const char *str, char *s)
 			i++;
 			if (s[0] == '-')
 			{
-				buff = ft_newstr(ft_atoi(&str[i]) + 1);
-				ft_memset(buff, ' ', (ft_atoi(&str[i]) + 1));
+				buff = ft_newstr(ft_atoi(&str[i]));
+				ft_memset(buff, '0', ft_atoi(&str[i]));
 			}	
 			else
 			{				
 				buff = ft_newstr(ft_atoi(&str[i]));
-				ft_memset(buff, ' ', (ft_atoi(&str[i])));
+				ft_memset(buff, '0', (ft_atoi(&str[i])));
 			}	
 		}
 		i++;

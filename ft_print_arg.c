@@ -6,63 +6,68 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:46:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/01 16:29:36 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/03 20:48:27 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		printc(va_list ap, int size, const char *str)
+void		printc(va_list ap, int size, const char *str, t_obj *obj)
 {
 	char c;
 
-	c = (char)va_arg(ap, int);
-	if ((str[-1] == '-') && (str[0] >= '0' && str[0] <= '9'))
-		ft_printendspacec(c, size);
-	else if (str[0] >= '1' && str[0] <= '9')
-		ft_printspacec(c, size);
+	if (str[0] == '*' || (str[0] != 'c' && str[1] == '*'))
+		ft_printas_c(ap, obj, str);
 	else
-		ft_putchar(c);
+		c = (char)va_arg(ap, int);
+	if ((str[-1] == '-') && (str[0] >= '0' && str[0] <= '9'))
+		ft_printendspacec(c, size, obj);
+	else if (str[0] >= '1' && str[0] <= '9')
+		ft_printspacec(c, size, obj);
+	else if (str[0] == 'c')
+		ft_putchar(c, obj);
 }
 
-void		prints(va_list ap, int size, const char *str)
+void		prints(va_list ap, int size, const char *str, t_obj *obj)
 {
 	char	*s;
 	int		i;
-
-	s = va_arg(ap, char *);
-	i = ft_strlen(s);
-	if (str[-1] == '-')
-		ft_printendspace(s, i, size);
-	else if (ft_strlen_find_dot(str))
-		ft_printdots(s, str);
-	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspace(s, i, size );
+	if (str[0] == '*' || (str[0] != 'c' && str[1] == '*'))
+		ft_printas_s(ap, obj, str);
 	else
-		ft_putchars(s);
+		s = va_arg(ap, char *);
+	i = ft_strlen(s);
+	if (ft_strlen_find_dot(str))
+		ft_printdots(s, str, obj);
+	else if (str[-1] == '-')
+		ft_printendspace(s, i, size, obj);
+	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
+		ft_printspace(s, i, size, obj);
+	else
+		ft_putchars(s, obj);
 }
 
-void		printdi(va_list ap, int size, const char *str)
+void		printdi(va_list ap, int size, const char *str, t_obj *obj)
 {
 	char	*s;
 	int		i;
 
 	s = ft_itoa(va_arg(ap, int));
 	i = ft_strlen(s);
-	if (str[-1] == '-')
-		ft_printendspace(s, i, size);
-	else if (ft_strlen_find_dot(str))
-		ft_printdot(s, str);
+	if (ft_strlen_find_dot(str))
+		ft_printdot(s, str, obj);
+	else if (str[-1] == '-')
+		ft_printendspace(s, i, size, obj);
 	else if (size > i && str[0] == '0')
-		ft_print0(s, i, size);
+		ft_print0(s, i, size, obj);
 	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspace(s, i, size);
+		ft_printspace(s, i, size, obj);
 	else
-		ft_putchars(s);
+		ft_putchars(s, obj);
 	free(s);
 }
 
-void		printu(va_list ap, int size, const char *str)
+void		printu(va_list ap, int size, const char *str, t_obj *obj)
 {
 	char	*s;
 	int		i;
@@ -70,19 +75,19 @@ void		printu(va_list ap, int size, const char *str)
 	s = ft_itoa(va_arg(ap, unsigned int));
 	i = ft_strlen(s);
 	if (str[-1] == '-')
-		ft_printendspace(s, i, size);
+		ft_printendspace(s, i, size, obj);
 	else if (ft_strlen_find_dot(str))
-		ft_printdot(s, str);
+		ft_printdot(s, str, obj);
 	else if (size > i && str[0] == '0')
-		ft_print0(s, i, size);
+		ft_print0(s, i, size, obj);
 	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspace(s, i, size);
+		ft_printspace(s, i, size, obj);
 	else
-		ft_putchars(s);
+		ft_putchars(s, obj);
 	free(s);
 }
 
-void	printx(va_list ap, int size, const char *str)
+void	printx(va_list ap, int size, const char *str, t_obj *obj)
 {
 	char	*s;
 	int	i;
@@ -90,43 +95,43 @@ void	printx(va_list ap, int size, const char *str)
 	s = ft_itoa(va_arg(ap, unsigned int));
 	i = ft_strlen(s);
 	if (ft_strlen_find_dot(str))
-		ft_printdothex(s, str, "0123456789abcdef");
+		ft_printdot_hex(s, str, "0123456789abcdef", obj);
 	else if (ft_isneg(s))
-		ft_putnbr_hex(ft_atoi(s), "0123456789abcdef");
+		ft_putnbr_hex(ft_atoi(s), "0123456789abcdef", obj);
 	else if (str[-1] == '-')
-		ft_printendspacehex(i, size, s, "0123456789abcdef");
+		ft_printendspacehex(i, size, s, "0123456789abcdef", obj);
 	else if (size > i && str[0] == '0')
-		ft_print0hex(i, (size - 1), s, "0123456789abcdef");
+		ft_print0hex(i, (size - 1), s, "0123456789abcdef", obj);
 	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspacehex(i, (size), s, "0123456789abcdef");
+		ft_printspacehex(i, (size), s, "0123456789abcdef", obj);
 	else if (str[0] == 'x')
-		ft_putnbr_hex(ft_atoi(s), "0123456789abcdef");
+		ft_putnbr_hex(ft_atoi(s), "0123456789abcdef", obj);
 	free(s);
 }
 
-void	printX(va_list ap, int size, const char *str)
+void	printX(va_list ap, int size, const char *str, t_obj *obj)
 {
 	char	*s;
 	int		i;
 
 	s = ft_itoa(va_arg(ap, unsigned int));
 	i = ft_strlen(s);
-	if (ft_strlen_find_dot(str))
-		ft_printdothex(s, str, "0123456789ABCDEF");
+	if (str[-1] == '-' && (!(ft_strlen_find_dot(str))))
+		ft_printendspacehex(i, size, s, "0123456789ABCDEF", obj);
+	else if (ft_strlen_find_dot(str) || str[-1] == '-')
+		ft_printdot_hex(s, str, "0123456789ABCDEF", obj);
 	else if (ft_isneg(s))
-		ft_putnbr_hex(ft_atoi(s), "0123456789ABCDEF");
-	else if (str[-1] == '-')
-		ft_printendspacehex(i, size, s, "0123456789ABCDEF");
+		ft_putnbr_hex(ft_atoi(s), "0123456789ABCDEF", obj);
 	else if (size > i && str[0] == '0')
-		ft_print0hex(i, (size - 1), s, "0123456789ABCDEF");
+		ft_print0hex(i, (size - 1), s, "0123456789ABCDEF", obj);
 	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspacehex(i, (size), s, "0123456789ABCDEF");
+		ft_printspacehex(i, (size), s, "0123456789ABCDEF", obj);
 	else if (str[0] == 'X')
-		ft_putnbr_hex(ft_atoi(s), "0123456789ABCDEF");
+		ft_putnbr_hex(ft_atoi(s), "0123456789ABCDEF", obj);
 	free(s);
 }
 
-void	printp(va_list ap, int size, const char *str)
+void	printp(va_list ap, int size, const char *str, t_obj *obj)
 {
 	char	*s;
 	int	i;
@@ -134,14 +139,14 @@ void	printp(va_list ap, int size, const char *str)
 	s = ft_itoa(va_arg(ap, unsigned int));
 	i = ft_strlen(s);
 	if ((str[-1] == '-') && (str[0] >= '0' && str[0] <= '9'))
-		ft_printendspacehexp(i, (size - 2), s, "0123456789abcdef");
+		ft_printendspacehexp(i, (size - 2), s, "0123456789abcdef", obj);
 	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspacehexp(i, (size - 2), s, "0123456789abcdef");
+		ft_printspacehexp(i, (size - 2), s, "0123456789abcdef", obj);
 	else if (str[0] == 'p')
 	{
-		ft_putchar('0');
-		ft_putchar('x');
-		ft_putnbr_hex(ft_atoi(s), "0123456789abcdef");
+		ft_putchar('0', obj);
+		ft_putchar('x', obj);
+		ft_putnbr_hex(ft_atoi(s), "0123456789abcdef", obj);
 	}
 	free(s);
 }
