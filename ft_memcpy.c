@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 20:44:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/03 19:41:26 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/06 21:35:15 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@ void	*ft_memcpyneg(void *dst, const void *src, int end)
 		i++;
 		j++;
 	}
-	return (dst);;
+	return (dst);
+}
+
+void	*ft_memcpynegstay(void *dst, const void *src, int end)
+{
+	int j;
+
+	j = 0;
+	while (j <= end)
+	{
+		((unsigned char*)dst)[j] = ((unsigned char*)src)[j];
+		j++;
+	}
+	((unsigned char*)dst)[0] = '-';
+	return (dst);
 }
 

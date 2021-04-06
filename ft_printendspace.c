@@ -6,22 +6,41 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 22:36:50 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/03 21:01:48 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/06 17:02:59 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printendspace(char *s, int i, int size, t_obj *obj)
+void	ft_printendspace(int size, t_obj *obj)
 {
     char *buff;
+    char *s;
 
+    s = ft_itoa(va_arg(obj->ap, int));
+    obj->sizes = ft_strlen(s);
     buff = ft_newstr(size);
-	ft_memcpy(buff, s, 0, i);
-	ft_memsetstart(buff, ' ', i, size);
+	ft_memcpy(buff, s, 0, obj->sizes);
+	ft_memsetstart(buff, ' ', obj->sizes, size);
+	ft_putchars(buff, obj);
+    free(buff);
+    free(s);
+}
+
+void	ft_printendspaces(int size, t_obj *obj)
+{
+    char *buff;
+    char *s;
+
+    s = va_arg(obj->ap, char *);
+    obj->sizes = ft_strlen(s);
+    buff = ft_newstr(size);
+	ft_memcpy(buff, s, 0, obj->sizes);
+	ft_memsetstart(buff, ' ', obj->sizes, size);
 	ft_putchars(buff, obj);
     free(buff);
 }
+
 void	ft_printendspacec(char s, int size, t_obj *obj)
 {
     char *buff;

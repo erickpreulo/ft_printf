@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:46:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/03 20:48:27 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/06 20:52:12 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,63 +28,60 @@ void		printc(va_list ap, int size, const char *str, t_obj *obj)
 		ft_putchar(c, obj);
 }
 
-void		prints(va_list ap, int size, const char *str, t_obj *obj)
+void		prints(int size, const char *str, t_obj *obj)
 {
-	char	*s;
-	int		i;
-	if (str[0] == '*' || (str[0] != 'c' && str[1] == '*'))
-		ft_printas_s(ap, obj, str);
-	else
-		s = va_arg(ap, char *);
-	i = ft_strlen(s);
-	if (ft_strlen_find_dot(str))
-		ft_printdots(s, str, obj);
+	if (str[0] == '*' || (str[0] != 's' && str[1] == '*'))
+		ft_printas_s(obj, str);
+	if (ft_strlen_find_dot(str) && str[0] != '*')
+		ft_printdots(str, obj);
 	else if (str[-1] == '-')
-		ft_printendspace(s, i, size, obj);
-	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspace(s, i, size, obj);
-	else
-		ft_putchars(s, obj);
+		ft_printendspaces(size, obj);
+	else if (str[0] >= '1' && str[0] <= '9')
+		ft_printspaces(size, obj);
+	else if (str[0] == 's')
+		ft_putchars(va_arg(obj->ap, char *), obj);
 }
 
-void		printdi(va_list ap, int size, const char *str, t_obj *obj)
+void		printdi(int size, const char *str, t_obj *obj)
 {
-	char	*s;
-	int		i;
+	char *s;
 
-	s = ft_itoa(va_arg(ap, int));
-	i = ft_strlen(s);
 	if (ft_strlen_find_dot(str))
-		ft_printdot(s, str, obj);
-	else if (str[-1] == '-')
-		ft_printendspace(s, i, size, obj);
-	else if (size > i && str[0] == '0')
-		ft_print0(s, i, size, obj);
-	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspace(s, i, size, obj);
-	else
+		ft_printdot(str, obj);
+	//else if (str[0] == '*' || str[1] == '*' || str[2] == '*')
+	//	ft_printas_di(obj, str);
+	else if (str[-1] == '-' && str[0] != '*')
+		ft_printendspace(size, obj);
+	else if (str[0] == '0')
+		ft_print0(size, obj);
+	else if (str[0] >= '1' && str[0] <= '9')
+		ft_printspace(size, obj);
+	else if (str[0] == 'd' || str[0] == 'i')
+	{
+		s = ft_itoa(va_arg(obj->ap, int));
 		ft_putchars(s, obj);
-	free(s);
+		free(s);
+	}
 }
 
-void		printu(va_list ap, int size, const char *str, t_obj *obj)
+void		printu(int size, const char *str, t_obj *obj)
 {
-	char	*s;
-	int		i;
+	char *s;
 
-	s = ft_itoa(va_arg(ap, unsigned int));
-	i = ft_strlen(s);
 	if (str[-1] == '-')
-		ft_printendspace(s, i, size, obj);
+		ft_printendspace(size, obj);
 	else if (ft_strlen_find_dot(str))
-		ft_printdot(s, str, obj);
-	else if (size > i && str[0] == '0')
-		ft_print0(s, i, size, obj);
-	else if (size > i && (str[0] >= '1' && str[0] <= '9'))
-		ft_printspace(s, i, size, obj);
+		ft_printdot(str, obj);
+	else if (str[0] == '0')
+		ft_print0(size, obj);
+	else if (str[0] >= '1' && str[0] <= '9')
+		ft_printspace(size, obj);
 	else
+	{
+		s = ft_itoa(va_arg(obj->ap, int));
 		ft_putchars(s, obj);
-	free(s);
+		free(s);
+	}
 }
 
 void	printx(va_list ap, int size, const char *str, t_obj *obj)

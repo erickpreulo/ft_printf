@@ -12,15 +12,43 @@
 
 #include "ft_printf.h"
 
-void	ft_printspace(char *s, int i, int size, t_obj *obj)
+void	ft_printspace(int size, t_obj *obj)
 {
     char *buff;
+    char *s;
 
-    buff = ft_newstr(size - i);
-	ft_memset(buff, ' ', (size - i));
-	ft_putchars(buff, obj);
-	ft_putchars(s, obj);
-    free(buff);
+    s = ft_itoa(va_arg(obj->ap, int));
+    obj->sizes = ft_strlen(s);
+    if (size > obj->sizes)
+    {
+        buff = ft_newstr(size - obj->sizes);
+        ft_memset(buff, ' ', (size - obj->sizes));
+        ft_putchars(buff, obj);
+        ft_putchars(s, obj);
+        free(buff);
+        free(s);
+    }
+    else
+        ft_putchars(s, obj);
+}
+
+void	ft_printspaces(int size, t_obj *obj)
+{
+    char *buff;
+    char *s;
+
+    s = va_arg(obj->ap, char *);
+    obj->sizes = ft_strlen(s);
+    if (size > obj->sizes)
+    {
+        buff = ft_newstr(size - obj->sizes);
+        ft_memset(buff, ' ', (size - obj->sizes));
+        ft_putchars(buff, obj);
+        ft_putchars(s, obj);
+        free(buff);
+    }
+    else
+        ft_putchars(s, obj);
 }
 
 void	ft_printspacec(char s, int size, t_obj *obj)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/03 20:51:10 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/06 16:58:40 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void		print(va_list ap, const char *str, t_obj *obj)
 	if (str[nbrsize] == 'c')
 		printc(ap, size, str, obj);
 	if (str[nbrsize] == 's') 
-		prints(ap, size, str, obj);
+		prints(size, str, obj);
 	if (str[nbrsize] == 'd' || str[nbrsize] == 'i')
-		printdi(ap, size, str, obj);
+		printdi(size, str, obj);
 	if ( str[nbrsize] == 'u')
-		printu(ap, size, str, obj);
+		printu(size, str, obj);
 	if (str[nbrsize] == 'x')
 		printx(ap, size, str, obj);
 	if (str[nbrsize] == 'X') 
@@ -57,7 +57,7 @@ int			ft_printf(const char *str, ...)
 	char	cpy;
 
 	init_obj(&obj);
-	va_start(obj.args, str);
+	va_start(obj.ap, str);
 	while (str[obj.sequence])
 	{
 		cpy = str[obj.sequence];
@@ -65,9 +65,9 @@ int			ft_printf(const char *str, ...)
 		{
 			obj.sequence += 1;
 			if (str[obj.sequence] == '-')
-				print(obj.args, &str[obj.sequence + 1], &obj);
+				print(obj.ap, &str[obj.sequence + 1], &obj);
 			else
-				print(obj.args, &str[obj.sequence], &obj);
+				print(obj.ap, &str[obj.sequence], &obj);
 			reset_obj(&obj);
 			obj.sequence += (ft_strlen_nrb(&str[obj.sequence]));
 		}
@@ -75,6 +75,6 @@ int			ft_printf(const char *str, ...)
 			ft_putchar(cpy, &obj);
 		obj.sequence += 1;
 	}
-	va_end(obj.args);
+	va_end(obj.ap);
 	return (obj.printed);
 }

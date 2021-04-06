@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/03 20:46:00 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/06 20:55:59 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,49 @@ void    ft_printas_c(va_list ap, t_obj *obj, const char *str)
     free(buff);
 }
 
-void    ft_printas_s(va_list ap, t_obj *obj, const char *str)
+void    ft_printas_s(t_obj *obj, const char *str)
 {
-    char *s;
-    int i;
-    int j;
     char *buff;
     int cpy;
+    int size;
+    int i;
+    char *s;
 
+    i = va_arg(obj->ap, int);
+	s = va_arg(obj->ap, char *);
     cpy = -1;
-    i = (int)(va_arg(ap, int));
-    s = (va_arg(ap, char *));
-    j = ft_strlen(s);
+    size = ft_strlen(s);
     if (i < 0)
     {
         cpy *= i;
-        buff = ft_newstr(cpy);
-        ft_memset(buff, ' ', cpy);
+        if (cpy > size)
+        {
+            buff = ft_newstr(cpy - size);
+            ft_memset(buff, ' ', cpy - size);
+        }
+        else
+        {
+            buff = ft_newstr(size);
+            ft_memset(buff, ' ', size);
+        }
+    }
+    else if (i >= 0)
+    {
+        if (str[2] == 's' || str[2] == '0')
+        {
+            buff = ft_newstr(i);
+            ft_memset(buff, ' ', i);
+        }
+        else if (i > size)
+        {
+            buff = ft_newstr(i - size);
+            ft_memset(buff, ' ', i - size);
+        }
+        else
+        {
+            buff = ft_newstr(size);
+            ft_memset(buff, ' ', size);
+        }
     }
     else
     {
@@ -78,10 +104,27 @@ void    ft_printas_s(va_list ap, t_obj *obj, const char *str)
     }
     if (i == 0)
         ft_putchars(s, obj);
-    else if (str[-1] == '-' || i < 0)
-        ft_memcpy(buff, s, 0, j);
-    else
-        ft_memcpy(buff, s, i - j, j);
-    ft_putchars(buff, obj);
+    else if (str[2] == 's' || str[2] == '0')
+        ft_putchars(buff, obj);
+    else if (str[-1] == '-' || cpy > 0)
+    {
+        if (cpy > size)
+        {
+            ft_putchars(s, obj);
+            ft_putchars(buff, obj);
+        }
+        else
+            ft_putchars(s, obj);
+    }
+    else if (i > 0)
+    {
+        if (i > size)
+        {
+            ft_putchars(buff, obj);
+            ft_putchars(s, obj);
+        }
+        else
+            ft_putchars(s, obj);
+    }
     free(buff);
 }

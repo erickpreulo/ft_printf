@@ -12,16 +12,20 @@
 
 #include "ft_printf.h"
 
-void    ft_print0(char *s, int i, int size, t_obj *obj)
+void    ft_print0(int size, t_obj *obj)
 {
     char *buff;
+    char *s;
 
+    s = ft_itoa(va_arg(obj->ap, int));
+    obj->sizes = ft_strlen(s);
     buff = ft_newstr(size);
 	ft_memset(buff, '0', size);
-	ft_memcpy(buff, s, (size - i), i);
+	ft_memcpy(buff, s, (size - obj->sizes), obj->sizes);
     ft_neg(buff);
 	ft_putchars(buff, obj);
     free(buff);
+    free(s);
 }
 
 void    ft_print0hex(int i, int size, char *s, char *str, t_obj *obj)
