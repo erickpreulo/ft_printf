@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/06 22:03:55 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/07 14:55:15 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,13 @@ void	ft_printdot(const char *str, t_obj *obj)
 		{
 			cpyb *= b;
 			bf = ft_newstr(cpyb);
+			ft_memset(bf, ' ', cpyb);
 		}
 		else
+		{
 			bf = ft_newstr(b);
-		ft_memset(bf, ' ', b);
+			ft_memset(bf, ' ', b);
+		}
 		if (a < 0)
 		{
 			cpya *= a;
@@ -137,7 +140,36 @@ void	ft_printdot(const char *str, t_obj *obj)
 	{
 		bf = ft_newstr(b);
 		ft_memset(bf, ' ', b);
-		if (b > l)
+		if (buff[1] >= '0' && buff[1] <= '9')
+		{
+			af = ft_strlen_afdot(str, s);
+			a = ft_strlen(af);
+			if (a >= b && a > l)
+			{
+				ft_memcpy(af, s, a - l, l);
+				ft_putchars(af, obj);
+			}
+			else if (b > a && a > l)
+			{
+				ft_memcpy(af, s, a - l, l);
+				if (str[-1] == '-' || str[-2] == '-' || ft_isneg(s))
+					ft_memcpy(bf, af, 0, a);
+				else
+					ft_memcpy(bf, af, b - a, a);
+				ft_putchars(bf, obj);
+			}
+			else if (b > a && b > l)
+			{
+				if (str[-1] == '-' || str[-2] == '-' || ft_isneg(s))
+					ft_memcpy(bf, s, 0, l);
+				else
+					ft_memcpy(bf, s, b - l, l);
+				ft_putchars(bf, obj);
+			}
+			else
+				ft_putchars(s, obj);
+		}
+		else if (b > l)
 		{
 			if (buff[-2] == '-')
 				ft_memcpy(bf, s, 0, l);
@@ -152,6 +184,24 @@ void	ft_printdot(const char *str, t_obj *obj)
 	{
 		af = ft_newstr(a);
 		ft_memset(af, '0', a);
+		if (buff[-1] >= '0' && buff[-1] <= '9')
+		{
+			bf = ft_strlen_bfdot(str);
+			b = ft_strlen(bf);
+			if (a >= b && a > l)
+			{
+				ft_memcpy(af, s, a - l, l);
+				ft_putchars(af, obj);
+			}
+			else if (b > a && a > l)
+			{
+				ft_memcpy(af, s, a - l, l);
+				ft_memcpy(bf, af, b - a, a);
+				ft_putchars(bf, obj);
+			}
+			else
+				ft_putchars(s, obj);
+		}
 		if (a > l)
 		{
 			ft_memcpy(af, s, a - l, l);
@@ -169,7 +219,7 @@ void	ft_printdot(const char *str, t_obj *obj)
 			if (ft_isneg(s))
 			{
 				ft_negdi(af);
-				neg = ft_newstr(a + 1);
+				neg = ft_newstr(a);
 				ft_memcpynegstay(neg, af, a);
 				ft_putchars(neg, obj);
 				free(neg);
@@ -185,9 +235,9 @@ void	ft_printdot(const char *str, t_obj *obj)
 				if (ft_isneg(s))
 				{
 					ft_negdi(af);
-					neg = ft_newstr(a + 1);
-					ft_memcpyneg(neg, af, a);
-					ft_memcpy(bf, neg, 0, a + 1);
+					neg = ft_newstr(a);
+					ft_memcpynegstay(neg, af, a);
+					ft_memcpy(bf, neg, 0, a);
 					free(neg);
 				}
 				else
@@ -198,13 +248,15 @@ void	ft_printdot(const char *str, t_obj *obj)
 			ft_putchars(bf, obj);
 		}
 	}
+	else if (a == 0 && b == 0 && ft_atoi(s) > 0)
+		ft_putchars(s, obj);
 	else if (a >= b)
 	{
 		ft_memcpy(af, s, a - l, l);
 		if (ft_isneg(s))
 		{
 			ft_negdi(af);
-			neg = ft_newstr(a + 1);
+			neg = ft_newstr(a);
 			ft_memcpynegstay(neg, af, a);
 			ft_putchars(neg, obj);
 			free(neg);
@@ -214,14 +266,28 @@ void	ft_printdot(const char *str, t_obj *obj)
 	}
 	else if (a < b)
 	{
-		if (a != 0 && a > l)
+		if (a != 0 && a >= l)
 		{
-			ft_memcpy(af, s, a - l, l);
-			ft_memcpy(bf, af, b - a, a);
+			if (ft_isneg(s))
+			{
+				ft_memcpy(af, s, a - l, l);
+				ft_negdi(af);
+				neg = ft_newstr(a);
+				ft_memcpynegstay(neg, af, a);
+				ft_memcpy(bf, neg, b - a, a);
+				free(neg);
+			}
+			else
+			{
+				ft_memcpy(af, s, a - l, l);
+				ft_memcpy(bf, af, b - a, a);
+			}
 		}
+		else if (ft_atoi(s) == 0)
+			ft_memcpy(bf, 0, 0, 0);
 		else if (a < l)
 			ft_memcpy(bf, s, b - l, l);
-		if (ft_isneg(s))
+		else if (ft_isneg(s))
 			ft_negdi(bf);
 		ft_putchars(bf, obj);
 	}
