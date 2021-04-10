@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:18:38 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/06 19:31:55 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/10 23:21:18 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_strlen(const char *str)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (str[i] != '\0')

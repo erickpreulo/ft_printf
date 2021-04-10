@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/06 16:58:40 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/09 11:34:31 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,26 @@ static void	init_obj(t_obj *obj)
 	reset_obj(obj);
 }
 
-void		print(va_list ap, const char *str, t_obj *obj)
+void		print(const char *str, t_obj *obj)
 {
-	int size;
 	int nbrsize;
 
 	nbrsize = ft_strlen_nrb(str);
-	size = ft_atoi(str);
+	obj->size = ft_atoi(str);
 	if (str[nbrsize] == 'c')
-		printc(ap, size, str, obj);
+		printc(str, obj);
 	if (str[nbrsize] == 's') 
-		prints(size, str, obj);
+		prints(str, obj);
 	if (str[nbrsize] == 'd' || str[nbrsize] == 'i')
-		printdi(size, str, obj);
+		printdi(str, obj);
 	if ( str[nbrsize] == 'u')
-		printu(size, str, obj);
+		printu(str, obj);
 	if (str[nbrsize] == 'x')
-		printx(ap, size, str, obj);
+		printx(str, obj);
 	if (str[nbrsize] == 'X') 
-		printX(ap, size, str, obj);
+		printX(str, obj);
 	if (str[nbrsize] == 'p')
-		printp(ap, size, str, obj);
+		printp(str, obj);
 	if (str[nbrsize] == '%')
 		ft_putchar('%', obj);
 }
@@ -65,9 +64,9 @@ int			ft_printf(const char *str, ...)
 		{
 			obj.sequence += 1;
 			if (str[obj.sequence] == '-')
-				print(obj.ap, &str[obj.sequence + 1], &obj);
+				print(&str[obj.sequence + 1], &obj);
 			else
-				print(obj.ap, &str[obj.sequence], &obj);
+				print(&str[obj.sequence], &obj);
 			reset_obj(&obj);
 			obj.sequence += (ft_strlen_nrb(&str[obj.sequence]));
 		}

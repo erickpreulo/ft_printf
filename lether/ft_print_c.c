@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/13 19:10:18 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/01 12:59:28 by egomes           ###   ########.fr       */
+/*   Created: 2021/04/08 11:04:57 by egomes            #+#    #+#             */
+/*   Updated: 2021/04/08 22:16:45 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_itoa(int n)
+void		printc(const char *str, t_obj *obj)
 {
-	char	*str;
-	long	nbr;
-	size_t	size;
+	char c;
 
-	nbr = n;
-	size = n > 0 ? 0 : 1;
-	nbr = nbr > 0 ? nbr : -nbr;
-	while (n)
-	{
-		n /= 10;
-		size++;
-	}
-	if (!(str = ft_newstr(size)))
-		return (0);
-	str[size--] = '\0';
-	while (nbr > 0)
-	{
-		str[size--] = nbr % 10 + '0';
-		nbr /= 10;
-	}
-	if (size == 0 && str[1] == '\0')
-		str[size] = '0';
-	else if (size == 0 && str[1] != '\0')
-		str[size--] = '-';
-	return (str);
+	if (str[0] == '*' || (str[0] != 'c' && str[1] == '*'))
+		ft_printas_c(obj, str);
+	else
+		c = (char)va_arg(obj->ap, int);
+	if ((str[-1] == '-') && (str[0] >= '0' && str[0] <= '9'))
+		ft_printendspacec(c, obj);
+	else if (str[0] >= '1' && str[0] <= '9')
+		ft_printspacec(c, obj);
+	else if (str[0] == 'c')
+		ft_putchar(c, obj);
 }
