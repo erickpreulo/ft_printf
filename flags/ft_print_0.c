@@ -35,29 +35,43 @@ void    ft_print0u(t_obj *obj)
 
     s = ft_itoap(va_arg(obj->ap, unsigned int));
     obj->sizes = ft_strlen(s);
-    buff = ft_newstr(obj->size);
-	ft_memset(buff, '0', obj->size);
-	ft_memcpy(buff, s, (obj->size - obj->sizes), obj->sizes);
-    ft_neg(buff);
-	ft_putchars(buff, obj);
-    free(buff);
+    if (obj->sizes >= obj->size)
+        ft_putchars(s, obj);
+    else
+    {
+        buff = ft_newstr(obj->size);
+        ft_memset(buff, '0', obj->size);
+        ft_memcpy(buff, s, (obj->size - obj->sizes), obj->sizes);
+        ft_neg(buff);
+        ft_putchars(buff, obj);
+        free(buff);
+    }
     free(s);
 }
 
-void    ft_print0hex(int i, int size, char *s, char *str, t_obj *obj)
+void    ft_print0hex(char *str, t_obj *obj)
 {
-    int j;
     char *buff;
+    int i;
 
-    j = 0;
-    buff = ft_newstr(size - i);
-	ft_memset(buff, '0', size);
-    ft_neg(buff);
-	while (j <= (size - i))
-	{
-		ft_putchar(buff[j], obj);
-		j++;
-	}
-    ft_putnbr_hex(ft_atoi(s), str, obj);
-    free(buff);
+    obj->hex = ft_newstr(8);
+    i = 0;
+    ft_cpy_hexs(va_arg(obj->ap, unsigned int), str, obj);
+    if (obj->hexleng >= obj->size)
+    {
+        while (i <= obj->hexleng)
+        {
+            ft_putchar(obj->hex[i], obj);
+            i++;
+        }
+    }
+    else
+    {
+        buff = ft_newstr(obj->size);
+        ft_memset(buff, '0', obj->size);
+        ft_memcpy(buff, obj->hex, (obj->size - obj->hexleng), obj->hexleng);
+        ft_putchars(buff, obj);
+        free(buff);
+    }
+    free(obj->hex);
 }

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 22:36:50 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/09 22:49:03 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/13 14:28:08 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,28 +73,52 @@ void	ft_printendspacec(char s, t_obj *obj)
     free(buff);
 }
 
-void    ft_printendspacehex(int i, char *s, char *str, t_obj *obj)
+void    ft_printendspacehex(char *str, t_obj *obj)
 {
-    char *buff;
-
-    ft_putnbr_hex(ft_atoi(s), str, obj);
-    buff = ft_newstr(obj->size - i);
-	ft_memsetstart(buff, ' ', 0, (obj->size - i));
-    ft_neg(buff);
-	ft_putchars(buff, obj);
-    free(buff);
+    obj->hex = ft_newstr(8);
+    ft_cpy_hexs(va_arg(obj->ap, unsigned int), str, obj);
+    if (obj->counthex >= obj->size)
+    {
+        while (obj->i < obj->counthex)
+        {
+            ft_putchar(obj->hex[obj->i], obj);
+            obj->i++;
+        }
+    }
+    else
+    {
+        obj->buff = ft_newstr(obj->size);
+        ft_memset(obj->buff, ' ', obj->size);
+        ft_memcpy(obj->buff, obj->hex, 0, obj->counthex);
+        ft_putchars(obj->buff, obj);
+        free(obj->buff);
+    }
+    free(obj->hex);
 }
 
-void    ft_printendspacehexp(int i, int size, unsigned int s, char *str, t_obj *obj)
+void    ft_printendspacehexp(char *hex, t_obj *obj)
 {
-    char *buff;
-
-    ft_putchar('0', obj);
-	ft_putchar('x', obj);
-	ft_putnbr_hex(s, str, obj);
-    buff = ft_newstr(size - i);
-	ft_memsetstart(buff, ' ', 0, (size - i));
-    ft_neg(buff);
-	ft_putchars(buff, obj);
-    free(buff);
+    obj->hex = ft_newstr(10);
+	ft_memset(obj->hex, 'x', 2);
+	ft_memset(obj->hex, '0', 1);
+	obj->counthex += 2;
+    ft_cpy_hexs(va_arg(obj->ap, unsigned int), hex, obj);
+    obj->buff = ft_newstr(obj->size);
+    if (obj->counthex >= obj->size)
+    {
+        while (obj->i < obj->counthex)
+        {
+            ft_putchar(obj->hex[obj->i], obj);
+            obj->i++;
+        }
+    }
+    else
+    {
+        ft_memset(obj->buff, ' ', obj->size);
+        ft_memcpy(obj->buff, obj->hex, 0, obj->counthex);
+        ft_neg(obj->buff);
+        ft_putchars(obj->buff, obj);
+    }
+    free(obj->buff);
+    free(obj->hex);
 }

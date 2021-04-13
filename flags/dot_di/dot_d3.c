@@ -6,24 +6,21 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:51:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/09 10:52:00 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/13 14:53:41 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	dot_d3_1(t_dot *dotd)
+void	dot_d3_2_1(t_dot *dotd, t_obj *obj, const char *str)
 {
-	if (dotd->b < 0)
-	{
-		dotd->bf = ft_newstr(dotd->cpyb);
-		ft_memset(dotd->bf, ' ', dotd->cpyb);
-	}
+	ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
+	ft_neg(dotd->af);
+	if (str[-1] == '-' || str[-2] == '-' || ft_isneg(dotd->s))
+		ft_memcpy(dotd->bf, dotd->af, 0, dotd->a);
 	else
-	{
-		dotd->bf = ft_newstr(dotd->b);
-		ft_memset(dotd->bf, ' ', dotd->b);
-	}
+		ft_memcpy(dotd->bf, dotd->af, dotd->b - dotd->a, dotd->a);
+	ft_putchars(dotd->bf, obj);
 }
 
 void	dot_d3_2(t_dot *dotd, t_obj *obj, const char *str)
@@ -35,15 +32,7 @@ void	dot_d3_2(t_dot *dotd, t_obj *obj, const char *str)
 		ft_putchars(dotd->af, obj);
 	}
 	else if (dotd->b > dotd->a && dotd->a > dotd->l)
-	{
-		ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
-		ft_neg(dotd->af);
-		if (str[-1] == '-' || str[-2] == '-' || ft_isneg(dotd->s))
-			ft_memcpy(dotd->bf, dotd->af, 0, dotd->a);
-		else
-			ft_memcpy(dotd->bf, dotd->af, dotd->b - dotd->a, dotd->a);
-		ft_putchars(dotd->bf, obj);
-	}
+		dot_d3_2_1(dotd, obj, str);
 	else if (dotd->b > dotd->a && dotd->b > dotd->l)
 	{
 		if (str[-1] == '-' || str[-2] == '-')
@@ -55,6 +44,16 @@ void	dot_d3_2(t_dot *dotd, t_obj *obj, const char *str)
 	else
 		ft_putchars(dotd->s, obj);
 }
+void	dot_d3_3_1(t_dot *dotd, t_obj *obj, const char *str)
+{
+	ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
+	ft_neg(dotd->af);
+	if (str[-1] == '-' || str[-2] == '-' || ft_isneg(dotd->s))
+		ft_memcpy(dotd->bf, dotd->af, 0, dotd->a);
+	else
+		ft_memcpy(dotd->bf, dotd->af, dotd->cpyb - dotd->a, dotd->a);
+	ft_putchars(dotd->bf, obj);
+}
 
 void	dot_d3_3(t_dot *dotd, t_obj *obj, const char *str)
 {
@@ -65,15 +64,7 @@ void	dot_d3_3(t_dot *dotd, t_obj *obj, const char *str)
 		ft_putchars(dotd->af, obj);
 	}
 	else if (dotd->cpyb > dotd->a && dotd->a > dotd->l)
-	{
-		ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
-		ft_neg(dotd->af);
-		if (str[-1] == '-' || str[-2] == '-' || ft_isneg(dotd->s))
-			ft_memcpy(dotd->bf, dotd->af, 0, dotd->a);
-		else
-			ft_memcpy(dotd->bf, dotd->af, dotd->cpyb - dotd->a, dotd->a);
-		ft_putchars(dotd->bf, obj);
-	}
+		dot_d3_3_1(dotd, obj, str);
 	else if (dotd->cpyb > dotd->a && dotd->cpyb > dotd->l)
 	{
 		if (ft_atoi(dotd->s) != 0)

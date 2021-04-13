@@ -12,36 +12,36 @@
 
 #include "ft_printf.h"
 
-void	dot_d7_1(t_dot *dotd)
+void	dot_x7_1(t_dot *dotd)
 {
 	if (ft_isneg(dotd->s))
 	{
-		ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
-		if (dotd->a > 2)
+		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
+		if (dotd->au > 2)
 			ft_negdi(dotd->af);
-		dotd->neg = ft_newstr(dotd->a);
-		ft_memcpynegstay(dotd->neg, dotd->af, dotd->a);
-		ft_memcpy(dotd->bf, dotd->neg, dotd->b - dotd->a, dotd->a);
+		dotd->neg = ft_newstr(dotd->au);
+		ft_memcpynegstay(dotd->neg, dotd->af, dotd->au);
+		ft_memcpy(dotd->bf, dotd->neg, dotd->bu - dotd->au, dotd->au);
 		free(dotd->neg);
 	}
 	else
 	{
-		ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
-		ft_memcpy(dotd->bf, dotd->af, dotd->b - dotd->a, dotd->a);
+		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
+		ft_memcpy(dotd->bf, dotd->af, dotd->bu - dotd->au, dotd->au);
 	}
 }
 
-void	dot_d7(t_dot *dotd, t_obj *obj)
+void	dot_x7(t_dot *dotd, t_obj *obj)
 {
-	if (dotd->a != 0 && dotd->a >= dotd->l)
-		dot_d7_1(dotd);
-	else if (ft_atoi(dotd->s) == 0)
+	if (dotd->au != 0 && dotd->au >= dotd->lu)
+		dot_x7_1(dotd);
+	else if (dotd->arg == 0)
 		ft_memcpy(dotd->bf, 0, 0, 0);
-	else if (dotd->a < dotd->l)
-		ft_memcpy(dotd->bf, dotd->s, dotd->b - dotd->l, dotd->l);
+	else if ((dotd->au < dotd->lu) && (dotd->bu >= dotd->lu))
+		ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
 	else if (ft_isneg(dotd->s))
 		ft_negdi(dotd->bf);
-	if (dotd->l > dotd->b)
+	if (dotd->lu > dotd->bu)
 		ft_putchars(dotd->s, obj);
 	else
 		ft_putchars(dotd->bf, obj);

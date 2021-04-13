@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:05:53 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/03 20:56:18 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/13 12:12:01 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ void        ft_putchar(char c, t_obj *obj)
 {
     write(1, &c, 1);
     obj->printed += 1;
-}
-
-void        ft_putcharstr(char c)
-{
-    write(1, &c, 1);
 }
 
 void    ft_putchars(char *s, t_obj *obj)

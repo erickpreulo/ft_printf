@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:16:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/09 11:17:14 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/12 21:35:31 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ void	dot_d4(t_dot *dotd, t_obj *obj, const char *str)
 	dotd->af = ft_newstr(dotd->a);
 	ft_memset(dotd->af, '0', dotd->a);
 	dot_d4_1(dotd, obj, str);
-	if (dotd->a > dotd->l)
+	if (dotd->a > dotd->l && dotd->buff[-1] != '0' && dotd->buff[-1] != '9')
 	{
 		ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
 		if (ft_isneg(dotd->s))
 			ft_neg(dotd->af);
 		ft_putchars(dotd->af, obj);
 	}
-	ft_putchars(dotd->s, obj);
+	else if (dotd->buff[-1] != '0' && dotd->buff[-1] != '9')
+		ft_putchars(dotd->s, obj);
 }

@@ -34,25 +34,15 @@ void	dot_u7_1(t_dot *dotd)
 void	dot_u7(t_dot *dotd, t_obj *obj)
 {
 	if (dotd->au != 0 && dotd->au >= dotd->lu)
-	{
 		dot_u7_1(dotd);
-		ft_putchars(dotd->bf, obj);
-	}
 	else if (ft_atoi(dotd->s) == 0)
-	{
 		ft_memcpy(dotd->bf, 0, 0, 0);
-		ft_putchars(dotd->bf, obj);
-	}
 	else if ((dotd->au < dotd->lu) && (dotd->bu >= dotd->lu))
-	{
 		ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
-		ft_putchars(dotd->bf, obj);
-	}
-	else if(dotd->lu > dotd->bu)
-		ft_putchars(dotd->s, obj);
 	else if (ft_isneg(dotd->s))
-	{
 		ft_negdi(dotd->bf);
+	if (dotd->lu > dotd->bu)
+		ft_putchars(dotd->s, obj);
+	else
 		ft_putchars(dotd->bf, obj);
-	}	
 }

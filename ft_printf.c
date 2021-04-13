@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/09 11:34:31 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/13 14:59:30 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	reset_obj(t_obj *obj)
 	obj->printedhex = 0;
 	obj->counthex = 0;
 	obj->hexleng = 0;
+	obj->i = 0;
 }
 
 static void	init_obj(t_obj *obj)
@@ -53,14 +54,13 @@ void		print(const char *str, t_obj *obj)
 int			ft_printf(const char *str, ...)
 {
 	t_obj	obj;
-	char	cpy;
 
 	init_obj(&obj);
 	va_start(obj.ap, str);
 	while (str[obj.sequence])
 	{
-		cpy = str[obj.sequence];
-		if (cpy == '%')
+		obj.cpy = str[obj.sequence];
+		if (obj.cpy == '%')
 		{
 			obj.sequence += 1;
 			if (str[obj.sequence] == '-')
@@ -71,7 +71,7 @@ int			ft_printf(const char *str, ...)
 			obj.sequence += (ft_strlen_nrb(&str[obj.sequence]));
 		}
 		else
-			ft_putchar(cpy, &obj);
+			ft_putchar(obj.cpy, &obj);
 		obj.sequence += 1;
 	}
 	va_end(obj.ap);
