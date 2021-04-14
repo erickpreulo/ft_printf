@@ -75,6 +75,8 @@ void	ft_printspaces(t_obj *obj)
     char *s;
 
     s = va_arg(obj->ap, char *);
+	if (s == NULL)
+		s = "(null)";
     obj->sizes = ft_strlen(s);
     if (obj->size > obj->sizes)
     {

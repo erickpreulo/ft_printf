@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/13 21:16:20 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 18:53:06 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	ft_printdot_s(const char *str, t_obj *obj)
 	t_dot dots;
 
 	dots.s = va_arg(obj->ap, char *);
+	if (dots.s == NULL)
+		dots.s = "(null)";
 	dots.l = ft_strlen(dots.s);
 	dots.bf = ft_strlen_bfdot(str);
 	dots.af = ft_strlen_afdot(str, dots.s);

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/13 21:16:46 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 19:47:33 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,21 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 {
 	if (ass->i == 0)
 		ft_putchars(ass->s, obj);
-	else if (str[2] == 's' || str[2] == '0')
-		ft_putchars(ass->buff, obj);
+	else if (str[1] == '*')
+	{
+		if (ass->cpy > 0)
+			ft_putchars(ass->s, obj);
+		else if (ass->i >= ass->size)
+			ft_putchars(ass->s, obj);
+		else
+		{
+			ft_memcpy(ass->buff, ass->s, 0, ass->i);
+			ft_putchars(ass->buff, obj);
+		}
+	}
 	else if (str[-1] == '-' || ass->cpy > 0)
 	{
-		if (ass->cpy > ass->size)
+		if (ass->cpy >= ass->size)
 		{
 			ft_putchars(ass->s, obj);
 			ft_putchars(ass->buff, obj);
@@ -105,6 +115,8 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 		else
 			ft_putchars(ass->s, obj);
 	}
+	else if (str[2] == 's' || str[2] == '0')
+		ft_putchars(ass->buff, obj);
 	else if (ass->i > 0)
 	{
 		if (ass->i > ass->size)
@@ -119,6 +131,8 @@ void	ft_printas_s(t_obj *obj, const char *str)
 
 	ass.i = va_arg(obj->ap, int);
 	ass.s = va_arg(obj->ap, char *);
+	if (ass.s == NULL)
+		ass.s = "(null)";
 	ass.cpy = -1;
 	ass.size = ft_strlen(ass.s);
 	if (ass.i < 0)
