@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 22:36:50 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 10:32:40 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 15:15:09 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@ void	ft_printendspaces(t_obj *obj)
 
     s = va_arg(obj->ap, char *);
     obj->sizes = ft_strlen(s);
-    buff = ft_newstr(obj->size);
-	ft_memcpy(buff, s, 0, obj->sizes);
-	ft_memsetstart(buff, ' ', obj->sizes, obj->size);
-	ft_putchars(buff, obj);
-    free(buff);
+    if (obj->sizes >= obj->size)
+        ft_putchars(s, obj);
+    else
+    {
+        buff = ft_newstr(obj->size);
+        ft_memcpy(buff, s, 0, obj->sizes);
+        ft_memsetstart(buff, ' ', obj->sizes, obj->size);
+        ft_putchars(buff, obj);
+        free(buff);
+    }
 }
 
 void	ft_printendspace(t_obj *obj)
@@ -33,12 +38,16 @@ void	ft_printendspace(t_obj *obj)
 
     s = ft_itoa(va_arg(obj->ap, int));
     obj->sizes = ft_strlen(s);
-    buff = ft_newstr(obj->size);
-	ft_memcpy(buff, s, 0, obj->sizes);
-	ft_memsetstart(buff, ' ', obj->sizes, obj->size);
-	ft_putchars(buff, obj);
-    free(buff);
-    free(s);
+    if (obj->sizes >= obj->size)
+        ft_putchars(s, obj);
+    else
+    {
+        buff = ft_newstr(obj->size);
+        ft_memcpy(buff, s, 0, obj->sizes);
+        ft_memsetstart(buff, ' ', obj->sizes, obj->size);
+        ft_putchars(buff, obj);
+        free(buff);
+    }
 }
 
 void	ft_printendspaceu(t_obj *obj)
@@ -48,11 +57,16 @@ void	ft_printendspaceu(t_obj *obj)
 
     s = ft_itoap(va_arg(obj->ap, unsigned int));
     obj->sizes = ft_strlen(s);
-    buff = ft_newstr(obj->size);
-	ft_memcpy(buff, s, 0, obj->sizes);
-	ft_memsetstart(buff, ' ', obj->sizes, obj->size);
-	ft_putchars(buff, obj);
-    free(buff);
+    if (obj->sizes >= obj->size)
+        ft_putchars(s, obj);
+    else
+    {
+        buff = ft_newstr(obj->size);
+        ft_memcpy(buff, s, 0, obj->sizes);
+        ft_memsetstart(buff, ' ', obj->sizes, obj->size);
+        ft_putchars(buff, obj);
+        free(buff);
+    }
     free(s);
 }
 

@@ -19,12 +19,17 @@ void    ft_print0(t_obj *obj)
 
     s = ft_itoa(va_arg(obj->ap, int));
     obj->sizes = ft_strlen(s);
-    buff = ft_newstr(obj->size);
-	ft_memset(buff, '0', obj->size);
-	ft_memcpy(buff, s, (obj->size - obj->sizes), obj->sizes);
-    ft_neg(buff);
-	ft_putchars(buff, obj);
-    free(buff);
+    if (obj->sizes >= obj->size)
+        ft_putchars(s, obj);
+    else
+    {
+        buff = ft_newstr(obj->size);
+        ft_memset(buff, '0', obj->size);
+        ft_memcpy(buff, s, (obj->size - obj->sizes), obj->sizes);
+        ft_neg(buff);
+        ft_putchars(buff, obj);
+        free(buff);
+    }
     free(s);
 }
 
