@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:18:22 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 23:34:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,6 @@ void	ft_printdot_di(const char *str, t_obj *obj)
 	free(dotd.af);
 }
 
-void	dot_s_1(t_dot *dots, t_obj *obj)
-{
-	if (dots->la <= dots->a)
-		dots->l = dots->a;
-	else if (dots->l > 0)
-	{
-		(ft_memcpy(dots->af, dots->s, dots->a - dots->l, dots->l));
-		ft_putchars(dots->af, obj);
-	}
-}
-
 void	dot_s_2(t_dot *dots, t_obj *obj)
 {
 	if (dots->a > dots->b)
@@ -60,34 +49,32 @@ void	dot_s_2(t_dot *dots, t_obj *obj)
 	else if (dots->a < dots->b)
 	{
 		if (dots->a != 0)
-			ft_memcpy(dots->bf, dots->s, 0, dots->l);
+			ft_memcpy(dots->bf, dots->s, 0, dots->a);
 		ft_putchars(dots->bf, obj);
 	}
 }
 
 void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 {
-	if (dots->b == 0 && dots->a >= dots->l)
-	{
-		ft_putchars(dots->s, obj);
-	}
 	if (dots->a <= dots->l)
 		dots->l = dots->a;
-	if (str[-1] == '%' && str[0] == '.' && str[1] != 's')
-		dot_s_1(dots, obj);
+	if (dots->b == 0 && dots->a > dots->l)
+		ft_putchars(dots->s, obj);
 	else if (str[-1] == '-')
 		dot_s_2(dots, obj);
-	else if (dots->a >= dots->b)
+	else if (dots->a >= dots->b && dots->a <= dots-> l)
 	{
-		ft_memcpy(dots->af, dots->s, dots->a - dots->l, dots->l);
+		ft_memcpy(dots->af, dots->s, 0, dots->a);
 		ft_putchars(dots->af, obj);
 	}
 	else if (dots->a < dots->b)
 	{
-		if (dots->a != 0)
+		if (dots->a != 0 && dots->b > dots->l)
 			ft_memcpy(dots->bf, dots->s, dots->b - dots->l, dots->l);
 		ft_putchars(dots->bf, obj);
 	}
+	else
+		ft_putchars(dots->bf, obj);
 }
 
 void	ft_printdot_s(const char *str, t_obj *obj)
