@@ -113,11 +113,11 @@ void    ft_printspacehex(char *str, t_obj *obj)
 
 void    ft_printspacehexp(char *hex, t_obj *obj)
 {
-    obj->hex = ft_newstr(10);
+    obj->hex = ft_newstr(20);
 	ft_memset(obj->hex, 'x', 2);
 	ft_memset(obj->hex, '0', 1);
 	obj->counthex += 2;
-    ft_cpy_hexs(va_arg(obj->ap, unsigned int), hex, obj);
+    ft_cpy_hexs(va_arg(obj->ap, unsigned long), hex, obj);
     obj->buff = ft_newstr(obj->size);
     if (obj->counthex >= obj->size)
     {

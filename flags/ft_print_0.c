@@ -54,9 +54,9 @@ void    ft_print0hex(char *str, t_obj *obj)
     char *buff;
     int i;
 
-    obj->hex = ft_newstr(8);
+    obj->hex = ft_newstr(20);
     i = 0;
-    ft_cpy_hexs(va_arg(obj->ap, unsigned int), str, obj);
+    ft_cpy_hexs(va_arg(obj->ap, unsigned long), str, obj);
     if (obj->hexleng >= obj->size)
     {
         while (i <= obj->hexleng)

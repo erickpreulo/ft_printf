@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:38:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/12 08:32:39 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 10:20:54 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void		ft_putnbru(unsigned int nb, t_obj *obj)
 		ft_putchar(nb + '0', obj);
 }
 
-void			ft_putnbr_hex(unsigned int nbr, char *base, t_obj *obj)
+void			ft_putnbr_hex(unsigned long nbr, char *base, t_obj *obj)
 {
-	unsigned int	holder;
+	unsigned long	holder;
 
 	holder = nbr;
 	if (holder >= 16)
@@ -53,9 +53,9 @@ void			ft_putnbr_hex(unsigned int nbr, char *base, t_obj *obj)
 		ft_putchar(base[holder], obj);
 }
 
-void	ft_cpy_hexs(unsigned int nbr, char *base, t_obj *obj)
+void	ft_cpy_hexs(unsigned long nbr, char *base, t_obj *obj)
 {
-	unsigned int	holder;
+	unsigned long	holder;
 
 	holder = nbr;
 	if (holder >= 16)

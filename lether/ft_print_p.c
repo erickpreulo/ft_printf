@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:12:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/12 20:57:57 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 10:53:37 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	printp(const char *str, t_obj *obj)
 	{
 		ft_putchar('0', obj);
 		ft_putchar('x', obj);
-		ft_putnbr_hex(va_arg(obj->ap, unsigned int), "0123456789abcdef", obj);
+		ft_putnbr_hex(va_arg(obj->ap, unsigned long), "0123456789abcdef", obj);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/09 10:28:26 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/13 21:16:31 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	dot_d2_4(t_dot *dotd, t_obj *obj)
 	ft_memcpy(dotd->bf, dotd->af, 0, dotd->a);
 	ft_putchars(dotd->bf, obj);
 }
+
 void	dot_d2_5(t_dot *dotd, t_obj *obj)
 {
 	if (dotd->buff[-2] == '-')
