@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 18:53:06 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:18:22 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_printdot_di(const char *str, t_obj *obj)
 {
-	t_dot dotd;
+	t_dot	dotd;
 
 	dotd.buff = str;
 	while (*dotd.buff != '.')
@@ -38,10 +38,11 @@ void	ft_printdot_di(const char *str, t_obj *obj)
 	free(dotd.bf);
 	free(dotd.af);
 }
+
 void	dot_s_1(t_dot *dots, t_obj *obj)
 {
 	if (dots->la <= dots->a)
-			dots->l = dots->a;
+		dots->l = dots->a;
 	else if (dots->l > 0)
 	{
 		(ft_memcpy(dots->af, dots->s, dots->a - dots->l, dots->l));
@@ -83,7 +84,6 @@ void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 	}
 	else if (dots->a < dots->b)
 	{
-
 		if (dots->a != 0)
 			ft_memcpy(dots->bf, dots->s, dots->b - dots->l, dots->l);
 		ft_putchars(dots->bf, obj);
@@ -92,7 +92,7 @@ void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 
 void	ft_printdot_s(const char *str, t_obj *obj)
 {
-	t_dot dots;
+	t_dot	dots;
 
 	dots.s = va_arg(obj->ap, char *);
 	if (dots.s == NULL)

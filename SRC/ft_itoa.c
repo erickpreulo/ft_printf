@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 19:10:18 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/09 22:17:11 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 21:03:19 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ char	*ft_itoa(int n)
 		n /= 10;
 		size++;
 	}
-	if (!(str = ft_newstr(size)))
-		return (0);
+	str = ft_newstr(size);
 	str[size--] = '\0';
 	while (nbr > 0)
 	{
@@ -55,8 +54,7 @@ char	*ft_itoap(unsigned int n)
 		n /= 10;
 		size++;
 	}
-	if (!(str = ft_newstr(size)))
-		return (0);
+	str = ft_newstr(size);
 	str[size--] = '\0';
 	while (nbr > 0)
 	{

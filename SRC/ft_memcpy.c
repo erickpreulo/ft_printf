@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 20:44:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/09 20:46:39 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:48:39 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t start, size_t end)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < end)
 	{
-		((unsigned char*)dst)[start] = ((unsigned char*)src)[i];
+		((unsigned char *)dst)[start] = ((unsigned char *)src)[i];
 		start++;
 		i++;
 	}
@@ -28,15 +28,15 @@ void	*ft_memcpy(void *dst, const void *src, size_t start, size_t end)
 
 void	*ft_memcpyneg(void *dst, const void *src, int end)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
-	((unsigned char*)dst)[0] = '-';
+	((unsigned char *)dst)[0] = '-';
 	i = 1;
 	j = 0;
 	while (i <= end)
 	{
-		((unsigned char*)dst)[i] = ((unsigned char*)src)[j];
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[j];
 		i++;
 		j++;
 	}
@@ -45,15 +45,14 @@ void	*ft_memcpyneg(void *dst, const void *src, int end)
 
 void	*ft_memcpynegstay(void *dst, const void *src, int end)
 {
-	int j;
+	int		j;
 
 	j = 0;
 	while (j <= end)
 	{
-		((unsigned char*)dst)[j] = ((unsigned char*)src)[j];
+		((unsigned char *)dst)[j] = ((unsigned char *)src)[j];
 		j++;
 	}
-	((unsigned char*)dst)[0] = '-';
+	((unsigned char *)dst)[0] = '-';
 	return (dst);
 }
-

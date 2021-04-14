@@ -6,26 +6,11 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/13 21:16:31 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:32:56 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	dot_d2_1(t_dot *dotd)
-{
-	if (dotd->b < 0)
-	{
-		dotd->cpyb *= dotd->b;
-		dotd->bf = ft_newstr(dotd->cpyb);
-		ft_memset(dotd->bf, ' ', dotd->cpyb);
-	}
-	else
-	{
-		dotd->bf = ft_newstr(dotd->b);
-		ft_memset(dotd->bf, ' ', dotd->b);
-	}
-}
 
 void	dot_d2_2(t_dot *dotd)
 {

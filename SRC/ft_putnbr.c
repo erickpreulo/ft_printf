@@ -6,13 +6,13 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:38:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 10:20:54 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:53:20 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_putnbr(int nb, t_obj *obj)
+void	ft_putnbr(int nb, t_obj *obj)
 {
 	if (nb < 0)
 	{
@@ -28,7 +28,7 @@ void		ft_putnbr(int nb, t_obj *obj)
 		ft_putchar(nb + '0', obj);
 }
 
-void		ft_putnbru(unsigned int nb, t_obj *obj)
+void	ft_putnbru(unsigned int nb, t_obj *obj)
 {
 	if (nb >= 10)
 	{
@@ -39,7 +39,7 @@ void		ft_putnbru(unsigned int nb, t_obj *obj)
 		ft_putchar(nb + '0', obj);
 }
 
-void			ft_putnbr_hex(unsigned long nbr, char *base, t_obj *obj)
+void	ft_putnbr_hex(unsigned long nbr, char *base, t_obj *obj)
 {
 	unsigned long	holder;
 

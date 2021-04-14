@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:29:33 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 10:53:31 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:09:44 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void	as_d2(t_as *asd, const char *str, t_obj *obj)
 	free(asd->buff);
 }
 
-void    ft_printas_di(t_obj *obj, const char *str)
+void	ft_printas_di(t_obj *obj, const char *str)
 {
-	t_as asd;
+	t_as	asd;
 
 	asd.i = va_arg(obj->ap, int);
 	asd.s = ft_itoa(va_arg(obj->ap, int));
@@ -101,21 +101,6 @@ void    ft_printas_di(t_obj *obj, const char *str)
 		as_d(&asd, str, obj);
 	else if (asd.cpy >= asd.size)
 		as_d2(&asd, str, obj);
-	else
-		ft_putchars(asd.s, obj);
-	free(asd.s);
-}
-
-void    ft_printas_u(t_obj *obj, const char *str)
-{
-	t_as asd;
-
-	asd.i = va_arg(obj->ap, int);
-	asd.s = ft_itoap(va_arg(obj->ap, unsigned int));
-	asd.size = ft_strlen(asd.s);
-	asd.cpy *= asd.i;
-	if (asd.i >= asd.size)
-		as_d(&asd, str, obj);
 	else
 		ft_putchars(asd.s, obj);
 	free(asd.s);

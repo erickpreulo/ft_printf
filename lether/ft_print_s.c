@@ -6,13 +6,13 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:09:04 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 18:54:47 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:40:43 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		prints(const char *str, t_obj *obj)
+void	prints(const char *str, t_obj *obj)
 {
 	if (str[0] == '*' || (str[0] != 's' && str[1] == '*'))
 		ft_printas_s(obj, str);

@@ -6,15 +6,15 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:10:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/13 12:09:41 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:40:49 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		printu(const char *str, t_obj *obj)
+void	printu(const char *str, t_obj *obj)
 {
-	char *s;
+	char	*s;
 
 	if (ft_strlen_find_dot(str))
 		ft_printdot_u(str, obj);

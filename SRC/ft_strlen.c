@@ -6,15 +6,15 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:18:38 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/10 23:21:18 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:57:32 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -22,20 +22,21 @@ int		ft_strlen(const char *str)
 	return (i);
 }
 
-int		ft_strlen_nrb(const char *str)
+int	ft_strlen_nrb(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	while ((str[i] >= '0' && str[i] <= '9') || str[i] == '-' || str[i] == '+' || str[i] == '.'
-	|| str[i] == '#' || str[i] == ' ' || str[i] == '*')
+	while ((str[i] >= '0' && str[i] <= '9') || str[i] == '-'
+		|| str[i] == '+' || str[i] == '.' || str[i] == '#'
+		|| str[i] == ' ' || str[i] == '*')
 		i++;
 	return (i);
 }
 
-int		ft_strlen_find_dot(const char *str)
+int	ft_strlen_find_dot(const char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i <= (ft_strlen_nrb(str)))
@@ -47,18 +48,19 @@ int		ft_strlen_find_dot(const char *str)
 	return (0);
 }
 
-char		*ft_strlen_bfdot(const char *str)
+char	*ft_strlen_bfdot(const char *str)
 {
-	char *buff;
+	char	*buff;
+
 	buff = ft_newstr(ft_atoi(str));
 	ft_memset(buff, ' ', ft_atoi(str));
 	return (buff);
 }
 
-char		*ft_strlen_afdot(const char *str, char *s)
+char	*ft_strlen_afdot(const char *str, char *s)
 {
-	char *buff;
-	int i;
+	char	*buff;
+	int		i;
 
 	i = 0;
 	while (i <= (ft_strlen_nrb(str)))

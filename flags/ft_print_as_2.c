@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 10:56:30 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:11:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	as_p(t_as *asd, const char *str, t_obj *obj)
 	free(asd->buff);
 }
 
-void    ft_printas_x(t_obj *obj, char *hex, const char *str)
+void	ft_printas_x(t_obj *obj, char *hex, const char *str)
 {
-	t_as asd;
+	t_as	asd;
 
 	obj->hex = ft_newstr(8);
 	asd.i = va_arg(obj->ap, int);
@@ -93,9 +93,9 @@ void    ft_printas_x(t_obj *obj, char *hex, const char *str)
 	free(obj->hex);
 }
 
-void    ft_printas_p(t_obj *obj, char *hex, const char *str)
+void	ft_printas_p(t_obj *obj, char *hex, const char *str)
 {
-	t_as asd;
+	t_as	asd;
 
 	obj->hex = ft_newstr(20);
 	ft_memset(obj->hex, 'x', 2);

@@ -6,26 +6,11 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/12 18:29:58 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 21:01:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	dot_x2_1(t_dot *dotd)
-{
-	if (dotd->bu < 0)
-	{
-		dotd->cpybu *= dotd->bu;
-		dotd->bf = ft_newstr(dotd->cpybu);
-		ft_memset(dotd->bf, ' ', dotd->cpybu);
-	}
-	else
-	{
-		dotd->bf = ft_newstr(dotd->bu);
-		ft_memset(dotd->bf, ' ', dotd->bu);
-	}
-}
 
 void	dot_x2_2(t_dot *dotd)
 {
@@ -72,6 +57,7 @@ void	dot_x2_4(t_dot *dotd, t_obj *obj)
 	ft_memcpy(dotd->bf, dotd->af, 0, dotd->au);
 	ft_putchars(dotd->bf, obj);
 }
+
 void	dot_x2_5(t_dot *dotd, t_obj *obj)
 {
 	if (dotd->buff[-2] == '-')

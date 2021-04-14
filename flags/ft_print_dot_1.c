@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:20:44 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 10:28:03 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/14 20:17:19 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_printdot_u(const char *str, t_obj *obj)
 {
-	t_dot dotd;
+	t_dot	dotd;
 
 	dotd.buff = str;
 	while (*dotd.buff != '.')
@@ -41,8 +41,8 @@ void	ft_printdot_u(const char *str, t_obj *obj)
 
 void	ft_printdot_hex(const char *str, t_obj *obj, char *hex)
 {
-	t_dot dotd;
-	
+	t_dot	dotd;
+
 	dotd.buff = str;
 	while (*dotd.buff != '.')
 		dotd.buff++;
