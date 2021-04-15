@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 21:02:19 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/15 17:25:44 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ char	*ft_strlen_afdot(const char *str, char *s);
 char	*ft_strlen_afdotdi(const char *str);
 char	*ft_strlen_bfdot(const char *str);
 int		ft_atoi(const char *str);
+int		ft_atoiu(const char *str);
 char	*ft_newstr(size_t size);
 void	*ft_memset(char *s, int c, size_t n);
 void	*ft_memsetstart(char *s, int c, size_t start, size_t n);
@@ -157,6 +158,8 @@ void	dot_x2_1(t_dot *dotd);
 void	dot_x3(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_x3_1(t_dot *dotd);
 void	dot_x3_2_1(t_dot *dotd, t_obj *obj, const char *str);
+void	dot_x5(t_dot *dotd, t_obj *obj);
+void	dot_x6(t_dot *dotd, t_obj *obj);
 void	dot_x7(t_dot *dotd, t_obj *obj);
 
 void	ft_printas_c(t_obj *obj, const char *str);

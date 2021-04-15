@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:20:44 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:17:19 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/15 17:26:38 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_printdot_u(const char *str, t_obj *obj)
 		dot_u5(&dotd, obj);
 	else if (dotd.au == 0 && dotd.bu == 0 && ft_atoi(dotd.s) > 0)
 		ft_putchars(dotd.s, obj);
-	else if (dotd.au >= dotd.bu && (dotd.au != 0 && dotd.bu != 0))
+	else if (dotd.au >= dotd.bu)
 		dot_u6(&dotd, obj);
 	else if (dotd.au < dotd.bu)
 		dot_u7(&dotd, obj);
@@ -54,9 +54,9 @@ void	ft_printdot_hex(const char *str, t_obj *obj, char *hex)
 	else if (dotd.buff[1] == '*')
 		dot_u4(&dotd, obj, str);
 	else if (str[-1] == '-')
-		dot_u5(&dotd, obj);
+		dot_x5(&dotd, obj);
 	else if (dotd.au >= dotd.bu && (dotd.au != 0 && dotd.bu != 0))
-		dot_u6(&dotd, obj);
+		dot_x6(&dotd, obj);
 	else if (dotd.au < dotd.bu)
 		dot_x7(&dotd, obj);
 	else if (dotd.arg > 0)

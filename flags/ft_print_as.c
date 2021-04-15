@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 21:06:11 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/15 16:35:07 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	as_s3_1(t_as *ass, t_obj *obj)
 		ft_putchars(ass->s, obj);
 	else
 	{
-		ft_memcpy(ass->buff, ass->s, 0, ass->i);
+		ft_memcpy(ass->buff, ass->s, 0, ass->size);
 		ft_putchars(ass->buff, obj);
 	}
 }

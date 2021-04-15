@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 19:10:18 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 09:29:00 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/15 15:38:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ char	*ft_itoa(int n)
 		size = 0;
 	else
 		size = 1;
-	if (nbr > 0)
-		nbr = nbr;
-	else
+	if (nbr < 0)
 		nbr = -nbr;
 	while (n)
 	{
