@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 18:12:13 by egomes            #+#    #+#              #
-#    Updated: 2021/04/14 20:28:49 by egomes           ###   ########.fr        #
+#    Updated: 2021/04/15 20:41:44 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = ft_printf.c SRC/ft_putchar.c SRC/ft_strlen.c SRC/ft_putnbr.c \
 		flags/ft_print_as_3.c lether/ft_print_c.c lether/ft_print_s.c \
 		lether/ft_print_di.c lether/ft_print_x.c lether/ft_print_xX.c \
 		lether/ft_print_p.c lether/ft_print_u.c flags/ft_print_end_space_1.c \
-		flags/ft_print_space_1.c
+		flags/ft_print_space_1.c lether/ft_print_pc.c
 
 NAME = libftprintf.a
 

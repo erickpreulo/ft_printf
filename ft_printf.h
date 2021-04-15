@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 17:25:44 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/15 21:26:21 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	printu(const char *str, t_obj *obj);
 void	printx(const char *str, t_obj *obj);
 void	printX(const char *str, t_obj *obj);
 void	printp(const char *str, t_obj *obj);
+void	printpc(const char *str, t_obj *obj);
 
 void	ft_putchar(char c, t_obj *obj);
 void	ft_putchars(char *s, t_obj *obj);
@@ -110,6 +111,7 @@ void	ft_negdot(char *str);
 void	ft_print0(t_obj *obj);
 void	ft_print0hex(char *str, t_obj *obj);
 void	ft_print0u(t_obj *obj);
+void	ft_print0pc(t_obj *obj);
 
 void	ft_printspace(t_obj *obj);
 void	ft_printspaces(t_obj *obj);

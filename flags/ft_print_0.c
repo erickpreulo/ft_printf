@@ -33,6 +33,23 @@ void	ft_print0(t_obj *obj)
 	free(s);
 }
 
+void	ft_print0pc(t_obj *obj)
+{
+	char *buff;
+
+	if (obj->size > 1)
+	{
+		buff = ft_newstr(obj->size);
+		ft_memset(buff, '0', obj->size);
+		ft_memcpy(buff, "%", obj->size - 1, 1);
+		ft_neg(buff);
+		ft_putchars(buff, obj);
+		free(buff);
+	}
+	else
+		ft_putchar('%', obj);
+}
+
 void	ft_print0u(t_obj *obj)
 {
 	char	*buff;

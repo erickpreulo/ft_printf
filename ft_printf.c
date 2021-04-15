@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 19:57:15 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/15 20:40:07 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print(const char *str, t_obj *obj)
 	if (str[nbrsize] == 'p')
 		printp(str, obj);
 	if (str[nbrsize] == '%')
-		ft_putchar('%', obj);
+		printpc(str, obj);
 }
 
 int	ft_printf(const char *str, ...)
