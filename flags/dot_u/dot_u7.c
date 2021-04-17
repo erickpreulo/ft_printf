@@ -24,6 +24,11 @@ void	dot_u7_1(t_dot *dotd)
 		ft_memcpy(dotd->bf, dotd->neg, dotd->bu - dotd->au, dotd->au);
 		free(dotd->neg);
 	}
+	else if (ft_findless(dotd->buff))
+	{
+		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
+		ft_memcpy(dotd->bf, dotd->af, 0, dotd->au);
+	}
 	else
 	{
 		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
@@ -38,7 +43,12 @@ void	dot_u7(t_dot *dotd, t_obj *obj)
 	else if (ft_atoi(dotd->s) == 0)
 		ft_memcpy(dotd->bf, 0, 0, 0);
 	else if ((dotd->au < dotd->lu) && (dotd->bu >= dotd->lu))
-		ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
+	{
+		if (ft_findless(dotd->buff))
+			ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
+		else
+			ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);	
+	}
 	else if (ft_isneg(dotd->s))
 		ft_negdi(dotd->bf);
 	if (dotd->lu > dotd->bu)

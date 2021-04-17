@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:21:06 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 21:51:44 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 20:17:31 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	dot_d1(t_dot *dotd, t_obj *obj, const char *str)
 	{
 		dotd->a = va_arg(obj->ap, int);
 		dotd->s = ft_itoa(va_arg(obj->ap, int));
+		if (ft_isneg(dotd->s))
+			dotd->a += 1;
 		dotd->cpya *= dotd->a;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:10:00 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 20:53:15 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 20:24:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ void	printdi(const char *str, t_obj *obj)
 	else if (str[0] >= '1' && str[0] <= '9')
 		ft_printspace(obj);
 	else if (str[0] == 'd' || str[0] == 'i')
-		ft_putnbr(va_arg(obj->ap, int), obj);
+	{
+		obj->buff = ft_itoa(va_arg(obj->ap, int));
+		ft_putchars(obj->buff, obj);
+		free(obj->buff);
+	}
 }

@@ -27,7 +27,10 @@ void	dot_x7_1(t_dot *dotd)
 	else
 	{
 		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
-		ft_memcpy(dotd->bf, dotd->af, dotd->bu - dotd->au, dotd->au);
+		if (ft_findless(dotd->buff))
+			ft_memcpy(dotd->bf, dotd->af, 0, dotd->au);
+		else
+			ft_memcpy(dotd->bf, dotd->af, dotd->bu - dotd->au, dotd->au);
 	}
 }
 
@@ -38,11 +41,18 @@ void	dot_x7(t_dot *dotd, t_obj *obj)
 	else if (dotd->arg == 0)
 		ft_memcpy(dotd->bf, 0, 0, 0);
 	else if ((dotd->au < dotd->lu) && (dotd->bu >= dotd->lu))
-		ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
+	{
+		if (ft_findless(dotd->buff))
+			ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
+		else
+			ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
+	}	
 	else if (ft_isneg(dotd->s))
 		ft_negdi(dotd->bf);
 	if (dotd->lu > dotd->bu)
 		ft_putchars(dotd->s, obj);
 	else
 		ft_putchars(dotd->bf, obj);
+	free(dotd->af);
+	free(dotd->bf);
 }

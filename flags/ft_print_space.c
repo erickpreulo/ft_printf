@@ -72,22 +72,18 @@ void	ft_printspaces(t_obj *obj)
 
 void	ft_printspacehex(char *str, t_obj *obj)
 {
-	obj->hex = ft_newstr(8);
-	ft_cpy_hexs(va_arg(obj->ap, unsigned int), str, obj);
-	if (obj->hexleng >= obj->size)
-	{
-		while (obj->i <= obj->hexleng)
-		{
-			ft_putchar(obj->hex[obj->i], obj);
-			obj->i++;
-		}
-	}
+	obj->unsig = va_arg(obj->ap, unsigned int);
+	ft_leng_hexs(obj->unsig, obj);
+	obj->hex = ft_newstr(obj->hexleng);
+	ft_cpy_hexs(obj->unsig, str, obj);
+	if (obj->counthex >= obj->size)
+		ft_putchars(obj->hex, obj);
 	else
 	{
 		obj->buff = ft_newstr(obj->size);
 		ft_memset(obj->buff, ' ', obj->size);
-		ft_memcpy(obj->buff, obj->hex, (obj->size - obj->hexleng),
-			obj->hexleng);
+		ft_memcpy(obj->buff, obj->hex, (obj->size - obj->counthex),
+			obj->counthex);
 		ft_putchars(obj->buff, obj);
 		free(obj->buff);
 	}

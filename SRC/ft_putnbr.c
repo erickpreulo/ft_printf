@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:38:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:53:20 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 17:35:04 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,18 @@ void	ft_cpy_hexs(unsigned long nbr, char *base, t_obj *obj)
 		obj->counthex += 1;
 		obj->hexleng += 1;
 	}
+}
+
+void	ft_leng_hexs(unsigned long nbr, t_obj *obj)
+{
+	unsigned long	holder;
+
+	holder = nbr;
+	if (holder >= 16)
+	{
+		ft_leng_hexs(holder / 16, obj);
+		ft_leng_hexs(holder % 16, obj);
+	}
+	else
+		obj->hexleng += 1;
 }

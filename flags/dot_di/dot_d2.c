@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/16 11:16:24 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 17:19:34 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	dot_d2_3(t_dot *dotd, t_obj *obj)
 	ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
 	if (ft_isneg(dotd->s))
 		ft_neg(dotd->af);
-	if (dotd->buff[-2] == '-')
+	if (ft_findless(dotd->buff))
 		ft_memcpy(dotd->bf, dotd->af, 0, dotd->a);
 	else
 		ft_memcpy(dotd->bf, dotd->af, dotd->b - dotd->a, dotd->a);
@@ -60,7 +60,7 @@ void	dot_d2_4(t_dot *dotd, t_obj *obj)
 
 void	dot_d2_5(t_dot *dotd, t_obj *obj)
 {
-	if (dotd->buff[-2] == '-')
+	if (ft_findless(dotd->buff))
 		ft_memcpy(dotd->bf, dotd->s, 0, dotd->l);
 	else
 		ft_memcpy(dotd->bf, dotd->s, dotd->b - dotd->l, dotd->l);

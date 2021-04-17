@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/16 21:50:02 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 20:39:23 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_as
 	int		cpy;
 	char	*s;
 	int		size;
+	char	*af;
+	int		a;
 }				t_as;
 
 typedef struct s_dot
@@ -57,7 +59,6 @@ typedef struct s_obj
 	char		*hex;
 	int			counthex;
 	int			printed;
-	int			hexleng;
 	va_list		ap;
 	int			sequence;
 	int			sizes;
@@ -65,6 +66,9 @@ typedef struct s_obj
 	int			i;
 	char		*buff;
 	char		cpy;
+	unsigned int	hexleng;
+	unsigned int	unsig;
+	int			trash;
 }				t_obj;
 
 int		ft_printf(const char *str, ...);
@@ -91,6 +95,7 @@ int		ft_strlen_find_dot(const char *str);
 char	*ft_strlen_afdot(const char *str, char *s);
 char	*ft_strlen_afdotdi(const char *str);
 char	*ft_strlen_bfdot(const char *str);
+void	ft_leng_hexs(unsigned long nbr, t_obj *obj);
 int		ft_findless(const char *str);
 int		ft_atoi(const char *str);
 int		ft_atoiu(const char *str);

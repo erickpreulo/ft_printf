@@ -76,22 +76,18 @@ void	ft_print0hex(char *str, t_obj *obj)
 	char	*buff;
 	int		i;
 
-	obj->hex = ft_newstr(20);
 	i = 0;
-	ft_cpy_hexs(va_arg(obj->ap, unsigned long), str, obj);
-	if (obj->hexleng >= obj->size)
-	{
-		while (i <= obj->hexleng)
-		{
-			ft_putchar(obj->hex[i], obj);
-			i++;
-		}
-	}
+	obj->unsig = va_arg(obj->ap, unsigned int);
+	ft_leng_hexs(obj->unsig, obj);
+	obj->hex = ft_newstr(obj->hexleng);
+	ft_cpy_hexs(obj->unsig, str, obj);
+	if (obj->counthex >= obj->size)
+		ft_putchars(obj->hex, obj);
 	else
 	{
 		buff = ft_newstr(obj->size);
 		ft_memset(buff, '0', obj->size);
-		ft_memcpy(buff, obj->hex, (obj->size - obj->hexleng), obj->hexleng);
+		ft_memcpy(buff, obj->hex, (obj->size - obj->counthex), obj->counthex);
 		ft_putchars(buff, obj);
 		free(buff);
 	}

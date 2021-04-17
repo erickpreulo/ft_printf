@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:19:09 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/16 22:11:58 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 18:52:43 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ void	dot_x5_1(t_dot *dotd, t_obj *obj)
 	}
 	else if (dotd->bu <= dotd->lu)
 		ft_putchars(dotd->s, obj);
-	else
+	else if (ft_atoiu(dotd->s) != 0)
 	{
 		ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
 		ft_putchars(dotd->bf, obj);
 	}
+	else
+		ft_putchars(dotd->bf, obj);
 }
 
 void	dot_x5(t_dot *dotd, t_obj *obj)
 {
-	if (dotd->au >= dotd->bu)
+	if (dotd->au >= dotd->bu && dotd->au > dotd->lu)
 	{
 		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
 		if (ft_isneg(dotd->s))
@@ -56,6 +58,9 @@ void	dot_x5(t_dot *dotd, t_obj *obj)
 	}
 	else if (dotd->au < dotd->bu)
 		dot_x5_1(dotd, obj);
+	else
+		ft_putchars(dotd->s, obj);
+	
 }
 
 void	dot_u5_1(t_dot *dotd, t_obj *obj)
@@ -77,7 +82,7 @@ void	dot_u5_1(t_dot *dotd, t_obj *obj)
 	}
 	else if (dotd->bu <= dotd->lu)
 		ft_putchars(dotd->s, obj);
-	else if (ft_atoi(dotd->s) == 0)
+	else if (ft_atoiu(dotd->s) == 0)
 		ft_putchars(dotd->bf, obj);
 	else
 	{

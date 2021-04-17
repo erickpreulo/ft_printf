@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:51:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 21:01:57 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 18:56:28 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ void	dot_x3(t_dot *dotd, t_obj *obj, const char *str)
 	}
 	else
 		dot_x3_4(dotd, obj, str);
+	free(dotd->af);
 }

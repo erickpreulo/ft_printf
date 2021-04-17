@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 16:35:07 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 21:38:22 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	as_s1(t_as *ass)
 	}
 }
 
-void	as_s2(t_as *ass, const char *str)
+void	as_s2(t_as *ass, const char *str, t_obj *obj)
 {
 	if (str[2] == 's' || str[2] == '0')
 	{
@@ -36,8 +36,16 @@ void	as_s2(t_as *ass, const char *str)
 	}
 	else if (ass->i > ass->size)
 	{
-		ass->buff = ft_newstr(ass->i - ass->size);
-		ft_memset(ass->buff, ' ', ass->i - ass->size);
+		if (obj->trash < ass->size)
+		{
+			ass->buff = ft_newstr(ass->i);
+			ft_memset(ass->buff, ' ', ass->i);
+		}
+		else
+		{
+			ass->buff = ft_newstr(ass->i - ass->size);
+			ft_memset(ass->buff, ' ', ass->i - ass->size);
+		}
 	}
 	else
 	{
@@ -54,7 +62,7 @@ void	as_s3_1(t_as *ass, t_obj *obj)
 		ft_putchars(ass->s, obj);
 	else
 	{
-		ft_memcpy(ass->buff, ass->s, 0, ass->size);
+		ft_memcpy(ass->buff, ass->s, 0, ass->i);
 		ft_putchars(ass->buff, obj);
 	}
 }
@@ -62,14 +70,17 @@ void	as_s3_1(t_as *ass, t_obj *obj)
 void	as_s3(t_as *ass, const char *str, t_obj *obj)
 {
 	if (ass->i == 0)
-		ft_putchars(ass->s, obj);
+		ft_putchars(ass->buff, obj);
 	else if (str[1] == '*')
 		as_s3_1(ass, obj);
 	else if (str[-1] == '-' || ass->cpy > 0)
 	{
-		if (ass->cpy >= ass->size)
+		if (ass->cpy >= ass->size || ass->i >= ass->size)
 		{
-			ft_putchars(ass->s, obj);
+			if (obj->trash < ass->size && obj->trash >= 0)
+				ft_memcpy(ass->buff, ass->s, 0, obj->trash);
+			else
+				ft_putchars(ass->s, obj);
 			ft_putchars(ass->buff, obj);
 		}
 		else
@@ -90,6 +101,8 @@ void	ft_printas_s(t_obj *obj, const char *str)
 	t_as	ass;
 
 	ass.i = va_arg(obj->ap, int);
+	if (ft_strlen_find_dot(str) && str[0] != '.')
+		obj->trash = va_arg(obj->ap, int);
 	ass.s = va_arg(obj->ap, char *);
 	if (ass.s == NULL)
 		ass.s = "(null)";
@@ -98,7 +111,7 @@ void	ft_printas_s(t_obj *obj, const char *str)
 	if (ass.i < 0)
 		as_s1(&ass);
 	else if (ass.i >= 0)
-		as_s2(&ass, str);
+		as_s2(&ass, str, obj);
 	as_s3(&ass, str, obj);
 	free(ass.buff);
 }

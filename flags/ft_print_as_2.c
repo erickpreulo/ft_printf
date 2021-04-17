@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:11:24 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 17:50:48 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,13 @@ void	ft_printas_x(t_obj *obj, char *hex, const char *str)
 {
 	t_as	asd;
 
-	obj->hex = ft_newstr(8);
 	asd.i = va_arg(obj->ap, int);
-	ft_cpy_hexs(va_arg(obj->ap, unsigned int), hex, obj);
+	obj->unsig = va_arg(obj->ap, unsigned int);
+	ft_leng_hexs(obj->unsig, obj);
+	obj->hex = ft_newstr(obj->hexleng);
+	ft_cpy_hexs(obj->unsig, hex, obj);
 	asd.s = obj->hex;
-	asd.size = obj->hexleng;
+	asd.size = obj->counthex;
 	asd.cpy *= asd.i;
 	if (asd.i >= asd.size)
 		as_d(&asd, str, obj);
