@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 22:03:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:51:41 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/16 21:49:05 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,19 @@ int	ft_isneg(char *str)
 {
 	if (str[0] == '-')
 		return (1);
+	return (0);
+}
+
+int	ft_findless(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '%')
+	{
+		if (str[i] == '-')
+			return (1);
+		i--;
+	}
 	return (0);
 }

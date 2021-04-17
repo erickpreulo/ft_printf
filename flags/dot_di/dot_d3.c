@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:51:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:33:39 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/16 21:55:53 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	dot_d3_4(t_dot *dotd, t_obj *obj, const char *str)
 		dotd->af = ft_strlen_afdot(str, dotd->s);
 		dotd->a = ft_strlen(dotd->af);
 		dot_d3_3(dotd, obj, str);
+		free(dotd->af);
 	}
 	else if (dotd->cpyb > dotd->l)
 	{
@@ -95,6 +96,7 @@ void	dot_d3(t_dot *dotd, t_obj *obj, const char *str)
 			dotd->af = ft_strlen_afdot(str, dotd->s);
 			dotd->a = ft_strlen(dotd->af);
 			dot_d3_2(dotd, obj, str);
+			free(dotd->af);
 		}
 		else if (dotd->b > dotd->l)
 		{
@@ -109,4 +111,5 @@ void	dot_d3(t_dot *dotd, t_obj *obj, const char *str)
 	}
 	else
 		dot_d3_4(dotd, obj, str);
+	free(dotd->bf);
 }

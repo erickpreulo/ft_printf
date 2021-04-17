@@ -45,4 +45,6 @@ void	dot_u7(t_dot *dotd, t_obj *obj)
 		ft_putchars(dotd->s, obj);
 	else
 		ft_putchars(dotd->bf, obj);
+	free(dotd->bf);
+	free(dotd->af);
 }

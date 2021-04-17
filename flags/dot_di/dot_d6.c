@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:26:42 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 17:15:52 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/16 11:19:57 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	dot_d6(t_dot *dotd, t_obj *obj)
 	}
 	else if (ft_atoi(dotd->s) != 0)
 		ft_putchars(dotd->s, obj);
-	
+	free(dotd->af);
+	free(dotd->bf);
 }

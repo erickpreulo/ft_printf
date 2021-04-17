@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:19:09 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 17:12:06 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/16 11:19:46 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,6 @@ void	dot_d5(t_dot *dotd, t_obj *obj)
 	}
 	else if (dotd->a < dotd->b)
 		dot_d5_1(dotd, obj);
+	free(dotd->af);
+	free(dotd->bf);
 }
