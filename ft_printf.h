@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 20:39:23 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 23:24:02 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_dot
 	long int		cpybu;
 	long int		lu;
 	unsigned int	arg;
+	char			*sx;
 }				t_dot;
 
 typedef struct s_obj

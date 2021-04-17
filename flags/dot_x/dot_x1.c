@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 08:14:52 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 18:05:19 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 23:36:01 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	dot_x1_1(t_dot *dotd, t_obj *obj, const char *str)
 {
 	dotd->arg = va_arg(obj->ap, unsigned int);
 	dotd->bf = ft_strlen_bfdot(str);
-	dotd->af = ft_strlen_afdot(str, ft_itoap(dotd->arg));
+	dotd->sx = ft_itoap(dotd->arg);
+	dotd->af = ft_strlen_afdot(str, dotd->sx);
 	dotd->bu = ft_strlen(dotd->bf);
 	dotd->au = ft_strlen(dotd->af);
+	free(dotd->sx);
 }
 
 void	dot_x1_2(t_dot *dotd, t_obj *obj)

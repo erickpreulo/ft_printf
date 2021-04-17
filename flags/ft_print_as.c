@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 21:38:22 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/18 00:02:42 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	ft_printas_s(t_obj *obj, const char *str)
 	t_as	ass;
 
 	ass.i = va_arg(obj->ap, int);
-	if (ft_strlen_find_dot(str) && str[0] != '.')
+	if (ft_strlen_find_dot(str) && str[0] != '.' && (str[2] == '*' || str[3] == '*'))
 		obj->trash = va_arg(obj->ap, int);
 	ass.s = va_arg(obj->ap, char *);
 	if (ass.s == NULL)

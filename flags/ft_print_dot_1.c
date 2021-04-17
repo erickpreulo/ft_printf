@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:20:44 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 18:56:44 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 23:48:46 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,20 @@ void	ft_printdot_hex(const char *str, t_obj *obj, char *hex)
 		dot_u4(&dotd, obj, str);
 	else if (str[-1] == '-')
 		dot_x5(&dotd, obj);
-	else if (dotd.au >= dotd.bu && (dotd.au > dotd.lu || dotd.bu > dotd.lu))
+	else if (dotd.au >= dotd.bu && (dotd.au >= dotd.lu || dotd.bu >= dotd.lu))
 		dot_x6(&dotd, obj);
-	else if (dotd.au < dotd.bu && (dotd.au > dotd.lu || dotd.bu > dotd.lu))
+	else if (dotd.au < dotd.bu && (dotd.au >= dotd.lu || dotd.bu >= dotd.lu))
 		dot_x7(&dotd, obj);
 	else if (dotd.arg > 0)
+	{
 		ft_putchars(dotd.s, obj);
+		free(dotd.af);
+		free(dotd.bf);
+	}
+	else
+	{
+		free(dotd.af);
+		free(dotd.bf);
+	}
 	free(obj->hex);
 }

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 12:15:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 17:11:28 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/17 23:42:37 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	ft_atoiu(const char *str)
 		{
 			if (sign < 0)
 				return (-1);
-			return (0);
 		}
 		aux = result;
 	}

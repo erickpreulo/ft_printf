@@ -74,9 +74,7 @@ void	ft_print0u(t_obj *obj)
 void	ft_print0hex(char *str, t_obj *obj)
 {
 	char	*buff;
-	int		i;
 
-	i = 0;
 	obj->unsig = va_arg(obj->ap, unsigned int);
 	ft_leng_hexs(obj->unsig, obj);
 	obj->hex = ft_newstr(obj->hexleng);
