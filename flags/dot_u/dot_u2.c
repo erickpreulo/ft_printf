@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 17:19:09 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 23:18:28 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	dot_u2_5(t_dot *dotd, t_obj *obj)
 void	dot_u2(t_dot *dotd, t_obj *obj)
 {
 	dot_u2_1(dotd);
-	dot_u2_2(dotd);
-	ft_memset(dotd->af, '0', dotd->au);
 	if (dotd->bu > dotd->au && dotd->au >= dotd->lu)
 		dot_u2_3(dotd, obj);
 	else if (dotd->cpybu > dotd->au && dotd->au > dotd->lu)

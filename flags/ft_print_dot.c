@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 23:58:43 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 22:28:30 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,7 @@ void	ft_printdot_di(const char *str, t_obj *obj)
 	else if (str[-1] == '-' || str[1] == '-')
 		dot_d5(&dotd, obj);
 	else if (dotd.a == 0 && dotd.b == 0 && ft_atoi(dotd.s) > 0)
-	{
-		ft_putchars(dotd.s, obj);
-		free(dotd.af);
-		free(dotd.bf);
-	}
+		dot_d8(&dotd, obj);
 	else if (dotd.a >= dotd.b)
 		dot_d6(&dotd, obj);
 	else if (dotd.a < dotd.b)
@@ -56,6 +52,13 @@ void	dot_s_2(t_dot *dots, t_obj *obj)
 	}
 }
 
+void	dot_s_3(t_dot *dots, t_obj *obj)
+{
+	if (dots->a != 0 && dots->b > dots->l)
+		ft_memcpy(dots->bf, dots->s, dots->b - dots->l, dots->l);
+	ft_putchars(dots->bf, obj);
+}
+
 void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 {
 	if (dots->a <= dots->l)
@@ -70,11 +73,7 @@ void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 		ft_putchars(dots->af, obj);
 	}
 	else if (dots->a < dots->b)
-	{
-		if (dots->a != 0 && dots->b > dots->l)
-			ft_memcpy(dots->bf, dots->s, dots->b - dots->l, dots->l);
-		ft_putchars(dots->bf, obj);
-	}
+		dot_s_3(dots, obj);
 	else if (dots->a > dots->b && dots->a > dots->l && dots->l > 0)
 		ft_putchars(dots->s, obj);
 	else if (dots->l > 0)
@@ -84,7 +83,6 @@ void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 	}
 	else
 		ft_putchars(dots->bf, obj);
-	
 }
 
 void	ft_printdot_s(const char *str, t_obj *obj)

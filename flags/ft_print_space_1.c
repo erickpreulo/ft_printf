@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 21:05:30 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:28:18 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 23:31:03 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,13 @@ void	ft_printspace(t_obj *obj)
 	}
 	else
 		ft_putchars(s, obj);
+}
+
+void	spahex(t_obj *obj)
+{
+	ft_memset(obj->buff, ' ', obj->size);
+	ft_memcpy(obj->buff, obj->hex, obj->size - obj->counthex,
+		obj->counthex);
+	ft_neg(obj->buff);
+	ft_putchars(obj->buff, obj);
 }

@@ -6,11 +6,20 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:19:09 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 23:43:26 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 23:32:33 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	dot_milagre(t_dot *dotd)
+{
+	ft_negdi(dotd->af);
+	dotd->neg = ft_newstr(dotd->au);
+	ft_memcpynegstay(dotd->neg, dotd->af, dotd->au);
+	ft_memcpy(dotd->bf, dotd->neg, 0, dotd->au);
+	free(dotd->neg);
+}
 
 void	dot_x5_1(t_dot *dotd, t_obj *obj)
 {
@@ -18,13 +27,7 @@ void	dot_x5_1(t_dot *dotd, t_obj *obj)
 	{
 		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
 		if (ft_isneg(dotd->s))
-		{
-			ft_negdi(dotd->af);
-			dotd->neg = ft_newstr(dotd->au);
-			ft_memcpynegstay(dotd->neg, dotd->af, dotd->au);
-			ft_memcpy(dotd->bf, dotd->neg, 0, dotd->au);
-			free(dotd->neg);
-		}
+			dot_milagre(dotd);
 		else
 			ft_memcpy(dotd->bf, dotd->af, 0, dotd->au);
 		ft_putchars(dotd->bf, obj);
@@ -62,7 +65,6 @@ void	dot_x5(t_dot *dotd, t_obj *obj)
 		ft_putchars(dotd->s, obj);
 	free(dotd->bf);
 	free(dotd->af);
-	
 }
 
 void	dot_u5_1(t_dot *dotd, t_obj *obj)
@@ -71,13 +73,7 @@ void	dot_u5_1(t_dot *dotd, t_obj *obj)
 	{
 		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
 		if (ft_isneg(dotd->s))
-		{
-			ft_negdi(dotd->af);
-			dotd->neg = ft_newstr(dotd->au);
-			ft_memcpynegstay(dotd->neg, dotd->af, dotd->au);
-			ft_memcpy(dotd->bf, dotd->neg, 0, dotd->au);
-			free(dotd->neg);
-		}
+			dot_milagre(dotd);
 		else
 			ft_memcpy(dotd->bf, dotd->af, 0, dotd->au);
 		ft_putchars(dotd->bf, obj);

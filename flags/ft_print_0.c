@@ -35,7 +35,7 @@ void	ft_print0(t_obj *obj)
 
 void	ft_print0pc(t_obj *obj)
 {
-	char *buff;
+	char	*buff;
 
 	if (obj->size > 1)
 	{

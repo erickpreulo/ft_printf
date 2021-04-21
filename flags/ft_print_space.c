@@ -107,13 +107,7 @@ void	ft_printspacehexp(char *hex, t_obj *obj)
 		}
 	}
 	else
-	{
-		ft_memset(obj->buff, ' ', obj->size);
-		ft_memcpy(obj->buff, obj->hex, obj->size - obj->counthex,
-			obj->counthex);
-		ft_neg(obj->buff);
-		ft_putchars(obj->buff, obj);
-	}
+		spahex(obj);
 	free(obj->buff);
 	free(obj->hex);
 }

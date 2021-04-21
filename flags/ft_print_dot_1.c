@@ -6,11 +6,18 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:20:44 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 23:48:46 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 22:28:34 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	dot_u8(t_dot *dotd, t_obj *obj)
+{
+	ft_putchars(dotd->s, obj);
+	free(dotd->bf);
+	free(dotd->af);
+}
 
 void	ft_printdot_u(const char *str, t_obj *obj)
 {
@@ -29,16 +36,25 @@ void	ft_printdot_u(const char *str, t_obj *obj)
 	else if (str[-1] == '-')
 		dot_u5(&dotd, obj);
 	else if (dotd.au == 0 && dotd.bu == 0 && ft_atoi(dotd.s) > 0)
-	{
-		ft_putchars(dotd.s, obj);
-		free(dotd.bf);
-		free(dotd.af);
-	}
+		dot_u8(&dotd, obj);
 	else if (dotd.au >= dotd.bu)
 		dot_u6(&dotd, obj);
 	else if (dotd.au < dotd.bu)
 		dot_u7(&dotd, obj);
 	free(dotd.s);
+}
+
+void	dot_x8(t_dot *dotd, t_obj *obj)
+{
+	ft_putchars(dotd->s, obj);
+	free(dotd->af);
+	free(dotd->bf);
+}
+
+void	dot_x9(t_dot *dotd)
+{
+	free(dotd->af);
+	free(dotd->bf);
 }
 
 void	ft_printdot_hex(const char *str, t_obj *obj, char *hex)
@@ -62,15 +78,8 @@ void	ft_printdot_hex(const char *str, t_obj *obj, char *hex)
 	else if (dotd.au < dotd.bu && (dotd.au >= dotd.lu || dotd.bu >= dotd.lu))
 		dot_x7(&dotd, obj);
 	else if (dotd.arg > 0)
-	{
-		ft_putchars(dotd.s, obj);
-		free(dotd.af);
-		free(dotd.bf);
-	}
+		dot_x8(&dotd, obj);
 	else
-	{
-		free(dotd.af);
-		free(dotd.bf);
-	}
+		dot_x9(&dotd);
 	free(obj->hex);
 }

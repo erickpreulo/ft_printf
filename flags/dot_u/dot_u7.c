@@ -47,7 +47,7 @@ void	dot_u7(t_dot *dotd, t_obj *obj)
 		if (ft_findless(dotd->buff))
 			ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
 		else
-			ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);	
+			ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
 	}
 	else if (ft_isneg(dotd->s))
 		ft_negdi(dotd->bf);

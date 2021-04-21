@@ -56,3 +56,10 @@ void	dot_x7(t_dot *dotd, t_obj *obj)
 	free(dotd->af);
 	free(dotd->bf);
 }
+
+void	dot_d8(t_dot *dotd, t_obj *obj)
+{
+	ft_putchars(dotd->s, obj);
+	free(dotd->af);
+	free(dotd->bf);
+}

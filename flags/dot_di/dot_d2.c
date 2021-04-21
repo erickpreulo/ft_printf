@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/20 20:32:45 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 22:42:52 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ void	dot_d2_2(t_dot *dotd)
 	if (dotd->a < 0)
 	{
 		dotd->cpya *= dotd->a;
-		if (!(ft_isneg(dotd->s)))
-			dotd->af = ft_newstr(dotd->cpya);
-		else
-		{
-			dotd->af = ft_newstr(dotd->cpya + 1);
+		if ((ft_isneg(dotd->s)))
 			dotd->cpya += 1;
-		}
+		dotd->af = ft_newstr(dotd->cpya);
+		ft_memset(dotd->af, '0', dotd->cpya);
 	}
 	else
 	{
@@ -31,9 +28,10 @@ void	dot_d2_2(t_dot *dotd)
 			dotd->af = ft_newstr(dotd->a);
 		else
 		{
-			dotd->af = ft_newstr(dotd->a + 1);
 			dotd->a += 1;
+			dotd->af = ft_newstr(dotd->a + 1);
 		}
+		ft_memset(dotd->af, '0', dotd->a);
 	}
 }
 
@@ -71,7 +69,6 @@ void	dot_d2(t_dot *dotd, t_obj *obj)
 {
 	dot_d2_1(dotd);
 	dot_d2_2(dotd);
-	ft_memset(dotd->af, '0', dotd->a);
 	if (dotd->b > dotd->a && dotd->a > dotd->l)
 		dot_d2_3(dotd, obj);
 	else if (dotd->cpyb > dotd->a && dotd->a > dotd->l)

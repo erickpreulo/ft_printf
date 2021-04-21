@@ -6,11 +6,37 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 19:10:18 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/15 15:38:47 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 23:52:56 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	get_size(int n)
+{
+	int		size;
+
+	size = 0;
+	while (n)
+	{
+		n /= 10;
+		size++;
+	}
+	return (size);
+}
+
+int	get_sizeu(unsigned int n)
+{
+	int		size;
+
+	size = 0;
+	while (n)
+	{
+		n /= 10;
+		size++;
+	}
+	return (size);
+}
 
 char	*ft_itoa(int n)
 {
@@ -19,17 +45,10 @@ char	*ft_itoa(int n)
 	size_t	size;
 
 	nbr = n;
-	if (n > 0)
-		size = 0;
-	else
-		size = 1;
+	size = !(n > 0);
 	if (nbr < 0)
 		nbr = -nbr;
-	while (n)
-	{
-		n /= 10;
-		size++;
-	}
+	size += get_size(n);
 	str = ft_newstr(size);
 	str[size--] = '\0';
 	while (nbr > 0)
@@ -51,13 +70,8 @@ char	*ft_itoap(unsigned int n)
 	size_t	size;
 
 	nbr = n;
-	size = n > 0 ? 0 : 1;
-	nbr = nbr > 0 ? nbr : -nbr;
-	while (n)
-	{
-		n /= 10;
-		size++;
-	}
+	size = !(n > 0);
+	size += get_sizeu(n);
 	str = ft_newstr(size);
 	str[size--] = '\0';
 	while (nbr > 0)

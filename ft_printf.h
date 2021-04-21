@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/20 20:33:18 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 23:28:42 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,20 @@ typedef struct s_dot
 
 typedef struct s_obj
 {
-	int			printedhex;
-	char		*hex;
-	int			counthex;
-	int			printed;
-	va_list		ap;
-	int			sequence;
-	int			sizes;
-	int			size;
-	int			i;
-	char		*buff;
-	char		cpy;
+	int				printedhex;
+	char			*hex;
+	int				counthex;
+	int				printed;
+	va_list			ap;
+	int				sequence;
+	int				sizes;
+	int				size;
+	int				i;
+	char			*buff;
+	char			cpy;
 	unsigned int	hexleng;
 	unsigned int	unsig;
-	int			trash;
+	int				trash;
 }				t_obj;
 
 int		ft_printf(const char *str, ...);
@@ -126,6 +126,7 @@ void	ft_printspacec(char s, t_obj *obj);
 void	ft_printspacehex(char *str, t_obj *obj);
 void	ft_printspacehexp(char *hex, t_obj *obj);
 void	ft_printspaceu(t_obj *obj);
+void	spahex(t_obj *obj);
 
 void	ft_printendspacec(char s, t_obj *obj);
 void	ft_printendspace(t_obj *obj);
@@ -146,14 +147,18 @@ void	dot_d2_6(t_dot *dotd, t_obj *obj);
 void	dot_d3(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_d3_1(t_dot *dotd);
 void	dot_d3_2_1(t_dot *dotd, t_obj *obj, const char *str);
+void	dot_d3_5(t_dot *dotd, t_obj *obj);
 void	dot_d4(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_d5(t_dot *dotd, t_obj *obj);
 void	dot_d6(t_dot *dotd, t_obj *obj);
 void	dot_d7(t_dot *dotd, t_obj *obj);
+void	dot_d8(t_dot *dotd, t_obj *obj);
 
 void	dot_u1(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_u2(t_dot *dotd, t_obj *obj);
 void	dot_u2_1(t_dot *dotd);
+void	dot_u2_6(t_dot *dotd, t_obj *obj);
+void	dot_u2_2(t_dot *dotd);
 void	dot_u3(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_u3_1(t_dot *dotd);
 void	dot_u3_2_1(t_dot *dotd, t_obj *obj, const char *str);
@@ -181,5 +186,6 @@ void	ft_printas_p(t_obj *obj, char *hex, const char *str);
 
 void	as_d(t_as *asd, const char *str, t_obj *obj);
 void	as_p(t_as *asd, const char *str, t_obj *obj);
+void	as_s1(t_as *ass);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:51:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/19 16:02:31 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/21 17:47:42 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,11 @@ void	dot_x3_4(t_dot *dotd, t_obj *obj, const char *str)
 		dotd->af = ft_strlen_afdot(str, dotd->s);
 		dotd->au = ft_strlen(dotd->af);
 		dot_x3_3(dotd, obj, str);
+		free(dotd->af);
 	}
 	else if (dotd->cpybu > dotd->lu)
 	{
-		if (dotd->buff[-2] == '-')
-			ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
-		else
-			ft_memcpy(dotd->bf, dotd->s, dotd->cpybu - dotd->lu, dotd->lu);
+		ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
 		ft_putchars(dotd->bf, obj);
 	}
 	else
@@ -95,6 +93,7 @@ void	dot_x3(t_dot *dotd, t_obj *obj, const char *str)
 			dotd->af = ft_strlen_afdot(str, dotd->s);
 			dotd->au = ft_strlen(dotd->af);
 			dot_x3_2(dotd, obj, str);
+			free(dotd->af);
 		}
 		else if (dotd->bu > dotd->lu)
 		{
@@ -110,5 +109,4 @@ void	dot_x3(t_dot *dotd, t_obj *obj, const char *str)
 	else
 		dot_x3_4(dotd, obj, str);
 	free(dotd->bf);
-	free(dotd->af);
 }
