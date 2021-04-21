@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 23:24:02 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/20 20:33:18 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ void	ft_printdot_u(const char *str, t_obj *obj);
 void	dot_d1(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_d2(t_dot *dotd, t_obj *obj);
 void	dot_d2_1(t_dot *dotd);
+void	dot_d2_6(t_dot *dotd, t_obj *obj);
 void	dot_d3(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_d3_1(t_dot *dotd);
 void	dot_d3_2_1(t_dot *dotd, t_obj *obj, const char *str);

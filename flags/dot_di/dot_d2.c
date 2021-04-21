@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 17:19:34 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/20 20:32:45 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,7 @@ void	dot_d2(t_dot *dotd, t_obj *obj)
 		ft_putchars(dotd->bf, obj);
 	}
 	else if (dotd->a > dotd->l)
-	{
-		ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
-		if (ft_isneg(dotd->s))
-			ft_neg(dotd->af);
-		ft_putchars(dotd->af, obj);
-	}
+		dot_d2_6(dotd, obj);
 	else
 		ft_putchars(dotd->s, obj);
 	free(dotd->af);
