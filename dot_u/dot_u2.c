@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/24 17:46:47 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/24 19:47:00 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,19 @@ void	dot_u2_5(t_dot *dotd, t_obj *obj)
 	ft_putchars(dotd->bf, obj);
 }
 
+void	dot_cpyau(t_dot *dotd, t_obj *obj)
+{
+	ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
+	ft_putchars(dotd->bf, obj);
+}
+
 void	dot_u2(t_dot *dotd, t_obj *obj)
 {
+	dot_u2_1(dotd);
 	if (dotd->bu > dotd->au && dotd->au >= dotd->lu)
 		dot_u2_3(dotd, obj);
+	else if (dotd->cpyau > 0 && dotd->cpybu > dotd->lu)
+		dot_cpyau(dotd, obj);
 	else if (dotd->cpybu > dotd->au && dotd->au >= dotd->lu)
 		dot_u2_4(dotd, obj);
 	else if (dotd->bu > dotd->lu && dotd->au < dotd->lu)
