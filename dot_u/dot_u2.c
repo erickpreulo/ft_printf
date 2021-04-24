@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 23:18:28 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/24 17:46:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	dot_u2_2(t_dot *dotd)
 			dotd->af = ft_newstr(dotd->cpyau + 1);
 			dotd->cpyau += 1;
 		}
+		ft_memset(dotd->af, '0', dotd->cpyau);
 	}
 	else
 	{
@@ -34,6 +35,7 @@ void	dot_u2_2(t_dot *dotd)
 			dotd->af = ft_newstr(dotd->au + 1);
 			dotd->au += 1;
 		}
+		ft_memset(dotd->af, '0', dotd->au);
 	}
 }
 
@@ -69,10 +71,9 @@ void	dot_u2_5(t_dot *dotd, t_obj *obj)
 
 void	dot_u2(t_dot *dotd, t_obj *obj)
 {
-	dot_u2_1(dotd);
 	if (dotd->bu > dotd->au && dotd->au >= dotd->lu)
 		dot_u2_3(dotd, obj);
-	else if (dotd->cpybu > dotd->au && dotd->au > dotd->lu)
+	else if (dotd->cpybu > dotd->au && dotd->au >= dotd->lu)
 		dot_u2_4(dotd, obj);
 	else if (dotd->bu > dotd->lu && dotd->au < dotd->lu)
 		dot_u2_5(dotd, obj);
