@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/24 19:53:24 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/25 07:27:43 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	dot_d2_2(t_dot *dotd)
 		else
 		{
 			dotd->a += 1;
-			dotd->af = ft_newstr(dotd->a + 1);
+			dotd->af = ft_newstr(dotd->a);
 		}
 		ft_memset(dotd->af, '0', dotd->a);
 	}

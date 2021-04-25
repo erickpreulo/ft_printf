@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 23:30:42 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/25 09:24:48 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,18 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 		ft_putchars(ass->buff, obj);
 	else if (ass->i > 0)
 	{
-		if (ass->i > ass->size)
+		if (obj->trash < 0)
+		{
+			ft_memcpy(ass->buff, ass->s, ass->i - ass->size, ass->size);
 			ft_putchars(ass->buff, obj);
-		ft_putchars(ass->s, obj);
+		}
+		else if (ass->i > ass->size)
+		{
+			ft_putchars(ass->buff, obj);
+			ft_putchars(ass->s, obj);
+		}
+		else
+			ft_putchars(ass->s, obj);
 	}
 }
 
