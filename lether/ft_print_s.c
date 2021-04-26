@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:09:04 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 19:26:35 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 15:09:01 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	prints(const char *str, t_obj *obj)
 {
-	if (str[0] == '*' || (str[0] != 's' && str[1] == '*'))
+	if (str[0] == '*' || (str[0] != 's' && str[1] == '*') || str[2] == '*')
 		ft_printas_s(obj, str);
 	else if (ft_strlen_find_dot(str) && str[0] != '*')
 		ft_printdot_s(str, obj);
