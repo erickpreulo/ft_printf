@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/26 16:21:24 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:28:58 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	as_s2(t_as *ass, t_obj *obj, const char *str)
 {
-	if ((str[0] >= '0' && str[0] >= '9') || (str[1] >= '0' && str[1] >= '9'))
+	if ((str[0] >= '0' && str[0] <= '9') || (str[1] >= '0' && str[1] <= '9'))
 	{
 		obj->trash = ft_atoi(str);
 		ass->buff = ft_newstr(obj->trash);
