@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:12:49 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 10:53:37 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 21:58:14 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	printp(const char *str, t_obj *obj)
 		obj->size *= -1;
 	if ((str[-1] == '-') && (str[0] >= '0' && str[0] <= '9'))
 		ft_printendspacehexp("0123456789abcdef", obj);
-	else if (str[0] == '*' || str[1] == '*' || str[2] == '*')
+	else if (ft_find_as(str))
 		ft_printas_p(obj, "0123456789abcdef", str);
 	else if (str[0] >= '1' && str[0] <= '9')
 		ft_printspacehexp("0123456789abcdef", obj);

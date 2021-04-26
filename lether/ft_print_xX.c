@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:12:14 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 10:35:14 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 21:58:37 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	printX(const char *str, t_obj *obj)
 {
 	if (ft_strlen_find_dot(str))
 		ft_printdot_hex(str, obj, "0123456789ABCDEF");
-	else if (str[0] == '*' || str[1] == '*' || str[2] == '*')
+	else if (ft_find_as(str))
 		ft_printas_x(obj, "0123456789ABCDEF", str);
 	else if (str[-1] == '-')
 		ft_printendspacehex("0123456789ABCDEF", obj);

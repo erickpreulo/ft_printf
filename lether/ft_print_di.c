@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:10:00 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 20:24:24 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 21:58:43 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	printdi(const char *str, t_obj *obj)
 {
 	if (ft_strlen_find_dot(str))
 		ft_printdot_di(str, obj);
-	else if (str[0] == '*' || str[1] == '*' || str[2] == '*')
+	else if (ft_find_as(str))
 		ft_printas_di(obj, str);
 	else if (str[-1] == '-')
 		ft_printendspace(obj);

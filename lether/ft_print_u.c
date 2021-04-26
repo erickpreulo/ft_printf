@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:10:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:40:49 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 21:58:34 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	printu(const char *str, t_obj *obj)
 
 	if (ft_strlen_find_dot(str))
 		ft_printdot_u(str, obj);
-	else if (str[0] == '*' || str[1] == '*' || str[2] == '*')
+	else if (ft_find_as(str))
 		ft_printas_u(obj, str);
 	else if (str[-1] == '-' && str[0] != '*')
 		ft_printendspaceu(obj);

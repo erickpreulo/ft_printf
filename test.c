@@ -2,6 +2,6 @@
 
 int     main()
 {
-    ft_printf("meu |%20.*s|\n", 3, "erick");
-    printf("    |%20.*s|\n", 3, "erick");
+    ft_printf("meu |%-100.*s|\n", 1, "erick");
+    printf("    |%-100.*s|\n", 1, "erick");
 }

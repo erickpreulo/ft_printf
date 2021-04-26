@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:04:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/14 20:40:11 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 21:58:40 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	printc(const char *str, t_obj *obj)
 {
 	char	c;
 
-	if (str[0] == '*' || (str[0] != 'c' && str[1] == '*'))
+	if (ft_find_as(str))
 		ft_printas_c(obj, str);
 	else
 		c = (char)va_arg(obj->ap, int);
