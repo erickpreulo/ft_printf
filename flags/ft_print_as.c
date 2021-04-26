@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/26 15:49:56 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:21:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	as_s2(t_as *ass, t_obj *obj, const char *str)
 {
-	if (str[0] >= '0' && str[0] >= '9')
+	if ((str[0] >= '0' && str[0] >= '9') || (str[1] >= '0' && str[1] >= '9'))
 	{
 		obj->trash = ft_atoi(str);
 		ass->buff = ft_newstr(obj->trash);
@@ -103,8 +103,6 @@ void	as_s3_0(const char *str, t_as *ass, t_obj *obj)
 
 void	as_s3(t_as *ass, const char *str, t_obj *obj)
 {
-	while (str[obj->i] != '.')
-		obj->i++;
 	ass->a = ft_atoi(&str[obj->i + 1]);
 	if (ass->i == 0)
 		ft_putchars(ass->buff, obj);
@@ -130,11 +128,12 @@ void	ft_printas_s(t_obj *obj, const char *str)
 {
 	t_as	ass;
 
+	while (str[obj->i] != '.')
+		obj->i++;
 	ass.i = va_arg(obj->ap, int);
 	if (ft_strlen_find_dot(str) && str[0] != '.'
 		&& (str[2] == '*' || str[3] == '*')
-		&& ((str[0] <= '0' && str[0] >= '9')
-		|| (str[1] <= '0' && str[1] >= '9')))
+		&& (str[obj->i - 1] < '0' || str[obj->i - 1] > '9'))
 		obj->trash = va_arg(obj->ap, int);
 	ass.s = va_arg(obj->ap, char *);
 	if (ass.s == NULL)
