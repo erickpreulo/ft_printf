@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/26 15:37:14 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 21:44:42 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_printas_c(t_obj *obj, const char *str)
 void	as_s1(t_as *ass, t_obj *obj, const char *str)
 {
 	ass->cpy *= ass->i;
-	if (str[0] >= '0' && str[0] >= '9')
+	if (str[obj->i - 1] >= '0' && str[obj->i - 1] <= '9')
 	{
 		obj->trash = ft_atoi(str);
 		ass->buff = ft_newstr(obj->trash);

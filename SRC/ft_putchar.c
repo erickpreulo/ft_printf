@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:05:53 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/16 19:10:45 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 21:28:15 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,18 @@ void	ft_putchars(char *s, t_obj *obj)
 		ft_putchar(s[i], obj);
 		i++;
 	}
+}
+
+int		ft_find_as(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '*')
+			return (1);
+		i++;
+	}
+	return (0);
 }

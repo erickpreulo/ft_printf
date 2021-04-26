@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/26 15:37:52 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 21:29:15 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		ft_strlen(const char *str);
 void	ft_strlen_hex(int nbr, char *base, t_obj *obj);
 int		ft_strlen_nrb(const char *str);
 int		ft_strlen_find_dot(const char *str);
+int		ft_find_as(const char *str);
 char	*ft_strlen_afdot(const char *str, char *s);
 char	*ft_strlen_afdotdi(const char *str);
 char	*ft_strlen_bfdot(const char *str);
