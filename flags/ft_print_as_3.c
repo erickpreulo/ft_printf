@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 22:20:18 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 12:10:05 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,28 @@ void	as_s1(t_as *ass)
 	ass->cpy *= ass->i;
 	if (ass->cpy > ass->size)
 	{
-		ass->buff = ft_newstr(ass->cpy - ass->size);
-		ft_memset(ass->buff, ' ', ass->cpy - ass->size);
+		ass->buff = ft_newstr(ass->cpy);
+		ft_memset(ass->buff, ' ', ass->cpy);
 	}
 	else
 	{
 		ass->buff = ft_newstr(ass->size);
 		ft_memset(ass->buff, ' ', ass->size);
 	}
+}
+
+void	as_s3_3(t_as *ass, t_obj *obj)
+{
+	if (obj->trash < 0)
+	{
+		ft_memcpy(ass->buff, ass->s, ass->i - ass->size, ass->size);
+		ft_putchars(ass->buff, obj);
+	}
+	else if (ass->i > ass->size)
+	{
+		ft_memcpy(ass->buff, ass->s, ass->i - ass->size, ass->size);
+		ft_putchars(ass->buff, obj);
+	}
+	else
+		ft_putchars(ass->s, obj);
 }

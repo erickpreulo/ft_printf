@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 23:28:42 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 12:10:01 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_as
 	int		size;
 	char	*af;
 	int		a;
+	int		trashcpy;
 }				t_as;
 
 typedef struct s_dot
@@ -187,5 +188,6 @@ void	ft_printas_p(t_obj *obj, char *hex, const char *str);
 void	as_d(t_as *asd, const char *str, t_obj *obj);
 void	as_p(t_as *asd, const char *str, t_obj *obj);
 void	as_s1(t_as *ass);
+void	as_s3_3(t_as *ass, t_obj *obj);
 
 #endif

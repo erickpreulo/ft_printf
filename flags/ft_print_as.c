@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/25 09:24:48 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/26 12:10:26 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	as_s2(t_as *ass, const char *str, t_obj *obj)
 		}
 		else
 		{
-			ass->buff = ft_newstr(ass->i - ass->size);
-			ft_memset(ass->buff, ' ', ass->i - ass->size);
+			ass->buff = ft_newstr(ass->i);
+			ft_memset(ass->buff, ' ', ass->i);
 		}
 	}
 	else
@@ -59,7 +59,7 @@ void	as_s3_2(t_as *ass, t_obj *obj)
 		if (obj->trash < ass->size && obj->trash >= 0)
 			ft_memcpy(ass->buff, ass->s, 0, obj->trash);
 		else
-			ft_putchars(ass->s, obj);
+			ft_memcpy(ass->buff, ass->s, 0, ass->size);
 		ft_putchars(ass->buff, obj);
 	}
 	else
@@ -86,20 +86,7 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 	else if (str[2] == 's' || str[2] == '0')
 		ft_putchars(ass->buff, obj);
 	else if (ass->i > 0)
-	{
-		if (obj->trash < 0)
-		{
-			ft_memcpy(ass->buff, ass->s, ass->i - ass->size, ass->size);
-			ft_putchars(ass->buff, obj);
-		}
-		else if (ass->i > ass->size)
-		{
-			ft_putchars(ass->buff, obj);
-			ft_putchars(ass->s, obj);
-		}
-		else
-			ft_putchars(ass->s, obj);
-	}
+		as_s3_3(ass, obj);
 }
 
 void	ft_printas_s(t_obj *obj, const char *str)
