@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/24 15:25:29 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 18:19:10 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	reset_obj(t_obj *obj)
 	obj->counthex = 0;
 	obj->hexleng = 0;
 	obj->i = 0;
-	obj->trash = 100000;
+	obj->trash = 9999999;
 }
 
 static void	init_obj(t_obj *obj)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/25 07:06:39 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 15:51:59 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,18 @@ void	dot_u2_4(t_dot *dotd, t_obj *obj)
 
 void	dot_u2_5(t_dot *dotd, t_obj *obj)
 {
-	if (ft_findless(dotd->buff))
+	if (dotd->af[0] == '\0' && (dotd->s[0] == '0' && dotd->s[1] == '\0'))
+		ft_putchars(dotd->bf, obj);
+	else if (ft_findless(dotd->buff))
+	{
 		ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
+		ft_putchars(dotd->bf, obj);
+	}
 	else
+	{
 		ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
-	ft_putchars(dotd->bf, obj);
+		ft_putchars(dotd->bf, obj);
+	}
 }
 
 void	dot_u2(t_dot *dotd, t_obj *obj)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:16:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 23:31:43 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 18:31:57 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,13 @@ void	d4_1(t_dot *dotd, t_obj *obj, const char *str)
 	dotd->b = ft_strlen(dotd->bf);
 	if (ft_findless(dotd->buff))
 		d4_1_1(dotd, obj);
-	else if (dotd->a >= dotd->b && dotd->a > dotd->l)
+	else if (dotd->a < 0 && dotd->b > dotd->l && str[0] == '0')
+	{
+		ft_memset(dotd->bf, '0', dotd->b);
+		ft_memcpy(dotd->bf, dotd->s, dotd->b - dotd->l, dotd->l);
+		ft_putchars(dotd->bf, obj);
+	}
+	else if (dotd->a >= dotd->b && dotd->a >= dotd->l)
 	{
 		ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
 		ft_neg(dotd->af);
@@ -56,7 +62,7 @@ void	d4_1(t_dot *dotd, t_obj *obj, const char *str)
 	}
 	else if ((dotd->b > dotd->a && dotd->a > dotd->l) || (dotd->b > dotd->cpya))
 		d4_1_2(dotd, obj);
-	else
+	else if (dotd->s[0] != '0' && dotd->s[0] != '\0')
 		ft_putchars(dotd->s, obj);
 	free(dotd->bf);
 }
@@ -88,6 +94,8 @@ void	dot_d4(t_dot *dotd, t_obj *obj, const char *str)
 	}
 	if (dotd->buff[-1] >= '0' && dotd->buff[-1] <= '9')
 		d4_1(dotd, obj, str);
+	else if (dotd->s[0] == '0' && dotd->s[1] == '\0' && dotd->a == 0)
+		ft_putchars(dotd->af, obj);
 	else if ((dotd->a > dotd->l || dotd->cpya > dotd->l)
 		&& (dotd->buff[-1] <= '0' || dotd->buff[-1] >= '9'))
 		d4_2(dotd, obj);

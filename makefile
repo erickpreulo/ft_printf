@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 18:12:13 by egomes            #+#    #+#              #
-#    Updated: 2021/04/24 17:12:18 by egomes           ###   ########.fr        #
+#    Updated: 2021/04/29 15:55:07 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ AR = ar rc
 RANLIB = ranlib
 
 .c.o:
-			$(CC)  $(CFLAGS) $(INCLUD) -c $< -o $(<:.c=.o)
+			@$(CC)  $(CFLAGS) $(INCLUD) -c $< -o $(<:.c=.o)
 
 OBJ = $(SRC:.c=.o)
 

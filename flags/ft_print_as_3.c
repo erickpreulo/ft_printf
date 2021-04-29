@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/26 21:59:00 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 18:41:07 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ void	ft_printas_u(t_obj *obj, const char *str)
 	asd.i = va_arg(obj->ap, int);
 	asd.s = ft_itoap(va_arg(obj->ap, unsigned int));
 	asd.size = ft_strlen(asd.s);
+	asd.cpy = -1;
 	asd.cpy *= asd.i;
 	if (asd.i >= asd.size)
 		as_d(&asd, str, obj);
+	else if (asd.cpy >= asd.size)
+		as_d2(&asd, str, obj);
 	else
 		ft_putchars(asd.s, obj);
 	free(asd.s);
@@ -70,16 +73,10 @@ void	ft_printas_c(t_obj *obj, const char *str)
 	free(asc.buff);
 }
 
-void	as_s1(t_as *ass, t_obj *obj, const char *str)
+void	as_s1(t_as *ass)
 {
 	ass->cpy *= ass->i;
-	if (str[obj->i - 1] >= '0' && str[obj->i - 1] <= '9')
-	{
-		obj->trash = ft_atoi(str);
-		ass->buff = ft_newstr(obj->trash);
-		ft_memset(ass->buff, ' ', obj->trash);
-	}
-	else if (ass->cpy > ass->size)
+	if (ass->cpy > ass->size)
 	{
 		ass->buff = ft_newstr(ass->cpy);
 		ft_memset(ass->buff, ' ', ass->cpy);
@@ -93,12 +90,7 @@ void	as_s1(t_as *ass, t_obj *obj, const char *str)
 
 void	as_s3_3(t_as *ass, t_obj *obj)
 {
-	if (obj->trash < 0)
-	{
-		ft_memcpy(ass->buff, ass->s, ass->i - ass->size, ass->size);
-		ft_putchars(ass->buff, obj);
-	}
-	else if (ass->i > ass->size)
+	if (ass->i > ass->size || obj->trash < 0)
 	{
 		ft_memcpy(ass->buff, ass->s, ass->i - ass->size, ass->size);
 		ft_putchars(ass->buff, obj);

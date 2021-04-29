@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:51:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 17:47:42 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 15:53:40 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	dot_x3_2(t_dot *dotd, t_obj *obj, const char *str)
 {
-	if (dotd->au >= dotd->bu && dotd->au > dotd->lu)
+	if (dotd->af[0] == '\0' && (dotd->s[0] == '0' && dotd->s[1] == '\0'))
+		ft_putchars(dotd->bf, obj);
+	else if (dotd->au >= dotd->bu && dotd->au > dotd->lu)
 	{
 		ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
 		ft_neg(dotd->af);

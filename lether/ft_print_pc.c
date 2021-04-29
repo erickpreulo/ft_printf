@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:04:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 23:33:35 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 15:45:50 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	printpc(const char *str, t_obj *obj)
 		ft_printspacec(c, obj);
 	else if (str[0] == '0')
 		ft_print0pc(obj);
-	else if (str[0] == '%')
+	else
 		ft_putchar(c, obj);
 }

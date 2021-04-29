@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/25 07:27:43 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 18:36:34 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,18 @@ void	dot_d2_4(t_dot *dotd, t_obj *obj)
 
 void	dot_d2_5(t_dot *dotd, t_obj *obj)
 {
-	if (ft_findless(dotd->buff))
+	if (dotd->af[0] == '\0' && (dotd->s[0] == '0' && dotd->s[1] == '\0'))
+		ft_putchars(dotd->bf, obj);
+	else if (ft_findless(dotd->buff))
+	{
 		ft_memcpy(dotd->bf, dotd->s, 0, dotd->l);
+		ft_putchars(dotd->bf, obj);
+	}
 	else
+	{
 		ft_memcpy(dotd->bf, dotd->s, dotd->b - dotd->l, dotd->l);
-	ft_putchars(dotd->bf, obj);
+		ft_putchars(dotd->bf, obj);
+	}
 }
 
 void	dot_d2(t_dot *dotd, t_obj *obj)
@@ -71,7 +78,7 @@ void	dot_d2(t_dot *dotd, t_obj *obj)
 	dot_d2_2(dotd);
 	if (dotd->b > dotd->a && dotd->a > dotd->l)
 		dot_d2_3(dotd, obj);
-	else if (dotd->cpyb > dotd->a && dotd->a > dotd->l)
+	else if (dotd->cpyb > dotd->a && dotd->a >= dotd->l)
 		dot_d2_4(dotd, obj);
 	else if (dotd->b > dotd->l && dotd->a < dotd->l)
 		dot_d2_5(dotd, obj);

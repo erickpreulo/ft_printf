@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 22:28:30 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 16:56:36 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 	}
 	else if (dots->a < dots->b)
 		dot_s_3(dots, obj);
-	else if (dots->a > dots->b && dots->a > dots->l && dots->l > 0)
-		ft_putchars(dots->s, obj);
-	else if (dots->l > 0)
+	else if (dots->l > 0 && dots->b > dots->l)
 	{
 		ft_memcpy(dots->bf, dots->s, dots->b - dots->l, dots->l);
 		ft_putchars(dots->bf, obj);
 	}
+	else if (dots->a > dots->b && dots->a > dots->l && dots->l > 0)
+		ft_putchars(dots->s, obj);
 	else
 		ft_putchars(dots->bf, obj);
 }

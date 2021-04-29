@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:05:53 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/26 21:58:55 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 17:23:01 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,23 @@ void	ft_putchars(char *s, t_obj *obj)
 	}
 }
 
-int		ft_find_as(const char *str)
+int	as_find_lether(char c)
 {
-	int i;
+	int		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (LETRAS[i] != '0')
+		if (c == LETRAS[i++])
+			return (0);
+	return (1);
+}
+
+int	ft_find_as(const char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0' && as_find_lether(str[i]))
 	{
 		if (str[i] == '*')
 			return (1);

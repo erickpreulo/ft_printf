@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:04:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/26 21:58:40 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 17:24:51 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	printc(const char *str, t_obj *obj)
 		ft_printendspacec(c, obj);
 	else if (str[0] >= '1' && str[0] <= '9')
 		ft_printspacec(c, obj);
-	else if (str[0] == 'c')
+	else if (str[0] == 'c' || (str[0] == '.' && str[1] == 'c'))
 		ft_putchar(c, obj);
 }

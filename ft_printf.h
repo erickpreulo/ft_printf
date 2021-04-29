@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/26 21:59:01 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 19:03:13 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdint.h>
 # include <limits.h>
 
+# define LETRAS  "csdiupxX"
+
 typedef struct s_as
 {
 	char	c;
@@ -27,6 +29,7 @@ typedef struct s_as
 	char	*buff;
 	int		cpy;
 	char	*s;
+	char	*bf;
 	int		size;
 	char	*af;
 	int		a;
@@ -95,12 +98,13 @@ int		ft_strlen(const char *str);
 void	ft_strlen_hex(int nbr, char *base, t_obj *obj);
 int		ft_strlen_nrb(const char *str);
 int		ft_strlen_find_dot(const char *str);
-int		ft_find_as(const char *str);
 char	*ft_strlen_afdot(const char *str, char *s);
 char	*ft_strlen_afdotdi(const char *str);
 char	*ft_strlen_bfdot(const char *str);
 void	ft_leng_hexs(unsigned long nbr, t_obj *obj);
 int		ft_findless(const char *str);
+int		ft_find_as(const char *str);
+int		as_find_lether(char c);
 int		ft_atoi(const char *str);
 int		ft_atoiu(const char *str);
 char	*ft_newstr(size_t size);
@@ -188,8 +192,9 @@ void	ft_printas_x(t_obj *obj, char *hex, const char *str);
 void	ft_printas_p(t_obj *obj, char *hex, const char *str);
 
 void	as_d(t_as *asd, const char *str, t_obj *obj);
+void	as_d2(t_as *asd, const char *str, t_obj *obj);
 void	as_p(t_as *asd, const char *str, t_obj *obj);
-void	as_s1(t_as *ass, t_obj *obj, const char *str);
+void	as_s1(t_as *ass);
 void	as_s3_3(t_as *ass, t_obj *obj);
 
 #endif
