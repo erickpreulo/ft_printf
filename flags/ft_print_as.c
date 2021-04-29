@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/29 19:12:27 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/29 23:25:56 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,67 @@ void	as_s3_2(t_as *ass, t_obj *obj, const char *str)
 		ft_putchars(ass->s, obj);
 }
 
+void	as_s3_4(t_as *ass, t_obj *obj, const char *str)
+{
+	int i;
+
+	ass->bf = ft_strlen_bfdot(str);
+	ass->b = ft_strlen(ass->bf);
+	if (ass->b > ass->i && ass-> i > ass->size)
+	{
+		if (ft_findless(str))
+			ft_memcpy(ass->bf, ass->s, 0, ass->size);
+		else
+			ft_memcpy(ass->bf, ass->s, ass->b - ass->size, ass->size);
+		ft_putchars(ass->bf, obj);
+	}
+	else if (ass->cpy > 0)
+	{
+		if (ft_findless(str))
+		{
+			ft_memcpy(ass->bf, ass->s, 0, ass->size);
+			ft_putchars(ass->bf, obj);
+		}
+		else if (ass->b > ass->cpy)
+		{
+			ft_memcpy(ass->bf, ass->s, ass->b - ass->size, ass->size);
+			ft_putchars(ass->bf, obj);
+		}
+		else
+			ft_putchars(ass->s, obj);
+	}
+	else if (ass->b > ass->i && ass->i < ass->size)
+	{
+		if (ft_findless(str))
+			ft_memcpy(ass->bf, ass->s, 0, ass->i);
+		else
+			ft_memcpy(ass->bf, ass->s, ass->b - ass->i, ass->i);
+		ft_putchars(ass->bf, obj);
+	}
+	else if (ass->b < ass->i && ass->i > ass->size)
+	{
+		if (ass->b > ass->size)
+		{
+			if (ft_findless(str))
+				ft_memcpy(ass->bf, ass->s, 0, ass->size);
+			else
+				ft_memcpy(ass->bf, ass->s, ass->b - ass->size, ass->size);
+			ft_putchars(ass->bf, obj);
+		}
+		else
+			ft_putchars(ass->s, obj);
+	}
+	else if (ass->b < ass->i && ass->i < ass->size)
+	{
+		i = 0;
+		while (i < ass->i)
+			ft_putchar(ass->s[i++], obj);
+	}
+	free(ass->bf);
+}
 
 void	as_s3(t_as *ass, const char *str, t_obj *obj)
 {
-	while (str[obj->i] != '.' && as_find_lether(str[obj->i]))
-		obj->i++;
 	if (str[obj->i + 1] >= '0' && str[obj->i + 1] <= '9')
 		obj->trash = ft_atoi(&str[obj->i + 1]);
 	if (ass->i == 0 && str[0] == '.')
@@ -88,10 +144,10 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 		ft_putchars(ass->s, obj);
 	else if (str[1] == '*')
 		as_s3_1(ass, obj);
+	else if (str[obj->i - 1] >= '0' && str[obj->i - 1] <= '9')
+		as_s3_4(ass, obj, str);
 	else if (str[-1] == '-' || ass->cpy > 0)
 		as_s3_2(ass, obj, str);
-	//else if (str[obj->i - 1] >= '0' && str[obj->i - 1] <= '9')
-	//	as_s3_4(ass, obj, str);
 	else if ((obj->trash < ass->size) &&
 	str[1] == '.' && ((str[obj->i + 1] >= '0' &&
 	str[obj->i + 1] <= '9') ||
@@ -110,9 +166,11 @@ void	ft_printas_s(t_obj *obj, const char *str)
 {
 	t_as	ass;
 
+	while (str[obj->i] != '.' && as_find_lether(str[obj->i]))
+		obj->i++;
 	ass.i = va_arg(obj->ap, int);
-	if (ft_strlen_find_dot(str) && str[0] != '.'
-		&& ft_find_as(&str[2]))
+	if (str[obj->i] == '.' && str[obj->i - 1] == '*'
+		&& ft_find_as(&str[obj->i]))
 		obj->trash = va_arg(obj->ap, int);
 	ass.s = va_arg(obj->ap, char *);
 	if (ass.s == NULL)
