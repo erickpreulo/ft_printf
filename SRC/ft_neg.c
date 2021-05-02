@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 22:03:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/25 07:22:32 by egomes           ###   ########.fr       */
+/*   Updated: 2021/04/30 10:01:48 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,15 @@ int	ft_findless(const char *str)
 		i--;
 	}
 	return (0);
+}
+
+char	*ft_newstr(size_t size)
+{
+	char	*str;
+
+	str = malloc((size + 1) * sizeof(char));
+	if (!(str))
+		return (NULL);
+	str[size] = '\0';
+	return (str);
 }
