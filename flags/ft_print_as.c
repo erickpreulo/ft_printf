@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/29 23:25:56 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/03 15:16:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	as_s3_1(t_as *ass, t_obj *obj)
 
 void	as_s3_2(t_as *ass, t_obj *obj, const char *str)
 {
-	if (obj->trash < ass->size && ass->i > ass->size &&
-	(str[obj->i + 1] >= '0' && str[obj->i + 1] <= '9'))
+	if (obj->trash < ass->size && ass->i > ass->size
+		&& (str[obj->i + 1] >= '0' && str[obj->i + 1] <= '9'))
 	{
 		if (ft_find_as(&str[2]))
 			ft_memcpy(ass->buff, ass->s, 0, obj->trash);
@@ -75,65 +75,6 @@ void	as_s3_2(t_as *ass, t_obj *obj, const char *str)
 		ft_putchars(ass->s, obj);
 }
 
-void	as_s3_4(t_as *ass, t_obj *obj, const char *str)
-{
-	int i;
-
-	ass->bf = ft_strlen_bfdot(str);
-	ass->b = ft_strlen(ass->bf);
-	if (ass->b > ass->i && ass-> i > ass->size)
-	{
-		if (ft_findless(str))
-			ft_memcpy(ass->bf, ass->s, 0, ass->size);
-		else
-			ft_memcpy(ass->bf, ass->s, ass->b - ass->size, ass->size);
-		ft_putchars(ass->bf, obj);
-	}
-	else if (ass->cpy > 0)
-	{
-		if (ft_findless(str))
-		{
-			ft_memcpy(ass->bf, ass->s, 0, ass->size);
-			ft_putchars(ass->bf, obj);
-		}
-		else if (ass->b > ass->cpy)
-		{
-			ft_memcpy(ass->bf, ass->s, ass->b - ass->size, ass->size);
-			ft_putchars(ass->bf, obj);
-		}
-		else
-			ft_putchars(ass->s, obj);
-	}
-	else if (ass->b > ass->i && ass->i < ass->size)
-	{
-		if (ft_findless(str))
-			ft_memcpy(ass->bf, ass->s, 0, ass->i);
-		else
-			ft_memcpy(ass->bf, ass->s, ass->b - ass->i, ass->i);
-		ft_putchars(ass->bf, obj);
-	}
-	else if (ass->b < ass->i && ass->i > ass->size)
-	{
-		if (ass->b > ass->size)
-		{
-			if (ft_findless(str))
-				ft_memcpy(ass->bf, ass->s, 0, ass->size);
-			else
-				ft_memcpy(ass->bf, ass->s, ass->b - ass->size, ass->size);
-			ft_putchars(ass->bf, obj);
-		}
-		else
-			ft_putchars(ass->s, obj);
-	}
-	else if (ass->b < ass->i && ass->i < ass->size)
-	{
-		i = 0;
-		while (i < ass->i)
-			ft_putchar(ass->s[i++], obj);
-	}
-	free(ass->bf);
-}
-
 void	as_s3(t_as *ass, const char *str, t_obj *obj)
 {
 	if (str[obj->i + 1] >= '0' && str[obj->i + 1] <= '9')
@@ -148,10 +89,9 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 		as_s3_4(ass, obj, str);
 	else if (str[-1] == '-' || ass->cpy > 0)
 		as_s3_2(ass, obj, str);
-	else if ((obj->trash < ass->size) &&
-	str[1] == '.' && ((str[obj->i + 1] >= '0' &&
-	str[obj->i + 1] <= '9') ||
-		ft_find_as(&str[2])))
+	else if ((obj->trash < ass->size) && str[1] == '.'
+		&& ((str[obj->i + 1] >= '0' && str[obj->i + 1] <= '9')
+			|| ft_find_as(&str[2])))
 	{
 		ft_memcpy(ass->buff, ass->s, 0, obj->trash);
 		ft_putchars(ass->buff, obj);

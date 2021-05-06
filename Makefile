@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 18:12:13 by egomes            #+#    #+#              #
-#    Updated: 2021/04/30 10:30:07 by egomes           ###   ########.fr        #
+#    Updated: 2021/05/06 13:50:42 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = ft_printf.c SRC/ft_putchar.c SRC/ft_strlen.c SRC/ft_putnbr.c \
 		dot_u/dot_u4.c dot_u/dot_u5.c dot_u/dot_u6.c \
 		dot_di/dot_d1.c dot_di/dot_d2.c \
 		dot_di/dot_d3.c dot_di/dot_d3_1.c dot_di/dot_d4.c \
-		dot_di/dot_d5.c dot_di/dot_d6.c \
+		dot_di/dot_d5.c dot_di/dot_d6.c flags/ft_print_as_4.c \
 		flags/ft_print_as.c flags/ft_print_as_1.c flags/ft_print_as_2.c \
 		flags/ft_print_as_3.c lether/ft_print.c lether/ft_print_x.c \
 		flags/ft_print_end_space_1.c flags/ft_print_space_1.c
@@ -33,9 +33,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-AR = ar rc
-
-RANLIB = ranlib
+AR = ar rcs
 
 .c.o:
 			@$(CC)  $(CFLAGS) $(INCLUD) -c $< -o $(<:.c=.o)
@@ -44,7 +42,6 @@ OBJ = $(SRC:.c=.o)
 
 $(NAME):	$(OBJ)
 			@$(AR) $(NAME) $(OBJ)
-			@$(RANLIB) $(NAME)
 			
 all:		$(NAME)
 
@@ -53,7 +50,9 @@ test:	re
 		./a.out
 
 clean:
-	@rm -f $(OBJ) ./a.out
+		${shell find . -type f -name "*.o" -delete}
+##		${wildcard */*.o}	
+##	rm -f $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)

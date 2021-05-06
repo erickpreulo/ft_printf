@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/29 19:03:13 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/03 15:23:10 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_as
 {
 	char	c;
 	int		i;
+	int		j;
 	char	*buff;
 	int		cpy;
 	char	*s;
@@ -196,5 +197,6 @@ void	as_d2(t_as *asd, const char *str, t_obj *obj);
 void	as_p(t_as *asd, const char *str, t_obj *obj);
 void	as_s1(t_as *ass);
 void	as_s3_3(t_as *ass, t_obj *obj);
+void	as_s3_4(t_as *ass, t_obj *obj, const char *str);
 
 #endif
