@@ -6,13 +6,13 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 18:12:13 by egomes            #+#    #+#              #
-#    Updated: 2021/05/06 13:50:42 by egomes           ###   ########.fr        #
+#    Updated: 2021/05/12 15:54:05 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ft_printf.c SRC/ft_putchar.c SRC/ft_strlen.c SRC/ft_putnbr.c \
-		SRC/ft_atoi.c SRC/ft_memcpy.c \
-		SRC/ft_itoa.c SRC/ft_neg.c flags/ft_print_0.c flags/ft_print_space.c \
+SRC = ft_printf.c srcs/ft_putchar.c srcs/ft_strlen.c srcs/ft_putnbr.c \
+		srcs/ft_atoi.c srcs/ft_memcpy.c \
+		srcs/ft_itoa.c srcs/ft_neg.c flags/ft_print_0.c flags/ft_print_space.c \
 		flags/ft_print_end_space.c flags/ft_print_dot.c flags/ft_print_dot_1.c \
 		dot_x/dot_x1.c dot_x/dot_x2.c dot_x/dot_x3.c \
 		dot_x/dot_x3_1.c dot_x/dot_x7.c dot_u/dot_u1.c \
@@ -27,7 +27,7 @@ SRC = ft_printf.c SRC/ft_putchar.c SRC/ft_strlen.c SRC/ft_putnbr.c \
 
 NAME = libftprintf.a
 
-INCLUD = -I .
+INCLUD = -Iincludes
 
 CC = gcc
 
@@ -46,12 +46,12 @@ $(NAME):	$(OBJ)
 all:		$(NAME)
 
 test:	re
-		@$(CC) $(CFLAGS) test.c $(NAME) -fsanitize=address -g
+		@$(CC) test.c $(NAME) -fsanitize=address -g
 		./a.out
 
 clean:
 		${shell find . -type f -name "*.o" -delete}
-##		${wildcard */*.o}	
+##		${wildcard */*.o}
 ##	rm -f $(OBJ)
 
 fclean: clean

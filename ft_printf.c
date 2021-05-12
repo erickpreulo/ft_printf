@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/29 18:19:10 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/12 16:41:07 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	reset_obj(t_obj *obj)
 	obj->hexleng = 0;
 	obj->i = 0;
 	obj->trash = 9999999;
+	obj->size = 0;
+	obj->sizes = 0;
 }
 
 static void	init_obj(t_obj *obj)
@@ -36,20 +38,23 @@ void	print(const char *str, t_obj *obj)
 	obj->size = ft_atoi(str);
 	if (str[nbrsize] == 'c')
 		printc(str, obj);
-	if (str[nbrsize] == 's')
+	else if (str[nbrsize] == 's')
 		prints(str, obj);
-	if (str[nbrsize] == 'd' || str[nbrsize] == 'i')
+	else if (str[nbrsize] == 'd' || str[nbrsize] == 'i')
 		printdi(str, obj);
-	if (str[nbrsize] == 'u')
+	else if (str[nbrsize] == 'u')
 		printu(str, obj);
-	if (str[nbrsize] == 'x')
+	else if (str[nbrsize] == 'x')
 		printx(str, obj);
-	if (str[nbrsize] == 'X')
+	else if (str[nbrsize] == 'X')
 		printX(str, obj);
-	if (str[nbrsize] == 'p')
+	else if (str[nbrsize] == 'p')
 		printp(str, obj);
-	if (str[nbrsize] == '%')
+	else if (str[nbrsize] == '%')
 		printpc(str, obj);
+	else if (str[nbrsize == '\n'])
+		ft_putchar('\n', obj);
+	
 }
 
 int	ft_printf(const char *str, ...)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:11:25 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/30 10:23:42 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/12 16:37:46 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	printx(const char *str, t_obj *obj)
 	else if (str[0] >= '1' && str[0] <= '9')
 		ft_printspacehex("0123456789abcdef", obj);
 	else if (str[0] == 'x')
-		ft_putnbr_hex(va_arg(obj->ap, unsigned long), "0123456789abcdef", obj);
+		ft_putnbr_hex(va_arg(obj->ap, unsigned int), "0123456789abcdef", obj);
 }
 
 void	printX(const char *str, t_obj *obj)
@@ -41,7 +41,7 @@ void	printX(const char *str, t_obj *obj)
 	else if (str[0] >= '1' && str[0] <= '9')
 		ft_printspacehex("0123456789ABCDEF", obj);
 	else if (str[0] == 'X')
-		ft_putnbr_hex(va_arg(obj->ap, unsigned long), "0123456789ABCDEF", obj);
+		ft_putnbr_hex(va_arg(obj->ap, unsigned int), "0123456789ABCDEF", obj);
 }
 
 void	printpc(const char *str, t_obj *obj)
