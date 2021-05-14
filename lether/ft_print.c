@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:04:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/12 16:32:29 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/14 17:13:53 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void	printc(const char *str, t_obj *obj)
 {
-	char	c;
+	t_as	asc;
 
-	c = '%';
 	if (ft_find_as(str))
-		ft_printas_c(obj, str);
+		ft_printas_c(&asc, obj, str);
 	else
-		c = (char)va_arg(obj->ap, int);
+		asc.c = (char)va_arg(obj->ap, int);
 	if ((ft_findless(str)) && (str[0] >= '0' && str[0] <= '9'))
-		ft_printendspacec(c, obj);
+		ft_printendspacec(asc.c, obj);
 	else if (str[0] >= '1' && str[0] <= '9')
-		ft_printspacec(c, obj);
-	else
-		ft_putchar(c, obj);
+		ft_printspacec(asc.c, obj);
+	else if (!(ft_find_as(str)))
+		ft_putchar(asc.c, obj);
 }
 
 void	printdi(const char *str, t_obj *obj)

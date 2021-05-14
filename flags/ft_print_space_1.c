@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 21:05:30 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 23:31:03 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/13 21:49:29 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	ft_printspace(t_obj *obj)
 		free(s);
 	}
 	else
+	{
 		ft_putchars(s, obj);
+		free(s);
+	}
 }
 
 void	spahex(t_obj *obj)

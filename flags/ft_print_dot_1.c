@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:20:44 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 22:28:34 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/14 16:29:13 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_printdot_u(const char *str, t_obj *obj)
 		dotd.buff++;
 	dot_u1(&dotd, obj, str);
 	if (dotd.buff[-1] == '*' && dotd.buff[1] == '*')
-		dot_u2(&dotd, obj);
+		dot_u2(&dotd, obj, str);
 	else if (dotd.buff[-1] == '*')
 		dot_u3(&dotd, obj, str);
 	else if (dotd.buff[1] == '*')
@@ -66,7 +66,7 @@ void	ft_printdot_hex(const char *str, t_obj *obj, char *hex)
 		dotd.buff++;
 	dot_x1(&dotd, obj, str, hex);
 	if (dotd.buff[-1] == '*' && dotd.buff[1] == '*')
-		dot_x2(&dotd, obj);
+		dot_x2(&dotd, obj, str);
 	else if (dotd.buff[-1] == '*')
 		dot_x3(&dotd, obj, str);
 	else if (dotd.buff[1] == '*')

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/29 18:41:07 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/14 17:13:02 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,25 @@ void	as_c(t_as *asc)
 	}
 }
 
-void	ft_printas_c(t_obj *obj, const char *str)
+void	ft_printas_c(t_as *asc, t_obj *obj, const char *str)
 {
-	t_as	asc;
-
-	asc.cpy = -1;
-	asc.i = va_arg(obj->ap, int);
-	asc.c = (char)(va_arg(obj->ap, int));
-	as_c(&asc);
-	if (asc.i == 0)
-		ft_putchar(asc.c, obj);
-	else if (str[-1] == '-' || asc.cpy > 0)
+	asc->cpy = -1;
+	asc->i = va_arg(obj->ap, int);
+	asc->c = (char)(va_arg(obj->ap, int));
+	as_c(asc);
+	if (asc->i == 0)
+		ft_putchar(asc->c, obj);
+	else if (str[-1] == '-' || asc->cpy > 0)
 	{
-		ft_putchar(asc.c, obj);
-		ft_putchars(asc.buff, obj);
+		ft_putchar(asc->c, obj);
+		ft_putchars(asc->buff, obj);
 	}
-	else if (asc.i > 0)
+	else if (asc->i > 0)
 	{
-		ft_putchars(asc.buff, obj);
-		ft_putchar(asc.c, obj);
+		ft_putchars(asc->buff, obj);
+		ft_putchar(asc->c, obj);
 	}
-	free(asc.buff);
+	free(asc->buff);
 }
 
 void	as_s1(t_as *ass)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/29 15:51:59 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/14 16:29:36 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	dot_u2_3(t_dot *dotd, t_obj *obj)
 	ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
 	if (ft_isneg(dotd->s))
 		ft_neg(dotd->af);
-	if (ft_findless(dotd->buff))
+	if (ft_findless(dotd->buff) || dotd->au < 0)
 		ft_memcpy(dotd->bf, dotd->af, 0, dotd->au);
 	else
 		ft_memcpy(dotd->bf, dotd->af, dotd->bu - dotd->au, dotd->au);
@@ -76,16 +76,18 @@ void	dot_u2_5(t_dot *dotd, t_obj *obj)
 	}
 }
 
-void	dot_u2(t_dot *dotd, t_obj *obj)
+void	dot_u2(t_dot *dotd, t_obj *obj, const char *str)
 {
-	dot_u2_1(dotd);
+	dot_u2_1(dotd, str);
 	if (dotd->bu > dotd->au && dotd->au >= dotd->lu)
 		dot_u2_3(dotd, obj);
 	else if (dotd->cpybu > dotd->au && dotd->au >= dotd->lu)
 		dot_u2_4(dotd, obj);
 	else if (dotd->bu > dotd->lu && dotd->au < dotd->lu)
 		dot_u2_5(dotd, obj);
-	else if (dotd->cpybu > dotd->lu && dotd->au < dotd->lu)
+	else if (dotd->au == 0 && dotd->s[0] == '0')
+		ft_putchars(dotd->bf, obj);
+	else if (dotd->cpybu >= dotd->lu && dotd->au <= dotd->lu)
 	{
 		ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
 		ft_putchars(dotd->bf, obj);

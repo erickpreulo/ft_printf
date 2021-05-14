@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 18:12:13 by egomes            #+#    #+#              #
-#    Updated: 2021/05/12 15:54:05 by egomes           ###   ########.fr        #
+#    Updated: 2021/05/13 19:22:04 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC = ft_printf.c srcs/ft_putchar.c srcs/ft_strlen.c srcs/ft_putnbr.c \
 
 NAME = libftprintf.a
 
-INCLUD = -Iincludes
+INCLUD = -I .
 
 CC = gcc
 

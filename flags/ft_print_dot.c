@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/03 15:33:41 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/14 17:23:20 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	ft_printdot_di(const char *str, t_obj *obj)
 		dotd.buff++;
 	dot_d1(&dotd, obj, str);
 	if (dotd.buff[-1] == '*' && dotd.buff[1] == '*')
-		dot_d2(&dotd, obj);
+		dot_d2(&dotd, obj, str);
 	else if (dotd.buff[-1] == '*')
 		dot_d3(&dotd, obj, str);
 	else if (dotd.buff[1] == '*')
 		dot_d4(&dotd, obj, str);
-	else if (str[-1] == '-' || str[1] == '-')
+	else if (ft_findless(str))
 		dot_d5(&dotd, obj);
 	else if (dotd.a == 0 && dotd.b == 0 && ft_atoi(dotd.s) > 0)
 		dot_d8(&dotd, obj);

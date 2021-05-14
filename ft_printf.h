@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/12 16:32:25 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/14 17:09:14 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,8 @@ void	ft_printdot_hex(const char *str, t_obj *obj, char *hex);
 void	ft_printdot_u(const char *str, t_obj *obj);
 
 void	dot_d1(t_dot *dotd, t_obj *obj, const char *str);
-void	dot_d2(t_dot *dotd, t_obj *obj);
-void	dot_d2_1(t_dot *dotd);
+void	dot_d2(t_dot *dotd, t_obj *obj, const char *str);
+void	dot_d2_1(t_dot *dotd, const char *str);
 void	dot_d2_6(t_dot *dotd, t_obj *obj);
 void	dot_d3(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_d3_1(t_dot *dotd);
@@ -163,8 +163,8 @@ void	dot_d7(t_dot *dotd, t_obj *obj);
 void	dot_d8(t_dot *dotd, t_obj *obj);
 
 void	dot_u1(t_dot *dotd, t_obj *obj, const char *str);
-void	dot_u2(t_dot *dotd, t_obj *obj);
-void	dot_u2_1(t_dot *dotd);
+void	dot_u2(t_dot *dotd, t_obj *obj, const char *str);
+void	dot_u2_1(t_dot *dotd, const char *str);
 void	dot_u2_6(t_dot *dotd, t_obj *obj);
 void	dot_u2_2(t_dot *dotd);
 void	dot_u3(t_dot *dotd, t_obj *obj, const char *str);
@@ -176,8 +176,8 @@ void	dot_u6(t_dot *dotd, t_obj *obj);
 void	dot_u7(t_dot *dotd, t_obj *obj);
 
 void	dot_x1(t_dot *dotd, t_obj *obj, const char *str, char *hex);
-void	dot_x2(t_dot *dotd, t_obj *obj);
-void	dot_x2_1(t_dot *dotd);
+void	dot_x2(t_dot *dotd, t_obj *obj, const char *str);
+void	dot_x2_1(t_dot *dotd, const char *str);
 void	dot_x3(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_x3_1(t_dot *dotd);
 void	dot_x3_2_1(t_dot *dotd, t_obj *obj, const char *str);
@@ -185,7 +185,7 @@ void	dot_x5(t_dot *dotd, t_obj *obj);
 void	dot_x6(t_dot *dotd, t_obj *obj);
 void	dot_x7(t_dot *dotd, t_obj *obj);
 
-void	ft_printas_c(t_obj *obj, const char *str);
+void	ft_printas_c(t_as *asc, t_obj *obj, const char *str);
 void	ft_printas_s(t_obj *obj, const char *str);
 void	ft_printas_di(t_obj *obj, const char *str);
 void	ft_printas_u(t_obj *obj, const char *str);

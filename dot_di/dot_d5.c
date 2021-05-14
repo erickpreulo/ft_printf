@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:19:09 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/21 22:59:46 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/13 22:23:39 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	dot_d5_1(t_dot *dotd, t_obj *obj)
 {
 	if (dotd->a != 0 && dotd->a > dotd->l)
 		dot_d5_1_1(dotd, obj);
-	else if (dotd->b <= dotd->l)
+	else if (dotd->b < dotd->l)
 		ft_putchars(dotd->s, obj);
 	else if (ft_atoi(dotd->s) == 0)
 		ft_putchars(dotd->bf, obj);

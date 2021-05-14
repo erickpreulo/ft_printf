@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 08:14:52 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/17 23:36:01 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/14 16:31:06 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	dot_x1(t_dot *dotd, t_obj *obj, const char *str, char *hex)
 	dotd->lu = obj->counthex;
 }
 
-void	dot_x2_1(t_dot *dotd)
+void	dot_x2_1(t_dot *dotd, const char *str)
 {
 	if (dotd->bu < 0)
 	{
@@ -68,6 +68,9 @@ void	dot_x2_1(t_dot *dotd)
 	else
 	{
 		dotd->bf = ft_newstr(dotd->bu);
-		ft_memset(dotd->bf, ' ', dotd->bu);
+		if (str[0] == '0' && dotd->au < 0)
+			ft_memset(dotd->bf, '0', dotd->bu);
+		else
+			ft_memset(dotd->bf, ' ', dotd->bu);
 	}
 }
