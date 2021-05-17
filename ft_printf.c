@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/12 16:41:07 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/17 21:43:05 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	ft_printf(const char *str, ...)
 		if (obj.cpy == '%')
 		{
 			obj.sequence += 1;
-			if (str[obj.sequence] == '-')
+			if (str[obj.sequence] == '-' && str[obj.sequence + 1] != '-')
 				print(&str[obj.sequence + 1], &obj);
 			else
 				print(&str[obj.sequence], &obj);

@@ -2,8 +2,8 @@
 
 int main()
 {
-	ft_printf("|%0-8.5d|\n", -42);
-	printf("|%0-8.5d|\n", -42);
+	ft_printf("|%--39.115i|\n", 1917290799);
+	printf("|%--39.115i|\n", 1917290799);
 	/*int		a = -4;
 	int		b = 0;
 	char	c = 'a';

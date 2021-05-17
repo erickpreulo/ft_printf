@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 18:12:13 by egomes            #+#    #+#              #
-#    Updated: 2021/05/13 19:22:04 by egomes           ###   ########.fr        #
+#    Updated: 2021/05/17 15:55:49 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,6 @@ clean:
 ##	rm -f $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) ./a.out
 
 re: fclean all
