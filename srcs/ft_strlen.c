@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:18:38 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/17 21:35:28 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/17 22:17:11 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,15 @@ int	ft_strlen_find_dot(const char *str)
 char	*ft_strlen_bfdot(const char *str)
 {
 	char	*buff;
+	int i;
+	int r;
 
-	if (str[0] == '0' && str[1] == '-')
-	{
-		buff = ft_newstr(ft_atoi(&str[2]));
-		ft_memset(buff, ' ', ft_atoi(&str[2]));
-	}
-	else
-	{
-		buff = ft_newstr(ft_atoi(str));
-		ft_memset(buff, ' ', ft_atoi(str));
-	}
+	i = 0;
+	while (str[i] == '0' ||  str[i] == '-')
+		i++;
+	r = ft_atoi(&str[i]);
+	buff = ft_newstr(r);
+	ft_memset(buff, ' ', r);
 	return (buff);
 }
 

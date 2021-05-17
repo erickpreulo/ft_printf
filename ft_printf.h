@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/17 10:36:25 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/17 22:09:05 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_dot
 
 typedef struct s_obj
 {
+	int				nbrsize;
 	int				printedhex;
 	char			*hex;
 	int				counthex;
