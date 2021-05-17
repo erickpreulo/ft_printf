@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:26:42 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/17 10:51:49 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/17 13:03:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	dot_d7(t_dot *dotd, t_obj *obj)
 	else if (dotd->a <= dotd->l && dotd->b >= dotd->l)
 	{
 		if (ft_findless(dotd->buff))
-			ft_memcpy(dotd->bf, dotd->af, 0, dotd->l);
+			ft_memcpy(dotd->bf, dotd->s, 0, dotd->l);
 		else
 			ft_memcpy(dotd->bf, dotd->s, dotd->b - dotd->l, dotd->l);
 	}
