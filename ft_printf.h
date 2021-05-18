@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/17 22:09:05 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/18 13:10:35 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	ft_neg(char *str);
 void	ft_negdi(char *str);
 int		ft_isneg(char *str);
 void	ft_negdot(char *str);
+int		jump(const char *str);
 
 void	ft_print0(t_obj *obj);
 void	ft_print0hex(char *str, t_obj *obj);
