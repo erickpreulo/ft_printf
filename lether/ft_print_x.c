@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:11:25 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 14:39:25 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/18 15:39:07 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ void	printX(const char *str, t_obj *obj)
 		ft_putnbr_hex(va_arg(obj->ap, unsigned int), "0123456789ABCDEF", obj);
 }
 
-void	printpc(t_obj *obj)
+void	printpc(const char *str, t_obj *obj)
 {
 	char	c;
 
 	c = '%';
-	/*if (ft_findless(str) && (str[0] >= '0' && str[0] <= '9'))
+	if (ft_findless(str) && (str[0] >= '0' && str[0] <= '9'))
 		ft_printendspacec(c, obj);
 	else if (str[0] >= '1' && str[0] <= '9')
 		ft_printspacec(c, obj);
 	else if (str[0] == '0')
 		ft_print0pc(obj);
-	else*/
-	ft_putchar(c, obj);
+	else
+		ft_putchar(c, obj);
 }

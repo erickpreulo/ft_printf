@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 14:50:48 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/18 15:39:15 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	printu(const char *str, t_obj *obj);
 void	printx(const char *str, t_obj *obj);
 void	printX(const char *str, t_obj *obj);
 void	printp(const char *str, t_obj *obj);
-void	printpc(t_obj *obj);
+void	printpc(const char *str, t_obj *obj);
 
 void	ft_putchar(char c, t_obj *obj);
 void	ft_putchars(char *s, t_obj *obj);
