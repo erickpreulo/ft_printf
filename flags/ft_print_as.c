@@ -6,37 +6,16 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/03 15:16:16 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 11:16:45 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	as_s2(t_as *ass, const char *str, t_obj *obj)
+void	as_s2(t_as *ass)
 {
-	if (str[2] == 's' || str[2] == '0')
-	{
-		ass->buff = ft_newstr(ass->i);
-		ft_memset(ass->buff, ' ', ass->i);
-	}
-	else if (ass->i > (ass->size + 1))
-	{
-		if (obj->trash < ass->size)
-		{
-			ass->buff = ft_newstr(ass->i);
-			ft_memset(ass->buff, ' ', ass->i);
-		}
-		else
-		{
-			ass->buff = ft_newstr(ass->i);
-			ft_memset(ass->buff, ' ', ass->i);
-		}
-	}
-	else
-	{
-		ass->buff = ft_newstr(ass->i);
-		ft_memset(ass->buff, ' ', ass->i);
-	}
+	ass->buff = ft_newstr(ass->i);
+	ft_memset(ass->buff, ' ', ass->i);
 }
 
 void	as_s3_1(t_as *ass, t_obj *obj)
@@ -57,11 +36,19 @@ void	as_s3_2(t_as *ass, t_obj *obj, const char *str)
 	if (obj->trash < ass->size && ass->i > ass->size
 		&& (str[obj->i + 1] >= '0' && str[obj->i + 1] <= '9'))
 	{
-		if (ft_find_as(&str[2]))
+		if (obj->trash < 0)
+			ft_putchars(ass->s, obj);
+		else if (ft_find_as(&str[2]))
+		{
 			ft_memcpy(ass->buff, ass->s, 0, obj->trash);
+			ft_putchars(ass->buff, obj);
+		}
 		else
+		{
 			ft_memcpy(ass->buff, ass->s, 0, obj->trash);
-		ft_putchars(ass->buff, obj);
+			ft_putchars(ass->buff, obj);
+		}
+		
 	}
 	else if (ass->cpy >= ass->size || ass->i >= ass->size)
 	{
@@ -70,6 +57,18 @@ void	as_s3_2(t_as *ass, t_obj *obj, const char *str)
 		else
 			ft_memcpy(ass->buff, ass->s, 0, ass->size);
 		ft_putchars(ass->buff, obj);
+	}
+	else if (ass->cpy < ass->size && obj->trash >= 0)
+	{
+		if (obj->trash <= ass->size)
+		{
+			ft_memcpy(ass->buff, ass->s, 0, obj->trash);
+			ft_putchars(ass->buff, obj);
+		}
+		else if (obj->trash > ass->size)
+			ft_putchars(ass->s, obj);
+		else
+			ft_putchars(ass->buff, obj);		
 	}
 	else
 		ft_putchars(ass->s, obj);
@@ -81,7 +80,7 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 		obj->trash = ft_atoi(&str[obj->i + 1]);
 	if (ass->i == 0 && str[0] == '.')
 		ft_putchars(ass->buff, obj);
-	else if (ass->i == 0 && !(ft_find_as(&str[2])))
+	else if (ass->i == 0 && (ft_find_as(&str[2])) && obj->trash > ass->size)
 		ft_putchars(ass->s, obj);
 	else if (str[1] == '*')
 		as_s3_1(ass, obj);
@@ -93,8 +92,26 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 		&& ((str[obj->i + 1] >= '0' && str[obj->i + 1] <= '9')
 			|| ft_find_as(&str[2])))
 	{
-		ft_memcpy(ass->buff, ass->s, 0, obj->trash);
-		ft_putchars(ass->buff, obj);
+		if (ass->i >= ass->size && obj->trash < 0)
+		{
+			ft_memcpy(ass->buff, ass->s, ass->i - ass->size, ass->size);
+			ft_putchars(ass->buff, obj);
+		}
+		else if (obj->trash < 0)
+			ft_putchars(ass->s, obj);
+		else if (obj->trash > ass->i)
+		{
+			ft_memcpy(ass->buff, ass->s, 0, obj->trash);
+			ft_putchars(ass->buff, obj);
+		}
+		else
+		{
+			if (ass->i >= obj->trash && obj->trash < ass->size)
+				ft_memcpy(ass->buff, ass->s, ass->i - obj->trash, obj->trash);
+			else if (ass->i >= ass->size)
+				ft_memcpy(ass->buff, ass->s, ass->i - ass->size, ass->size);
+			ft_putchars(ass->buff, obj);
+		}
 	}
 	else if (str[2] == 's' || str[2] == '0')
 		ft_putchars(ass->buff, obj);
@@ -118,9 +135,9 @@ void	ft_printas_s(t_obj *obj, const char *str)
 	ass.cpy = -1;
 	ass.size = ft_strlen(ass.s);
 	if (ass.i < 0)
-		as_s1(&ass);
+		as_s1(&ass, obj);
 	else if (ass.i >= 0)
-		as_s2(&ass, str, obj);
+		as_s2(&ass);
 	as_s3(&ass, str, obj);
 	free(ass.buff);
 }

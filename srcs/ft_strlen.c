@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:18:38 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 13:10:37 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 13:18:07 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_strlen_bfdot(const char *str)
 	return (buff);
 }
 
-char	*ft_strlen_afdot(const char *str, char *s)
+char	*ft_strlen_afdot(const char *str, char *s, t_obj *obj)
 {
 	char	*buff;
 	int		i;
@@ -69,13 +69,13 @@ char	*ft_strlen_afdot(const char *str, char *s)
 		if (str[i] == '.')
 		{
 			i++;
-			if (s[0] == '-')
+			if (s[0] == '-' && str[obj->nbrsize] != 's')
 			{
 				buff = ft_newstr(ft_atoi(&str[i]) + 1);
 				ft_memset(buff, '0', (ft_atoi(&str[i]) + 1));
 			}	
 			else
-			{				
+			{		
 				buff = ft_newstr(ft_atoi(&str[i]));
 				ft_memset(buff, '0', (ft_atoi(&str[i])));
 			}	

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:04:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 13:01:57 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/18 15:52:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	printp(const char *str, t_obj *obj)
 	{
 		ft_putchar('0', obj);
 		ft_putchar('x', obj);
-		if (!(ft_strlen_find_dot(str)))
+		if (!(ft_strlen_find_dot(&str[0])))
 			ft_putnbr_hex(va_arg(obj->ap, unsigned long),
 				"0123456789abcdef", obj);
 	}

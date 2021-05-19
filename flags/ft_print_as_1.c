@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:29:33 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/14 17:02:52 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/18 16:41:30 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	as_d_1(t_as *asd, const char *str)
 	{
 		ft_memset(asd->buff, '0', asd->i);
 		ft_memcpy(asd->buff, asd->s, asd->i - asd->size, asd->size);
-		ft_neg(asd->buff);
+		if (asd->i > asd->size)
+			ft_neg(asd->buff);
 	}
 	else
 		ft_memcpy(asd->buff, asd->s, asd->i - asd->size, asd->size);

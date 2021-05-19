@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:27:41 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/14 12:54:06 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 11:59:00 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	dot_d2_3(t_dot *dotd, t_obj *obj)
 		ft_memcpy(dotd->af, dotd->s, dotd->cpya - dotd->l, dotd->l);
 	else
 		ft_memcpy(dotd->af, dotd->s, dotd->a - dotd->l, dotd->l);
-	if (ft_isneg(dotd->s))
+	if (ft_isneg(dotd->s) && (dotd->cpya > dotd->l || dotd->a > dotd->l))
 		ft_neg(dotd->af);
 	if (ft_findless(dotd->buff))
 	{
@@ -69,7 +69,7 @@ void	dot_d2_4(t_dot *dotd, t_obj *obj)
 	ft_putchars(dotd->bf, obj);
 }
 
-void	dot_d2_5(t_dot *dotd, t_obj *obj)
+void	dot_d2_5(t_dot *dotd, t_obj *obj, const char *str)
 {
 	if (dotd->af[0] == '\0' && (dotd->s[0] == '0' && dotd->s[1] == '\0'))
 		ft_putchars(dotd->bf, obj);
@@ -81,6 +81,8 @@ void	dot_d2_5(t_dot *dotd, t_obj *obj)
 	else
 	{
 		ft_memcpy(dotd->bf, dotd->s, dotd->b - dotd->l, dotd->l);
+		if (dotd->a < 0 && dotd->b > dotd->l && str[0] == '0')
+			ft_neg(dotd->bf);
 		ft_putchars(dotd->bf, obj);
 	}
 }
@@ -94,7 +96,7 @@ void	dot_d2(t_dot *dotd, t_obj *obj, const char *str)
 	else if (dotd->cpyb > dotd->a && dotd->a >= dotd->l)
 		dot_d2_4(dotd, obj);
 	else if (dotd->b > dotd->l && dotd->a < dotd->l)
-		dot_d2_5(dotd, obj);
+		dot_d2_5(dotd, obj, str);
 	else if (dotd->cpyb >= dotd->l && dotd->a < dotd->l)
 	{
 		if (!(ft_atoi(dotd->s) == 0 && dotd->a == 0))

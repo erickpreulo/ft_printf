@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 15:39:15 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 13:18:30 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_dot
 	long int		lu;
 	unsigned int	arg;
 	char			*sx;
+	char			*scpy;
 }				t_dot;
 
 typedef struct s_obj
@@ -100,7 +101,7 @@ int		ft_strlen(const char *str);
 void	ft_strlen_hex(int nbr, char *base, t_obj *obj);
 int		ft_strlen_nrb(const char *str);
 int		ft_strlen_find_dot(const char *str);
-char	*ft_strlen_afdot(const char *str, char *s);
+char	*ft_strlen_afdot(const char *str, char *s, t_obj *obj);
 char	*ft_strlen_afdotdi(const char *str);
 char	*ft_strlen_bfdot(const char *str);
 void	ft_leng_hexs(unsigned long nbr, t_obj *obj);
@@ -197,7 +198,7 @@ void	ft_printas_p(t_obj *obj, char *hex, const char *str);
 void	as_d(t_as *asd, const char *str, t_obj *obj);
 void	as_d2(t_as *asd, const char *str, t_obj *obj);
 void	as_p(t_as *asd, const char *str, t_obj *obj);
-void	as_s1(t_as *ass);
+void	as_s1(t_as *ass, t_obj *obj);
 void	as_s3_3(t_as *ass, t_obj *obj);
 void	as_s3_4(t_as *ass, t_obj *obj, const char *str);
 
