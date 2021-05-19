@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 13:18:31 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 14:15:54 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 {
 	if (dots->a <= dots->l)
 		dots->l = dots->a;
-	if (dots->scpy == NULL && dots->a < 6)
-		ft_putchars(dots->bf, obj);
-	else if (dots->b == 0 && dots->a > dots->l)
+	if (dots->b == 0 && dots->a > dots->l)
 		ft_putchars(dots->s, obj);
 	else if (str[-1] == '-')
 		dot_s_2(dots, obj);
