@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:04:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 15:52:47 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 16:53:28 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ void	printp(const char *str, t_obj *obj)
 {
 	if (obj->size < 0)
 		obj->size *= -1;
-	if ((ft_findless(str)) && (str[0] >= '0' && str[0] <= '9'))
-		ft_printendspacehexp("0123456789abcdef", obj);
+	if ((ft_findless(str)) && ((str[0] >= '0' && str[0] <= '9') 
+		|| (jump1(str) >= '0' && jump1(str) <= '9')))
+		ft_printendspacehexp("0123456789abcdef", obj, str);
 	else if (ft_find_as(str))
 		ft_printas_p(obj, "0123456789abcdef", str);
-	else if (str[0] >= '1' && str[0] <= '9' && !(ft_strlen_find_dot(str)))
-		ft_printspacehexp("0123456789abcdef", obj);
+	else if (str[0] >= '1' && str[0] <= '9')
+		ft_printspacehexp("0123456789abcdef", obj, str);
 	else
 	{
 		ft_putchar('0', obj);

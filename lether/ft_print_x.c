@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:11:25 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 15:39:07 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 16:43:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@ void	printX(const char *str, t_obj *obj)
 void	printpc(const char *str, t_obj *obj)
 {
 	char	c;
+	t_as	asc;
 
 	c = '%';
-	if (ft_findless(str) && (str[0] >= '0' && str[0] <= '9'))
+	if (ft_find_as(str))
+		ft_printas_pc(&asc, obj, str);
+	else if (ft_findless(str) && (str[0] >= '0' && str[0] <= '9'))
 		ft_printendspacec(c, obj);
 	else if (str[0] >= '1' && str[0] <= '9')
 		ft_printspacec(c, obj);

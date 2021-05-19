@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 15:39:11 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 16:16:55 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ static void	init_obj(t_obj *obj)
 	obj->printed = 0;
 	obj->sequence = 0;
 	reset_obj(obj);
+}
+
+int		jump1(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] == '0' || str[i] == '-')
+		i++;
+	return (str[i]);
 }
 
 int		jump(const char *str)

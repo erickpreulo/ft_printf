@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 14:15:54 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 16:42:50 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 		dots->l = dots->a;
 	if (dots->b == 0 && dots->a > dots->l)
 		ft_putchars(dots->s, obj);
-	else if (str[-1] == '-')
+	else if (ft_findless(str))
 		dot_s_2(dots, obj);
 	else if (dots->a >= dots->b && dots->a <= dots-> l)
 	{
@@ -98,6 +98,8 @@ void	ft_printdot_s(const char *str, t_obj *obj)
 	dots.scpy = dots.s;
 	if (dots.s == NULL)
 		dots.s = "(null)";
+	if (str[obj->nbrsize] == '%')
+		dots.s = "%";
 	dots.l = ft_strlen(dots.s);
 	dots.bf = ft_strlen_bfdot(str);
 	dots.af = ft_strlen_afdot(str, dots.s, obj);

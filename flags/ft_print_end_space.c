@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 22:36:50 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/18 13:06:29 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 16:53:22 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,14 @@ void	ft_printendspacehex(char *str, t_obj *obj)
 	free(obj->hex);
 }
 
-void	ft_printendspacehexp(char *hex, t_obj *obj)
+void	ft_printendspacehexp(char *hex, t_obj *obj, const char *str)
 {
 	obj->hex = ft_newstr(20);
 	ft_memset(obj->hex, 'x', 2);
 	ft_memset(obj->hex, '0', 1);
 	obj->counthex += 2;
-	ft_cpy_hexs(va_arg(obj->ap, unsigned long), hex, obj);
+	if (!(ft_strlen_find_dot(&str[0])))
+		ft_cpy_hexs(va_arg(obj->ap, unsigned long), hex, obj);
 	obj->buff = ft_newstr(obj->size);
 	if (obj->counthex >= obj->size)
 	{

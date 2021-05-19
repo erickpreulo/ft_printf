@@ -90,13 +90,14 @@ void	ft_printspacehex(char *str, t_obj *obj)
 	free(obj->hex);
 }
 
-void	ft_printspacehexp(char *hex, t_obj *obj)
+void	ft_printspacehexp(char *hex, t_obj *obj, const char *str)
 {
 	obj->hex = ft_newstr(20);
 	ft_memset(obj->hex, 'x', 2);
 	ft_memset(obj->hex, '0', 1);
 	obj->counthex += 2;
-	ft_cpy_hexs(va_arg(obj->ap, unsigned long), hex, obj);
+	if (!(ft_strlen_find_dot(&str[0])))
+		ft_cpy_hexs(va_arg(obj->ap, unsigned long), hex, obj);
 	obj->buff = ft_newstr(obj->size);
 	if (obj->counthex >= obj->size)
 	{

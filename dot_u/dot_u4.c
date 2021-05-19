@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:16:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/14 14:54:22 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 15:58:40 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ void	dot_u4_1(t_dot *dotd, t_obj *obj, const char *str)
 	else if ((dotd->bu > dotd->au && dotd->au > dotd->lu)
 		|| (dotd->bu > dotd->cpyau))
 		dot_u4_1_2(dotd, obj);
+	else if (dotd->bu > dotd->lu && str[0] == '0' && dotd->au < dotd->bu)
+	{
+		ft_memset(dotd->bf, '0', dotd->bu);
+		ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
+		ft_putchars(dotd->bf, obj);
+	}
 	else
 		ft_putchars(dotd->s, obj);
 	free(dotd->bf);

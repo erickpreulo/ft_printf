@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 13:18:30 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/19 16:53:34 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void	ft_negdi(char *str);
 int		ft_isneg(char *str);
 void	ft_negdot(char *str);
 int		jump(const char *str);
+int		jump1(const char *str);
 
 void	ft_print0(t_obj *obj);
 void	ft_print0hex(char *str, t_obj *obj);
@@ -135,7 +136,7 @@ void	ft_printspace(t_obj *obj);
 void	ft_printspaces(t_obj *obj);
 void	ft_printspacec(char s, t_obj *obj);
 void	ft_printspacehex(char *str, t_obj *obj);
-void	ft_printspacehexp(char *hex, t_obj *obj);
+void	ft_printspacehexp(char *hex, t_obj *obj, const char *str);
 void	ft_printspaceu(t_obj *obj);
 void	spahex(t_obj *obj);
 
@@ -143,7 +144,7 @@ void	ft_printendspacec(char s, t_obj *obj);
 void	ft_printendspace(t_obj *obj);
 void	ft_printendspaces(t_obj *obj);
 void	ft_printendspacehex(char *str, t_obj *obj);
-void	ft_printendspacehexp(char *hex, t_obj *obj);
+void	ft_printendspacehexp(char *hex, t_obj *obj, const char *str);
 void	ft_printendspaceu(t_obj *obj);
 
 void	ft_printdot_di(const char *str, t_obj *obj);
@@ -194,6 +195,7 @@ void	ft_printas_di(t_obj *obj, const char *str);
 void	ft_printas_u(t_obj *obj, const char *str);
 void	ft_printas_x(t_obj *obj, char *hex, const char *str);
 void	ft_printas_p(t_obj *obj, char *hex, const char *str);
+void	ft_printas_pc(t_as *asc, t_obj *obj, const char *str);
 
 void	as_d(t_as *asd, const char *str, t_obj *obj);
 void	as_d2(t_as *asd, const char *str, t_obj *obj);
