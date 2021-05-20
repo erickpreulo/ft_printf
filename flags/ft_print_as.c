@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 11:16:45 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/20 13:20:17 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,10 @@ void	ft_printas_s(t_obj *obj, const char *str)
 	if (str[obj->i] == '.' && str[obj->i - 1] == '*'
 		&& ft_find_as(&str[obj->i]))
 		obj->trash = va_arg(obj->ap, int);
-	ass.s = va_arg(obj->ap, char *);
+	if (str[obj->nbrsize] == '%')
+		ass.s = "%";
+	else
+		ass.s = va_arg(obj->ap, char *);
 	if (ass.s == NULL)
 		ass.s = "(null)";
 	ass.cpy = -1;

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 16:42:50 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/20 13:21:56 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ void	ft_printdot_s(const char *str, t_obj *obj)
 {
 	t_dot	dots;
 
-	dots.s = va_arg(obj->ap, char *);
+	if (str[obj->nbrsize] == '%')
+		dots.s = "%";
+	else
+		dots.s = va_arg(obj->ap, char *);
 	dots.scpy = dots.s;
 	if (dots.s == NULL)
 		dots.s = "(null)";

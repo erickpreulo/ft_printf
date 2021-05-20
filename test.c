@@ -2,8 +2,8 @@
 
 int main()
 {
-	ft_printf("%%*.5i 42 == |%-*.3s|\n", 5, "LYDI");    //?
-	printf("%%*.5i 42 == |%-*.3s|\n", 5, "LYDI");
+	ft_printf("|%10.5%|\n");    //?
+	printf("|%-*.5%|\n", 10);
 	int		a = -4;
 	int		b = 0;
 	char	c = 'a';
