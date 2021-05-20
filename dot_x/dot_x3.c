@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	dot_x3_2(t_dot *dotd, t_obj *obj, const char *str)
+void	dot_x3_2(t_dot *dotd, t_obj *obj)
 {
 	if (dotd->af[0] == '\0' && (dotd->s[0] == '0' && dotd->s[1] == '\0'))
 		ft_putchars(dotd->bf, obj);
@@ -23,10 +23,10 @@ void	dot_x3_2(t_dot *dotd, t_obj *obj, const char *str)
 		ft_putchars(dotd->af, obj);
 	}
 	else if (dotd->bu > dotd->au && dotd->au > dotd->lu)
-		dot_x3_2_1(dotd, obj, str);
+		dot_x3_2_1(dotd, obj);
 	else if (dotd->bu > dotd->au && dotd->bu > dotd->lu)
 	{
-		if (str[-1] == '-' || str[-2] == '-')
+		if ((ft_findless(dotd->buff)))
 			ft_memcpy(dotd->bf, dotd->s, 0, dotd->lu);
 		else
 			ft_memcpy(dotd->bf, dotd->s, dotd->bu - dotd->lu, dotd->lu);
@@ -94,7 +94,7 @@ void	dot_x3(t_dot *dotd, t_obj *obj, const char *str)
 		{
 			dotd->af = ft_strlen_afdot(str, dotd->s, obj);
 			dotd->au = ft_strlen(dotd->af);
-			dot_x3_2(dotd, obj, str);
+			dot_x3_2(dotd, obj);
 			free(dotd->af);
 		}
 		else if (dotd->bu > dotd->lu)

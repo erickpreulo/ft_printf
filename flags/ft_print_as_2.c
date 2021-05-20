@@ -87,9 +87,12 @@ void	ft_printas_x(t_obj *obj, char *hex, const char *str)
 	ft_cpy_hexs(obj->unsig, hex, obj);
 	asd.s = obj->hex;
 	asd.size = obj->counthex;
+	asd.cpy = -1;
 	asd.cpy *= asd.i;
 	if (asd.i >= asd.size)
 		as_d(&asd, str, obj);
+	else if (asd.cpy >= asd.size)
+		as_d2(&asd, obj);
 	else
 		ft_putchars(asd.s, obj);
 	free(obj->hex);

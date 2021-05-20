@@ -82,7 +82,7 @@ void	as_s3(t_as *ass, const char *str, t_obj *obj)
 		ft_putchars(ass->buff, obj);
 	else if (ass->i == 0 && (ft_find_as(&str[2])) && obj->trash > ass->size)
 		ft_putchars(ass->s, obj);
-	else if (str[1] == '*')
+	else if (str[1] == '*' && str[0] != '0')
 		as_s3_1(ass, obj);
 	else if (str[obj->i - 1] >= '0' && str[obj->i - 1] <= '9')
 		as_s3_4(ass, obj, str);

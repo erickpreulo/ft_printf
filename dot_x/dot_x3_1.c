@@ -26,11 +26,11 @@ void	dot_x3_1(t_dot *dotd)
 	}
 }
 
-void	dot_x3_2_1(t_dot *dotd, t_obj *obj, const char *str)
+void	dot_x3_2_1(t_dot *dotd, t_obj *obj)
 {
 	ft_memcpy(dotd->af, dotd->s, dotd->au - dotd->lu, dotd->lu);
 	ft_neg(dotd->af);
-	if (str[-1] == '-' || str[-2] == '-' || ft_isneg(dotd->s))
+	if (ft_findless(dotd->buff) || ft_isneg(dotd->s))
 		ft_memcpy(dotd->bf, dotd->af, 0, dotd->au);
 	else
 		ft_memcpy(dotd->bf, dotd->af, dotd->bu - dotd->au, dotd->au);

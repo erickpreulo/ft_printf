@@ -184,7 +184,7 @@ void	dot_x2(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_x2_1(t_dot *dotd, const char *str);
 void	dot_x3(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_x3_1(t_dot *dotd);
-void	dot_x3_2_1(t_dot *dotd, t_obj *obj, const char *str);
+void	dot_x3_2_1(t_dot *dotd, t_obj *obj);
 void	dot_x5(t_dot *dotd, t_obj *obj);
 void	dot_x6(t_dot *dotd, t_obj *obj);
 void	dot_x7(t_dot *dotd, t_obj *obj);
@@ -198,7 +198,7 @@ void	ft_printas_p(t_obj *obj, char *hex, const char *str);
 void	ft_printas_pc(t_as *asc, t_obj *obj, const char *str);
 
 void	as_d(t_as *asd, const char *str, t_obj *obj);
-void	as_d2(t_as *asd, const char *str, t_obj *obj);
+void	as_d2(t_as *asd, t_obj *obj);
 void	as_p(t_as *asd, const char *str, t_obj *obj);
 void	as_s1(t_as *ass, t_obj *obj);
 void	as_s3_3(t_as *ass, t_obj *obj);

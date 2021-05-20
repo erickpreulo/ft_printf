@@ -49,9 +49,11 @@ void	printpc(const char *str, t_obj *obj)
 	char	c;
 
 	c = '%';
-	//if (ft_find_as(str))
-	//	ft_printas_pc(&asc, obj, str);
-	if (ft_findless(str) && (str[0] >= '0' && str[0] <= '9'))
+	if (ft_find_as(str))
+		ft_printas_s(obj, str);
+	else if (ft_strlen_find_dot(str) && str[0] != '*')
+		ft_printdot_s(str, obj);
+	else if (ft_findless(str) && (str[0] >= '0' && str[0] <= '9'))
 		ft_printendspacec(c, obj);
 	else if (str[0] >= '1' && str[0] <= '9')
 		ft_printspacec(c, obj);

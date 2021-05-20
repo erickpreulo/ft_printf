@@ -24,7 +24,7 @@ void	ft_printas_u(t_obj *obj, const char *str)
 	if (asd.i >= asd.size)
 		as_d(&asd, str, obj);
 	else if (asd.cpy >= asd.size)
-		as_d2(&asd, str, obj);
+		as_d2(&asd, obj);
 	else
 		ft_putchars(asd.s, obj);
 	free(asd.s);

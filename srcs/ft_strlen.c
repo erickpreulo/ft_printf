@@ -51,10 +51,15 @@ char	*ft_strlen_bfdot(const char *str)
 {
 	char	*buff;
 	int r;
+	int		nbr;
 
+	nbr = ft_strlen_nrb(str);
 	r = jump(str);
 	buff = ft_newstr(r);
-	ft_memset(buff, ' ', r);
+	if (str[0] == '0' && str[nbr] == '%')
+		ft_memset(buff, '0', r);
+	else
+		ft_memset(buff, ' ', r);
 	return (buff);
 }
 

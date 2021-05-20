@@ -48,6 +48,8 @@ void	dot_s_2(t_dot *dots, t_obj *obj)
 	{
 		if (dots->a != 0)
 			ft_memcpy(dots->bf, dots->s, 0, dots->l);
+		else if (dots->s[0] == '%')
+			ft_memcpy(dots->bf, dots->s, 0, 1);
 		ft_putchars(dots->bf, obj);
 	}
 }
@@ -101,8 +103,6 @@ void	ft_printdot_s(const char *str, t_obj *obj)
 	dots.scpy = dots.s;
 	if (dots.s == NULL)
 		dots.s = "(null)";
-	if (str[obj->nbrsize] == '%')
-		dots.s = "%";
 	dots.l = ft_strlen(dots.s);
 	dots.bf = ft_strlen_bfdot(str);
 	dots.af = ft_strlen_afdot(str, dots.s, obj);
