@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 16:31:55 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/21 12:01:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,6 @@ void	as_c(t_as *asc)
 		asc->buff = ft_newstr(asc->i);
 		ft_memset(asc->buff, ' ', asc->i);
 	}
-}
-
-void	ft_printas_pc(t_as *asc, t_obj *obj, const char *str)
-{
-	asc->cpy = -1;
-	asc->i = va_arg(obj->ap, int);
-	asc->c = '%';
-	as_c(asc);
-	if (asc->i == 0)
-		ft_putchar(asc->c, obj);
-	else if (str[-1] == '-' || asc->cpy > 0)
-	{
-		ft_putchar(asc->c, obj);
-		ft_putchars(asc->buff, obj);
-	}
-	else if (asc->i > 0)
-	{
-		ft_putchars(asc->buff, obj);
-		ft_putchar(asc->c, obj);
-	}
-	free(asc->buff);
 }
 
 void	ft_printas_c(t_as *asc, t_obj *obj, const char *str)

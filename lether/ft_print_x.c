@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:11:25 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 23:38:08 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/21 12:46:23 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,14 @@ void	printX(const char *str, t_obj *obj)
 
 void	printpc(const char *str, t_obj *obj)
 {
-	char	c;
-
-	c = '%';
-	if (ft_find_as(str))
-		ft_printas_s(obj, str);
-	else if (ft_strlen_find_dot(str) && str[0] != '*')
+	if (ft_strlen_find_dot(str) && !(ft_find_as(str)))
 		ft_printdot_s(str, obj);
 	else if (ft_findless(str) && (str[0] >= '0' && str[0] <= '9'))
-		ft_printendspacec(c, obj);
+		ft_printendspacec('%', obj);
 	else if (str[0] >= '1' && str[0] <= '9')
-		ft_printspacec(c, obj);
+		ft_printspacec('%', obj);
 	else if (str[0] == '0')
 		ft_print0pc(obj);
 	else
-		ft_putchar(c, obj);
+		ft_putchar('%', obj);
 }

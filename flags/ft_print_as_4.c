@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/03 15:21:59 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/21 12:01:13 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	a(t_as *ass, t_obj *obj, const char *str)
 		ft_memcpy(ass->bf, ass->s, 0, ass->size);
 		ft_putchars(ass->bf, obj);
 	}
-	else if (ass->b > ass->cpy)
+	else if (ass->b > ass->cpy || (ass->b > ass->size && ass->i < 0))
 	{
 		ft_memcpy(ass->bf, ass->s, ass->b - ass->size, ass->size);
 		ft_putchars(ass->bf, obj);

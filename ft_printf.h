@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 16:53:34 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/21 12:39:58 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,12 +195,13 @@ void	ft_printas_di(t_obj *obj, const char *str);
 void	ft_printas_u(t_obj *obj, const char *str);
 void	ft_printas_x(t_obj *obj, char *hex, const char *str);
 void	ft_printas_p(t_obj *obj, char *hex, const char *str);
-void	ft_printas_pc(t_as *asc, t_obj *obj, const char *str);
 
 void	as_d(t_as *asd, const char *str, t_obj *obj);
 void	as_d2(t_as *asd, t_obj *obj);
 void	as_p(t_as *asd, const char *str, t_obj *obj);
 void	as_s1(t_as *ass, t_obj *obj);
+void	as_s2(t_as *ass);
+void	as_s3(t_as *ass, const char *str, t_obj *obj);
 void	as_s3_3(t_as *ass, t_obj *obj);
 void	as_s3_4(t_as *ass, t_obj *obj, const char *str);
 

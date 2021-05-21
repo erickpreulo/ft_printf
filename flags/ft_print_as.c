@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:13 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/20 13:20:17 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/21 12:48:09 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ void	as_s3_2(t_as *ass, t_obj *obj, const char *str)
 	{
 		if (obj->trash < 0)
 			ft_putchars(ass->s, obj);
-		else if (ft_find_as(&str[2]))
-		{
-			ft_memcpy(ass->buff, ass->s, 0, obj->trash);
-			ft_putchars(ass->buff, obj);
-		}
 		else
 		{
 			ft_memcpy(ass->buff, ass->s, 0, obj->trash);
@@ -129,10 +124,7 @@ void	ft_printas_s(t_obj *obj, const char *str)
 	if (str[obj->i] == '.' && str[obj->i - 1] == '*'
 		&& ft_find_as(&str[obj->i]))
 		obj->trash = va_arg(obj->ap, int);
-	if (str[obj->nbrsize] == '%')
-		ass.s = "%";
-	else
-		ass.s = va_arg(obj->ap, char *);
+	ass.s = va_arg(obj->ap, char *);
 	if (ass.s == NULL)
 		ass.s = "(null)";
 	ass.cpy = -1;

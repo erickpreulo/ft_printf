@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 18:12:13 by egomes            #+#    #+#              #
-#    Updated: 2021/05/17 15:55:49 by egomes           ###   ########.fr        #
+#    Updated: 2021/05/21 13:16:30 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(NAME):	$(OBJ)
 all:		$(NAME)
 
 test:	re
-		@$(CC) test.c $(NAME) -fsanitize=address -g
+		@$(CC) $(CFLAGS) test.c $(NAME) -fsanitize=address -g
 		./a.out
 
 clean:

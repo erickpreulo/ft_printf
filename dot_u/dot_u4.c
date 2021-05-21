@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:16:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 15:58:40 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/21 13:13:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	dot_u4(t_dot *dotd, t_obj *obj, const char *str)
 			&& (dotd->buff[-1] <= '0' || dotd->buff[-1] >= '9'))
 			dot_u4_2(dotd, obj);
 		else if (dotd->s[0] == '0' && dotd->au == 0)
-			ft_putchar('\0', obj);
+			dotd->au = 0;
 		else if ((dotd->au > 0 || dotd->cpya > 0)
 			&& (dotd->buff[-1] <= '0' || dotd->buff[-1] >= '9'))
 			ft_putchars(dotd->s, obj);
