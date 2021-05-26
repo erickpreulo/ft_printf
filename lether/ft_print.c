@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:04:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/21 12:40:02 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:57:41 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	printc(const char *str, t_obj *obj)
 {
 	t_as	asc;
-	int i;
+	int		i;
 
 	i = 0;
-	while (str[i] == '0' ||  str[i] == '-')
+	while (str[i] == '0' || str[i] == '-')
 		i++;
 	if (ft_find_as(str))
 		ft_printas_c(&asc, obj, str);
@@ -54,12 +54,12 @@ void	printdi(const char *str, t_obj *obj)
 
 void	printp(const char *str, t_obj *obj)
 {
-	unsigned long r;
+	unsigned long	r;
 
 	if (obj->size < 0)
 		obj->size *= -1;
-	if ((ft_findless(str)) && ((str[0] >= '0' && str[0] <= '9') 
-		|| (jump1(str) >= '0' && jump1(str) <= '9')))
+	if ((ft_findless(str)) && ((str[0] >= '0' && str[0] <= '9')
+			|| (jump1(str) >= '0' && jump1(str) <= '9')))
 		ft_printendspacehexp("0123456789abcdef", obj, str);
 	else if (ft_find_as(str))
 		ft_printas_p(obj, "0123456789abcdef", str);
@@ -71,7 +71,7 @@ void	printp(const char *str, t_obj *obj)
 		ft_putchar('x', obj);
 		r = va_arg(obj->ap, unsigned long);
 		if (r != 0 || !(ft_strlen_find_dot(str)))
-			ft_putnbr_hex(r ,"0123456789abcdef", obj);
+			ft_putnbr_hex(r, "0123456789abcdef", obj);
 	}
 }
 

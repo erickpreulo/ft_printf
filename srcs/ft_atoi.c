@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 12:15:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/17 22:07:10 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:58:13 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	ft_atoi(const char *str)
 {
-	int neg;
-	int i;
-	int num;
+	int	neg;
+	int	i;
+	int	num;
 
 	i = 0;
 	neg = 1;
 	num = 0;
 	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-			|| str[i] == '\f' || str[i] == '\r')
+		|| str[i] == '\f' || str[i] == '\r')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{

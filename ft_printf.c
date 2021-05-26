@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:04:59 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/21 12:40:10 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:46:53 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,14 @@ static void	init_obj(t_obj *obj)
 	reset_obj(obj);
 }
 
-int		jump1(const char *str)
+int	jump1(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] == '0' || str[i] == '-')
 		i++;
 	return (str[i]);
-}
-
-int		jump(const char *str)
-{
-	int i;
-	int r;
-
-	i = 0;
-	while (str[i] == '0' || str[i] == '-')
-		i++;
-	r = ft_atoi(&str[i]);
-	return (r);
 }
 
 void	print(const char *str, t_obj *obj)
@@ -75,7 +63,6 @@ void	print(const char *str, t_obj *obj)
 		printpc(str, obj);
 	else if (str[obj->nbrsize == '\n'])
 		ft_putchar('\n', obj);
-	
 }
 
 int	ft_printf(const char *str, ...)

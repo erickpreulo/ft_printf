@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:28:57 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/21 12:01:24 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:52:46 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	as_s1(t_as *ass, t_obj *obj)
 		ft_memset(ass->buff, ' ', obj->trash);
 	else
 		ft_memset(ass->buff, ' ', ass->cpy);
-
 }
 
 void	as_s3_3(t_as *ass, t_obj *obj)

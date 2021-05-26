@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:06:02 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/20 13:21:56 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:54:49 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,7 @@ void	dot_s(t_dot *dots, const char *str, t_obj *obj)
 	else if (ft_findless(str))
 		dot_s_2(dots, obj);
 	else if (dots->a >= dots->b && dots->a <= dots-> l)
-	{
-		if (dots->a == 0 && dots->b == 0)
-			ft_putchars(dots->bf, obj);
-		else
-		{
-			ft_memcpy(dots->af, dots->s, 0, dots->a);
-			ft_putchars(dots->af, obj);
-		}
-	}
+		dot_s_1(dots, obj);
 	else if (dots->a < dots->b)
 		dot_s_3(dots, obj);
 	else if (dots->l > 0 && dots->b > dots->l)

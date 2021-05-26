@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:26:42 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/30 10:28:41 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:43:15 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,18 @@ void	dot_u7(t_dot *dotd, t_obj *obj)
 		ft_putchars(dotd->bf, obj);
 	free(dotd->bf);
 	free(dotd->af);
+}
+
+void	dot_u4_0(t_dot *dotd)
+{
+	if (dotd->au < 0)
+	{
+		dotd->af = ft_newstr(dotd->cpyau);
+		ft_memset(dotd->af, '0', dotd->cpyau);
+	}
+	else
+	{
+		dotd->af = ft_newstr(dotd->au);
+		ft_memset(dotd->af, '0', dotd->au);
+	}
 }

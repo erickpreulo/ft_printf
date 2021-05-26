@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:18:38 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/19 13:18:07 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:58:27 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_strlen_find_dot(const char *str)
 char	*ft_strlen_bfdot(const char *str)
 {
 	char	*buff;
-	int r;
+	int		r;
 	int		nbr;
 
 	nbr = ft_strlen_nrb(str);

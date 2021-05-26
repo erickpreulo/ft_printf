@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:05:53 by egomes            #+#    #+#             */
-/*   Updated: 2021/04/29 17:23:01 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:47:03 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ int	ft_find_as(const char *str)
 		i++;
 	}
 	return (0);
+}
+
+int	jump(const char *str)
+{
+	int	i;
+	int	r;
+
+	i = 0;
+	while (str[i] == '0' || str[i] == '-')
+		i++;
+	r = ft_atoi(&str[i]);
+	return (r);
 }

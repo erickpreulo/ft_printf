@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 18:12:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/05/21 12:39:58 by egomes           ###   ########.fr       */
+/*   Updated: 2021/05/26 12:02:22 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ void	dot_u3(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_u3_1(t_dot *dotd);
 void	dot_u3_2_1(t_dot *dotd, t_obj *obj, const char *str);
 void	dot_u4(t_dot *dotd, t_obj *obj, const char *str);
+void	dot_u4_0(t_dot *dotd);
 void	dot_u5(t_dot *dotd, t_obj *obj);
 void	dot_u6(t_dot *dotd, t_obj *obj);
 void	dot_u7(t_dot *dotd, t_obj *obj);
@@ -197,6 +198,7 @@ void	ft_printas_x(t_obj *obj, char *hex, const char *str);
 void	ft_printas_p(t_obj *obj, char *hex, const char *str);
 
 void	as_d(t_as *asd, const char *str, t_obj *obj);
+void	dot_s_1(t_dot *dots, t_obj *obj);
 void	as_d2(t_as *asd, t_obj *obj);
 void	as_p(t_as *asd, const char *str, t_obj *obj);
 void	as_s1(t_as *ass, t_obj *obj);
@@ -204,5 +206,8 @@ void	as_s2(t_as *ass);
 void	as_s3(t_as *ass, const char *str, t_obj *obj);
 void	as_s3_3(t_as *ass, t_obj *obj);
 void	as_s3_4(t_as *ass, t_obj *obj, const char *str);
+void	as_s3_5(t_as *ass, t_obj *obj);
+void	as_s3_2(t_as *ass, t_obj *obj, const char *str);
+void	as_s3_2_1(t_as *ass, t_obj *obj);
 
 #endif
